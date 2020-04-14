@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackBoard : MonoBehaviour
+namespace POTCW
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BlackBoard
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public float BaseDamage;
+        public float HeavyDamage;
+        public float DamageMultiplier;
     }
 }
