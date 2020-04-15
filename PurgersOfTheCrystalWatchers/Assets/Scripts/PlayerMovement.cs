@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     #region Declaring Variables
     #region Declaring Inspector
     [Header("Assign")]
+    //Main Camera
     [SerializeField] GameObject playerCamera;
     [SerializeField] LayerMask whatIsWall;
     [SerializeField] LayerMask whatIsGround;
