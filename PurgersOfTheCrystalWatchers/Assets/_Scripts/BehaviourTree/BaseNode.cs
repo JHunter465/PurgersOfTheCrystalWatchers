@@ -14,7 +14,7 @@ namespace POTCW
     public abstract class BaseNode
     {
         protected BlackBoard blackBoard;
-
+        
         public abstract BehaviourTreeStatus Tick();
     }
 }

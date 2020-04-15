@@ -13,6 +13,7 @@ namespace POTCW
 
         public override BehaviourTreeStatus Tick()
         {
+            //blackBoard.Boss.transform.position += Vector3.left * 10;
             return BehaviourTreeStatus.Succes;
         }
     }

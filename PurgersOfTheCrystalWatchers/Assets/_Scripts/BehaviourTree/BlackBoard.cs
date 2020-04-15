@@ -9,5 +9,7 @@ namespace POTCW
         public float BaseDamage;
         public float HeavyDamage;
         public float DamageMultiplier;
+        public MonoBehaviour Boss;
+        public Animator AnimationController;
     }
 }
