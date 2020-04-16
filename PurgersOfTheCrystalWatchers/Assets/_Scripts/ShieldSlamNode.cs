@@ -6,14 +6,27 @@ namespace POTCW
 {
     public class ShieldSlamNode : BaseNode
     {
-        public ShieldSlamNode(BlackBoard bb)
+        private int time = 0;
+        private int holdTime;
+        public ShieldSlamNode(BlackBoard bb, int _holdTime)
         {
             this.blackBoard = bb;
+            this.holdTime = _holdTime;
         }
 
         public override BehaviourTreeStatus Tick()
         {
-            return BehaviourTreeStatus.Succes;
+            time++;
+
+            if (time > holdTime)
+            {
+                Debug.Log("Round");
+                time = 0;
+
+                return BehaviourTreeStatus.Succes;
+            }
+            else
+                return BehaviourTreeStatus.Running;
         }
     }
 }

@@ -23,15 +23,24 @@ namespace POTCW
             {
                 return BehaviourTreeStatus.Succes;
             }
-
             foreach (BaseNode node in inputNodes)
             {
-                var childStatus = node.Tick();
-                if(childStatus != BehaviourTreeStatus.Succes)
+                BehaviourTreeStatus result = node.Tick();
+
+                switch (result)
                 {
-                    return childStatus;
+                    case BehaviourTreeStatus.Failure:
+                        return BehaviourTreeStatus.Failure;
+                    case BehaviourTreeStatus.Running:
+                        return BehaviourTreeStatus.Running;
+                    case BehaviourTreeStatus.Succes:
+                        //only at succes it moves on to the next task
+                        break;
+                    default:
+                        break;
                 }
             }
+
             return BehaviourTreeStatus.Failure;
         }
     }

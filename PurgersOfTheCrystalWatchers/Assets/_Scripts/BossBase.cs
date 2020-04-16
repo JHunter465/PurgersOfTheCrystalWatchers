@@ -24,13 +24,19 @@ namespace POTCW
 
             //Blackboard.AnimationController = animatorController;
             Blackboard.Boss = this;
-
+            Blackboard.BossBody = GetComponent<Rigidbody>();
             behaviourTreeStage1 = new SequenceNode(Blackboard,
-                new JumpNode(Blackboard, Globals.BOSS_JUMP_ANIMATORBOOL),
-                new SlashAttackNode(Blackboard),
-                new ShieldSlamNode(Blackboard));
+                new SlashAttackNode(Blackboard,10),
+                new ConditionNode(Blackboard, new System.Func<bool>(() => JumpCheck()),
+                    new JumpNode(Blackboard, Globals.BOSS_JUMP_ANIMATORBOOL,10),               
+                new ShieldSlamNode(Blackboard, 10)));
 
             activeBehaviourTree = behaviourTreeStage1;
+        }
+
+        private bool JumpCheck()
+        {
+            return Physics.Raycast(transform.position, -Vector3.up, 1);
         }
 
         private void FixedUpdate()
