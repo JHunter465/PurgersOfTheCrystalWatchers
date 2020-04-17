@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 /// <summary>
 /// Generic singleton class for easy inheritance 
 /// </summary>

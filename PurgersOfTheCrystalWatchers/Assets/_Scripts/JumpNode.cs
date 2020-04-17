@@ -23,16 +23,19 @@ namespace POTCW
             //blackBoard.Boss.transform.LerpTransform(blackBoard.Boss, new Vector3(10, 10, 10), 5);
             time++;
 
-            if (time > holdTime)
+            if (time < holdTime)
             {
+
                 Debug.Log("jump");
-                time = 0;
                 blackBoard.BossBody.AddRelativeForce(Vector3.up * 100);
 
-                return BehaviourTreeStatus.Succes;
+                return BehaviourTreeStatus.Running;
             }
             else
-                return BehaviourTreeStatus.Running; 
+            {
+                time = 0;
+                return BehaviourTreeStatus.Succes;
+            }
 
 
         }
