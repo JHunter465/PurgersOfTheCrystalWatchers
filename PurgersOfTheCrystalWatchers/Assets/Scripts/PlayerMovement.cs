@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float moveSpeed;
     [SerializeField] float runSpeed = 1f;
+    [SerializeField] float jumpForce = 1f;
 
     [Space]
     [Header("Turning")]
@@ -78,6 +79,30 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        bool jump = false;
+        float run = 0;
+        float crouch = 0;
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jump = true;
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            run = 1;
+        }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            crouch = 1;
+        }
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        Move(horizontal, vertical, jump, crouch, run);
     }
 
     public void Move(float _horizontal, float _vertical, bool _jump, float _crouch, float _run)
@@ -187,7 +212,10 @@ public class PlayerMovement : MonoBehaviour
 
             //If player jumps we should apply an upward force and delay the gravity pulling on the player
             #region WhenJumping
-            //JUMP
+            if(_jump && grounded)
+            {
+                controller.AddForce(transform.up * jumpForce);
+            }
             #endregion
 
             //If player crouches we should reduce the collider size and adjust movement
