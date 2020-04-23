@@ -19,6 +19,7 @@ namespace POTCW
     {
         public List<AnimationData> BossAnimationDatas;
         public Animator BossAnimator;
+
         public AnimationData ReturnAnimationData(string name)
         {
             return BossAnimationDatas.Find(bad => bad.name == name);

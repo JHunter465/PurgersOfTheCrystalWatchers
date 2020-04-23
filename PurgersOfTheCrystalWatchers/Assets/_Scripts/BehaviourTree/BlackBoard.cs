@@ -12,5 +12,10 @@ namespace POTCW
         public BossBase Boss;
         public Rigidbody BossBody;
         public Animator AnimationController;
+        public GameObject Player;
+        public float PlayerRange = 10;
+        public float BossMovementSpeed = 10f;
+        public Rigidbody ProjectilePrefab;
+        public GameObject MinionPrefab;
     }
 }

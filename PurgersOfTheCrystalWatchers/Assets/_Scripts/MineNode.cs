@@ -25,7 +25,6 @@ namespace POTCW
             //Boss algoritme om player positie of aantal random posities te verkrijgen en hier een circel op te zetten
             //Boss komt op gevonde plek uit de grond en valt speler aan als in range
             
-            time++;
 
             //Get the boss his animator controller
 
@@ -36,13 +35,18 @@ namespace POTCW
             
             if(duration > 0)
             {
+                time = duration;
+
                 //Now we can do our code that can be used at the same time as the animation
-                duration--;
+                time--;
+                blackBoard.Boss.SearchPlayerGameObject.SetActive(true);
+                blackBoard.Boss.SearchPlayerGameObject.transform.position = blackBoard.Boss.Player.transform.position;
                 return BehaviourTreeStatus.Running;
             }
             else
             {
                 //Alright, animation is done, we move on to the next node
+                blackBoard.Boss.SearchPlayerGameObject.SetActive(false);
                 blackBoard.AnimationController.SetBool(animationData.AnimationBoolName, true);
                 return BehaviourTreeStatus.Succes;
             }
