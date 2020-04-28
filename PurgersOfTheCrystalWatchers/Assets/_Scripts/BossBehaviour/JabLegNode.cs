@@ -25,18 +25,20 @@ namespace POTCW
                 NodeEnter(lastAnimationBool, nextAnimationBool);
                 checker = false;
             }
-            while (count < GetAnimationClipDuration())
+            if (count < GetAnimationClipDuration()+10)
             {
                 //We are now playing the animation and summoning minions
                 count += Time.deltaTime;
                 Debug.Log("Jab leg" + count);
                 return BehaviourTreeStatus.Running;
             }
-            //if (count >= GetAnimationClipDuration())
-                //count = 0;
+            else
+            {
 
-            //Reset al other nodes
-            return BehaviourTreeStatus.Succes;
+                count = 0;
+                checker = true;
+                return BehaviourTreeStatus.Succes;
+            }
         }
     }
 }

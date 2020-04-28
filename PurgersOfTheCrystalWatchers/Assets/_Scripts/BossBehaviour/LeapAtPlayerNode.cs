@@ -11,6 +11,7 @@ namespace POTCW
         private string nextAnimationBool;
         private float count = 0;
         private bool checker = true;
+
         public LeapAtPlayerNode(BlackBoard bb, string lastAnimationBool, string nextAnimationBool)
         {
             this.blackBoard = bb;
@@ -26,7 +27,7 @@ namespace POTCW
                 checker = false;
             }
 
-            while(count < GetAnimationClipDuration())
+            if(count < GetAnimationClipDuration() + 10)
             {
                 count += Time.deltaTime;
                 Debug.Log("Leaping at player!"+ count);
@@ -42,13 +43,14 @@ namespace POTCW
                 }*/
                 return BehaviourTreeStatus.Running;
             }
+            else
+            {
+                count = 0;
+                checker = true;
 
+                return BehaviourTreeStatus.Succes;
+            }
 
-            //blackBoard.AnimationController.SetBool("Leaping", false);
-           //if (count >= GetAnimationClipDuration())
-              // count = 0;
-            return BehaviourTreeStatus.Succes;
-            
         }
 
     }

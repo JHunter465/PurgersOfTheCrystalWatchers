@@ -28,20 +28,24 @@ namespace POTCW
                 NodeEnter(lastAnimationBool, nextAnimationBool);
                 checker = false;
             }
-            while (count < GetAnimationClipDuration())
+            if (count < GetAnimationClipDuration() + 10)
             {
                 //We are now playing the animation and summoning minions
                 count += Time.deltaTime;
                 Debug.Log("Summon minions!" + count);
+                //return BehaviourTreeStatus.Running;
                 return BehaviourTreeStatus.Running;
             }
-            for(int i = 0; i < spawns.Length; i++)
+            else
             {
-                GameObject minion = GameObject.Instantiate(blackBoard.MinionPrefab, spawns[i].position, Quaternion.identity);
+                for (int i = 0; i < spawns.Length; i++)
+                {
+                    GameObject minion = GameObject.Instantiate(blackBoard.MinionPrefab, spawns[i].position, Quaternion.identity);
+                }
+                count = 0;
+                checker = true;
+                return BehaviourTreeStatus.Succes;
             }
-            //if (count >= GetAnimationClipDuration())
-                //count = 0;
-            return BehaviourTreeStatus.Succes;
         }
     }
 }
