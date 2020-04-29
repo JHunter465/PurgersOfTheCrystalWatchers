@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 37609471}
   - component: {fileID: 37609470}
   - component: {fileID: 37609469}
+  - component: {fileID: 37609472}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -183,8 +184,8 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -204,6 +205,110 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37609472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37609468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 7
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
+  clearColorMode: 0
+  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  clearDepth: 1
+  volumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  volumeAnchorOverride: {fileID: 0}
+  antialiasing: 0
+  SMAAQuality: 2
+  dithering: 0
+  stopNaNs: 0
+  taaSharpenStrength: 0.6
+  physicalParameters:
+    m_Iso: 200
+    m_ShutterSpeed: 0.005
+    m_Aperture: 16
+    m_BladeCount: 5
+    m_Curvature: {x: 2, y: 11}
+    m_BarrelClipping: 0.25
+    m_Anamorphism: 0
+  flipYMode: 0
+  fullscreenPassthrough: 0
+  allowDynamicResolution: 0
+  customRenderingSettings: 0
+  invertFaceCulling: 0
+  probeLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hasPersistentHistory: 0
+  m_RenderingPathCustomFrameSettings:
+    bitDatas:
+      data1: 70297877217101
+      data2: 4539628425463136256
+    lodBias: 1
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    materialQuality: 0
+  renderingPathCustomFrameSettingsOverrideMask:
+    mask:
+      data1: 0
+      data2: 0
+  defaultFrameSettings: 0
 --- !u!1 &135803658
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,14 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8727c9ad0801b75479fd6091ae0e389d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossAnimationDatas:
-  - name: Jump
-    AnimationBoolName: Jumping
-    AnimationClip: {fileID: 0}
-  - name: Mine
-    AnimationBoolName: Mining
-    AnimationClip: {fileID: 0}
-  BossAnimator: {fileID: 1211825251}
+  BossAttackDatas: []
 --- !u!4 &862142445
 Transform:
   m_ObjectHideFlags: 0
@@ -650,7 +748,8 @@ MonoBehaviour:
     baseValue: 1
     multiplier: 0
   currentHealth: 0
-  ParticleEffect: {fileID: 0}
+  DeathParticleEffectName: 
+  HitParticleEffectName: 
   Stage1: 0
   Stage2: 0
   Stage3: 0
@@ -878,13 +977,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353863732}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.32291117, z: -0, w: 0.9464293}
   m_LocalPosition: {x: -19.33, y: 0.68975616, z: 1.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -37.678, z: 0}
 --- !u!114 &1353863739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,6 +1368,65 @@ Transform:
   m_Father: {fileID: 627209698}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1836136189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1836136190}
+  - component: {fileID: 1836136191}
+  - component: {fileID: 1836136192}
+  m_Layer: 0
+  m_Name: ShieldSlamAttackArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1836136190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836136189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 1.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2128298725}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1836136191
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836136189}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1836136192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836136189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb89caf871f10aa47a9ef74cb579a063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 30
+  LifeTime: 2
 --- !u!1 &2058885234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,36 +1552,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2128298727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128298724}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bb7439f23dc13f449f6921aa2b555d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth:
-    baseValue: 1
-    multiplier: 0
-  currentHealth: 0
-  ParticleEffect: {fileID: 0}
-  Stage1: 0
-  Stage2: 0
-  Stage3: 0
-  PlayerFarRange: 30
-  Player: {fileID: 1353863732}
-  SearchPlayerGameObject: {fileID: 1565471838}
-  MinionPrefab: {fileID: 1139085879}
-  MinionSpawns:
-  - {fileID: 135803659}
-  - {fileID: 1675784368}
-  - {fileID: 1492211442}
-  - {fileID: 1675038614}
-  ProjectilePrefab: {fileID: 2144754085}
 --- !u!65 &2128298728
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1449,6 +1577,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3775d62787d0641a0948c1275f05f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stage1: 0
+  Stage2: 0
+  Stage3: 0
+  PlayerCloseRange: 10
+  PlayerFarRange: 30
+  PlayerToFarRange: 50
+  Player: {fileID: 1353863732}
+  SearchPlayerGameObject: {fileID: 1565471838}
+  MinionPrefab: {fileID: 2144754080}
+  MinionSpawns:
+  - {fileID: 135803659}
+  - {fileID: 1675784368}
+  - {fileID: 1492211442}
+  - {fileID: 1675038614}
+  ProjectilePrefab: {fileID: 5705706006885473527, guid: d74ae45453d157449b3a94166da78831,
+    type: 3}
+  ShockWaveRange: 20
+  ShockWaveTriggerObject: {fileID: 1836136189}
+  TornadoLifeTime: 10
+  MovementSpeed: 10
 --- !u!1 &2144754080
 GameObject:
   m_ObjectHideFlags: 0

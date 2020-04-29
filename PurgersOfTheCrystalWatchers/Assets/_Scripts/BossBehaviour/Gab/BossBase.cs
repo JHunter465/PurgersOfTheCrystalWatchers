@@ -45,6 +45,7 @@ namespace POTCW
 
         private void Start()
         {
+            /*
             Blackboard.Boss = this;
             Blackboard.AnimationController = GetComponent<Animator>();
             Blackboard.Player = Player;

@@ -1,39 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using POTCW;
 using UnityEngine.Timers;
 
-public class LeapNode : BehaviourNode<EnemyAgent>
+namespace POTCW
 {
-
-    EnemyBlackBoard board;
-    private bool check = false;
-
-    public LeapNode(EnemyBlackBoard board)
+    public class LeapNode : BehaviourNode<EnemyAgent>
     {
-        this.board = board;
-    }
 
-    //Called when the node is entered
-    public override State Start()
-    {
+        EnemyBlackBoard board;
+        private bool check = false;
         AnimatorClipInfo[] currentClipInfo;
-        currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
-        TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
-        board.AnimatorController.SetTrigger(Globals.BOSS_LEAPING_ANIMATORBOOL);
+        public LeapNode(EnemyBlackBoard board)
+        {
+            this.board = board;
+        }
 
-        Debug.Log("Start Leap");
-        return State.IN_PROGRESS;
-    }
+        //Called when the node is entered
+        public override State Start()
+        {
+            currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
+            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
-    //Called everey frame while the node is active
-    public override State Update()
-    {
-        if (check)
-            return State.SUCCESS;
-        else
+            board.AnimatorController.SetTrigger(Globals.BOSS_LEAPING_ANIMATORBOOL);
+
+            Debug.Log("Start Leap");
             return State.IN_PROGRESS;
+        }
+
+        //Called everey frame while the node is active
+        public override State Update()
+        {
+            if (check)
+                return State.SUCCESS;
+            else
+            {
+                if (Vector3.Distance(board.EnemyAgent.transform.position, board.EnemyAgent.Player.transform.position) > board.EnemyAgent.PlayerCloseRange)
+                {
+                    float step = board.EnemyAgent.MovementSpeed * Time.deltaTime;
+                    //step by step move towards the player
+                    Vector3 deltaPos = board.EnemyAgent.transform.position - board.EnemyAgent.Player.transform.position;
+                    Vector3 tmpPosition = board.EnemyAgent.transform.position;
+                    board.EnemyAgent.transform.position = Vector3.MoveTowards(tmpPosition, board.EnemyAgent.Player.transform.position, step);
+                    //blackBoard.Boss.transform.LerpTransform(blackBoard.Boss, blackBoard.Player.transform.position, blackBoard.BossMovementSpeed);
+                    //blackBoard.Boss.transform.position = Vector3.Lerp(blackBoard.Boss.transform.position, blackBoard.Player.transform.position, step);
+                }
+                return State.IN_PROGRESS;
+            }
+        }
     }
 }

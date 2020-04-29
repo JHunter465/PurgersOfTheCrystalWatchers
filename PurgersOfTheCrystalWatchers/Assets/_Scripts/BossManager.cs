@@ -5,29 +5,24 @@ using UnityEngine;
 namespace POTCW
 {
     [System.Serializable]
-    public struct AnimationData
+    public struct Attacks
     {
         [SerializeField]
         public string name;
         [SerializeField]
         public string AnimationBoolName;
         [SerializeField]
-        public AnimationClip AnimationClip;
+        public float Damage;
     }
 
     public class BossManager : GenericSingleton<BossManager, IBossManager>, IBossManager
     {
-        public List<AnimationData> BossAnimationDatas;
-        public Animator BossAnimator;
-
-        public AnimationData ReturnAnimationData(string name)
+        public List<Attacks> BossAttackDatas;
+        
+        public Attacks ReturnAttack(string name)
         {
-            return BossAnimationDatas.Find(bad => bad.name == name);
+            return BossAttackDatas.Find(bad => bad.name == name);
         }    
-        public Animator ReturnAnimator()
-        {
-            return BossAnimator;
-        }
     }
 
 

@@ -55,4 +55,11 @@ public class ExtensionHelpers : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
     }
+
+    public static IEnumerator DeactivateAfterTime(GameObject objToDeactivate, float deactivationTime)
+    {
+        yield return new WaitForSeconds(deactivationTime);
+
+        objToDeactivate.SetActive(false);
+    }
 }

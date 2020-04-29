@@ -5,13 +5,13 @@ using UnityEngine.Timers;
 
 namespace POTCW
 {
-    public class SummonNode : BehaviourNode<EnemyAgent>
+    public class AoEShieldSlamNode : BehaviourNode<EnemyAgent>
     {
         EnemyBlackBoard board;
         private bool check = false;
         AnimatorClipInfo[] currentClipInfo;
 
-        public SummonNode(EnemyBlackBoard board)
+        public AoEShieldSlamNode(EnemyBlackBoard board)
         {
             this.board = board;
         }
@@ -19,13 +19,12 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
-
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
-            board.AnimatorController.SetTrigger(Globals.BOSS_SUMMON_ANIMATORBOOL);
+            board.AnimatorController.SetTrigger(Globals.BOSS_SHIELDSLAM_ANIMATORBOOL);
 
-            Debug.Log("Start Summon");
+            Debug.Log("Start Shield Slam");
             return State.IN_PROGRESS;
         }
 
@@ -34,11 +33,11 @@ namespace POTCW
         {
             if (check)
             {
-                //Spawn Minions
-                foreach (Transform spawn in board.EnemyAgent.MinionSpawns)
-                {
-                    GameObject minion = GameObject.Instantiate(board.EnemyAgent.MinionPrefab, spawn.position, Quaternion.identity);
-                }
+                //Shield Slam
+                board.EnemyAgent.ShockWaveTriggerObject.SetActive(true);
+                board.EnemyAgent.ShockWaveTriggerObject.GetComponent<SphereCollider>().radius = board.EnemyAgent.ShockWaveRange;
+
+
                 return State.SUCCESS;
             }
             else
