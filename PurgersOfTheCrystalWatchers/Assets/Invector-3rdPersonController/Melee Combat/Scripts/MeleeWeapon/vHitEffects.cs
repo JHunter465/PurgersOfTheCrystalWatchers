@@ -5,6 +5,8 @@ namespace Invector.vMelee
     [vClassHeader("Hit Effects", "Search for the 'AudioSource' prefab in the project or create your own custom AudioSource.")]
     public class vHitEffects : vMonoBehaviour
     {
+        private ObjectPooler objectPooler;
+
         public GameObject audioSource;
         public AudioClip[] hitSounds;
         public AudioClip[] recoilSounds;
@@ -13,6 +15,7 @@ namespace Invector.vMelee
 
         void Start()
         {
+            objectPooler = ObjectPooler.Instance;
             var weaponObject = GetComponent<vMeleeWeapon>();
             if (weaponObject)
             {
@@ -27,7 +30,8 @@ namespace Invector.vMelee
             if (audioSource != null && hitSounds.Length > 0)
             {
                 var clip = hitSounds[UnityEngine.Random.Range(0, hitSounds.Length)];
-                var audioObj = Instantiate(audioSource, transform.position, transform.rotation) as GameObject;
+                //var audioObj = Instantiate(audioSource, transform.position, transform.rotation) as GameObject;
+                var audioObj = objectPooler.SpawnFromPool("AudioSource", transform.position, transform.rotation);
                 audioObj.GetComponent<AudioSource>().PlayOneShot(clip);
             }
         }
@@ -37,7 +41,8 @@ namespace Invector.vMelee
             if (audioSource != null && recoilSounds.Length > 0)
             {
                 var clip = recoilSounds[UnityEngine.Random.Range(0, recoilSounds.Length)];
-                var audioObj = Instantiate(audioSource, transform.position, transform.rotation) as GameObject;
+                //var audioObj = Instantiate(audioSource, transform.position, transform.rotation) as GameObject;
+                var audioObj = objectPooler.SpawnFromPool("AudioSource", transform.position, transform.rotation);
                 audioObj.GetComponent<AudioSource>().PlayOneShot(clip);
             }
             if (recoilParticles.Length > 0)
@@ -54,7 +59,8 @@ namespace Invector.vMelee
             if (audioSource != null && defSounds.Length > 0)
             {
                 var clip = defSounds[UnityEngine.Random.Range(0, defSounds.Length)];
-                var audioObj = Instantiate(audioSource, transform.position, transform.rotation) as GameObject;
+                //var audioObj = Instantiate(audioSource, transform.position, transform.rotation) as GameObject;
+                var audioObj = objectPooler.SpawnFromPool("AudioSource", transform.position, transform.rotation);
                 audioObj.GetComponent<AudioSource>().PlayOneShot(clip);
             }
         }
