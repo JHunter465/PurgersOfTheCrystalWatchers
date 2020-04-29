@@ -28,7 +28,6 @@ public class SummonNode : BehaviourNode<EnemyAgent>
     }
 
     //Called everey frame while the node is active
-    //Called everey frame while the node is active
     public override State Update()
     {
         if (check)
