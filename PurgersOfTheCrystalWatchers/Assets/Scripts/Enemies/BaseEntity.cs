@@ -7,7 +7,8 @@ public class BaseEntity : MonoBehaviour
     public Stat MaxHealth;
     public float currentHealth;
 
-    public GameObject ParticleEffect;
+    public string DeathParticleEffectName;
+    public string HitParticleEffectName;
 
     protected virtual void Awake()
     {
