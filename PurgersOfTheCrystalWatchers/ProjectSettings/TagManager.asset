@@ -48,8 +48,8 @@ TagManager:
   - HeadTrack
   - BodyPart
   - BlockAIRayCast
-  - 
-  - 
+  - Ground
+  - Portals
   - 
   - 
   - 
