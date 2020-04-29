@@ -1382,6 +1382,8 @@ GameObject:
   - component: {fileID: 11429400}
   - component: {fileID: 11433934}
   - component: {fileID: 114055356209712444}
+  - component: {fileID: 2081545105}
+  - component: {fileID: 2081545106}
   m_Layer: 8
   m_Name: vMeleeController_NoInventory
   m_TagString: Player
@@ -1438,11 +1440,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 6
+  selectedToolbar: 0
   _isDead: 0
-  _currentHealth: 0
-  isImmortal: 0
-  fillHealthOnStart: 1
+  _currentHealth: 100
+  isImmortal: 1
+  fillHealthOnStart: 0
   maxHealth: 100
   healthRecovery: 0
   healthRecoveryDelay: 0
@@ -1477,9 +1479,9 @@ MonoBehaviour:
       m_Calls: []
   maxStamina: 200
   staminaRecovery: 1.2
-  sprintStamina: 30
-  jumpStamina: 30
-  rollStamina: 25
+  sprintStamina: 0
+  jumpStamina: 0
+  rollStamina: 10
   OnJump:
     m_PersistentCalls:
       m_Calls: []
@@ -1517,9 +1519,9 @@ MonoBehaviour:
     rotationSpeed: 10
     walkByDefault: 0
     rotateWithCamera: 0
-    walkSpeed: 2
-    runningSpeed: 3
-    sprintSpeed: 4
+    walkSpeed: 2.5
+    runningSpeed: 4
+    sprintSpeed: 5
     crouchSpeed: 2
   strafeSpeed:
     movementSmooth: 6
@@ -1536,32 +1538,41 @@ MonoBehaviour:
   randomIdleTime: 0
   useContinuousSprint: 1
   sprintOnlyFree: 1
+  crouchHeightReduction: 1.5
   jumpWithRigidbodyForce: 0
   jumpAndRotate: 1
-  airSpeed: 5
-  airSmooth: 2
   jumpTimer: 0.3
   jumpHeight: 4
-  useRollRootMotion: 1
-  rollControl: 0
-  rollSpeed: 0
-  rollRotationSpeed: 10
-  rollUseGravity: 1
-  rollUseGravityTime: 0.2
-  timeToRollAgain: 0.75
-  groundCheckMethod: 1
-  groundMinDistance: 0.2
-  groundMaxDistance: 0.5
-  stepOffsetEnd: 0.45
-  stepOffsetStart: 0.25
-  stepSmooth: 2
-  slopeLimit: 75
-  slideVelocity: 7
+  airSpeed: 5
+  airSmooth: 2
   extraGravity: -10
   limitFallVelocity: -15
   ragdollVelocity: -15
-  crouchHeightReduction: 1.5
+  fallMinHeight: 6
+  fallMinVerticalVelocity: -10
+  fallDamage: 10
+  useRollRootMotion: 1
+  rollControl: 1
+  rollSpeed: 1.8
+  rollRotationSpeed: 1.5
+  rollUseGravity: 1
+  rollUseGravityTime: 0.2
+  timeToRollAgain: 0.5
+  groundCheckMethod: 1
+  useSnapGround: 1
+  groundMinDistance: 0.2
+  groundMaxDistance: 0.5
+  slopeLimit: 75
+  slideDownVelocity: 7
+  slideSidewaysVelocity: 5
+  slidingEnterTime: 0.1
+  stepOffsetMaxHeight: 0.5
+  stepOffsetMinHeight: 0
+  stepOffsetDistance: 0.1
   debugWindow: 0
+  applyingStepOffset: 0
+  inputSmooth: {x: 0, y: 0, z: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
   matchTarget: {fileID: 0}
   useInstance: 1
 --- !u!114 &11475656
@@ -1577,7 +1588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 1
-  openCloseWindow: 0
+  openCloseWindow: 1
   selectedToolbar: 0
   lockInput: 0
   unlockCursorOnStart: 0
@@ -1627,7 +1638,7 @@ MonoBehaviour:
   rollInput:
     useInput: 1
     isAxisInUse: 0
-    keyboard: Q
+    keyboard: LeftControl
     keyboardAxis: 0
     joystick: B
     joystickAxis: 0
@@ -1818,7 +1829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 0
+  openCloseWindow: 1
   selectedToolbar: 0
   Members:
   - transform: {fileID: 430136}
@@ -1868,7 +1879,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   defaultAttackDistance: 1
-  defaultStaminaCost: 20
+  defaultStaminaCost: 5
   defaultStaminaRecoveryDelay: 1
   defaultDefenseRate: 50
   defaultDefenseRange: 90
@@ -1966,6 +1977,106 @@ MonoBehaviour:
   OnEndAction:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2081545105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c91cac344662340bbbedbdbed00328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 0
+  tagsToFind:
+  - Enemy
+  layerOfObstacles:
+    serializedVersion: 2
+    m_Bits: 1
+  screenMarginX: 0.8
+  screenMarginY: 0.1
+  range: 10
+  showDebug: 0
+  timeToChangeTarget: 0.25
+  strafeWhileLockOn: 1
+  aimImagePrefab: {fileID: 22467274, guid: f2c21a5084b380e45af41fac8083c307, type: 3}
+  aimImageSize: {x: 30, y: 30}
+  hideSprite: 1
+  spriteHeight: 0.25
+  cameraHeightOffset: 0
+  lockOnInput:
+    useInput: 1
+    isAxisInUse: 0
+    keyboard: Tab
+    keyboardAxis: 0
+    joystick: RightStickClick
+    joystickAxis: 0
+    mobile: RightStickClick
+    mobileAxis: 0
+    joystickAxisInvert: 0
+    keyboardAxisInvert: 0
+    mobileAxisInvert: 0
+    buttomTimer: 0
+    inButtomTimer: 0
+  nexTargetInput:
+    useInput: 1
+    isAxisInUse: 0
+    keyboard: X
+    keyboardAxis: 0
+    joystick: RightAnalogHorizontal
+    joystickAxis: 1
+    mobile: X
+    mobileAxis: 0
+    joystickAxisInvert: 0
+    keyboardAxisInvert: 0
+    mobileAxisInvert: 0
+    buttomTimer: 0
+    inButtomTimer: 0
+  previousTargetInput:
+    useInput: 1
+    isAxisInUse: 0
+    keyboard: Z
+    keyboardAxis: 0
+    joystick: RightAnalogHorizontal
+    joystickAxis: 1
+    mobile: Z
+    mobileAxis: 0
+    joystickAxisInvert: 1
+    keyboardAxisInvert: 0
+    mobileAxisInvert: 0
+    buttomTimer: 0
+    inButtomTimer: 0
+  onLockOnTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnLockOnTarget:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2081545106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac3f47efadc6894ba7f7c99a160e725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraTransform: {fileID: 0}
+  PortalKey: 113
+  ParryKey: 101
+  PortalSpawnOffset: {x: 0.6, y: 0, z: 0}
+  RayCastLayerMask:
+    serializedVersion: 2
+    m_Bits: 261175
+  lastPortal: {fileID: 0}
+  currentPortal: {fileID: 0}
 --- !u!1 &139806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3014,16 +3125,17 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed2c55cb744c48c459f2f9c83be317dc, type: 2}
-  - {fileID: 2100000, guid: da7b997c606f9064f853b75db2815fbc, type: 2}
-  - {fileID: 2100000, guid: 5c3c019cea5ec8849bb0001aab353484, type: 2}
-  - {fileID: 2100000, guid: a24be2dcd568a274386b24617d7e0f23, type: 2}
-  - {fileID: 2100000, guid: ee456e68e0157b04cba55949b73adf2c, type: 2}
-  - {fileID: 2100000, guid: 71a6e47d0396536479a3c08e7b206078, type: 2}
-  - {fileID: 2100000, guid: a8877f9bc4821024aa92b754e8ccacc7, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: 892029c2cbb13fe49bbf3d98da032a3d, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3031,6 +3143,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3166,16 +3279,17 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed2c55cb744c48c459f2f9c83be317dc, type: 2}
-  - {fileID: 2100000, guid: da7b997c606f9064f853b75db2815fbc, type: 2}
-  - {fileID: 2100000, guid: 5c3c019cea5ec8849bb0001aab353484, type: 2}
-  - {fileID: 2100000, guid: a24be2dcd568a274386b24617d7e0f23, type: 2}
-  - {fileID: 2100000, guid: ee456e68e0157b04cba55949b73adf2c, type: 2}
-  - {fileID: 2100000, guid: 71a6e47d0396536479a3c08e7b206078, type: 2}
-  - {fileID: 2100000, guid: a8877f9bc4821024aa92b754e8ccacc7, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: 892029c2cbb13fe49bbf3d98da032a3d, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3183,6 +3297,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3411,16 +3526,17 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed2c55cb744c48c459f2f9c83be317dc, type: 2}
-  - {fileID: 2100000, guid: da7b997c606f9064f853b75db2815fbc, type: 2}
-  - {fileID: 2100000, guid: 5c3c019cea5ec8849bb0001aab353484, type: 2}
-  - {fileID: 2100000, guid: a24be2dcd568a274386b24617d7e0f23, type: 2}
-  - {fileID: 2100000, guid: ee456e68e0157b04cba55949b73adf2c, type: 2}
-  - {fileID: 2100000, guid: 71a6e47d0396536479a3c08e7b206078, type: 2}
-  - {fileID: 2100000, guid: a8877f9bc4821024aa92b754e8ccacc7, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: 892029c2cbb13fe49bbf3d98da032a3d, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3428,6 +3544,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3999,16 +4116,17 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed2c55cb744c48c459f2f9c83be317dc, type: 2}
-  - {fileID: 2100000, guid: da7b997c606f9064f853b75db2815fbc, type: 2}
-  - {fileID: 2100000, guid: 5c3c019cea5ec8849bb0001aab353484, type: 2}
-  - {fileID: 2100000, guid: a24be2dcd568a274386b24617d7e0f23, type: 2}
-  - {fileID: 2100000, guid: ee456e68e0157b04cba55949b73adf2c, type: 2}
-  - {fileID: 2100000, guid: 71a6e47d0396536479a3c08e7b206078, type: 2}
-  - {fileID: 2100000, guid: a8877f9bc4821024aa92b754e8ccacc7, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: 892029c2cbb13fe49bbf3d98da032a3d, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
+  - {fileID: 2100000, guid: b10831ad41c098f4f918dd361f87017d, type: 2}
+  - {fileID: 2100000, guid: a5f9f2b882f176143b2fa5917f878bb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4016,6 +4134,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

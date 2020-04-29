@@ -191,9 +191,10 @@ namespace Invector.vCharacterController
                     debugPanel.SetActive(false);
             }
         }
-
+        
         void ChangeInputDisplay()
         {
+            /*
 #if MOBILE_INPUT
 		displayControls.enabled = false;
 #else
@@ -202,6 +203,8 @@ namespace Invector.vCharacterController
             else
                 displayControls.sprite = keyboardControls;
 #endif
+        */
+            Debug.Log("Implement controllDisplay");
         }
 
         void InitFadeText()

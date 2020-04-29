@@ -6,6 +6,8 @@ namespace Invector
 {
     public class vAudioSurface : ScriptableObject
     {
+        private ObjectPooler objectPooler;
+
         public AudioSource audioSource;
         public AudioMixerGroup audioMixerGroup;                 // The AudioSource that will play the clips.   
         public List<string> TextureOrMaterialNames;             // The tag on the surfaces that play these sounds.
@@ -21,6 +23,11 @@ namespace Invector
         public LayerMask stepLayer;
         [vHideInInspector("useStepMark")]
         public float timeToDestroy = 5f;
+
+        private void Start()
+        {
+            objectPooler = ObjectPooler.Instance;
+        }
 
         public vAudioSurface()
         {
@@ -42,7 +49,8 @@ namespace Invector
             GameObject audioObject = null;
             if (audioSource != null)
             {
-                audioObject = Instantiate(audioSource.gameObject, footStepObject.sender.position, Quaternion.identity) as GameObject;
+                //audioObject = Instantiate(audioSource.gameObject, footStepObject.sender.position, Quaternion.identity) as GameObject;
+                audioObject = objectPooler.SpawnFromPool("AudioSource", footStepObject.sender.position, Quaternion.identity);
             }                
             else
             {
