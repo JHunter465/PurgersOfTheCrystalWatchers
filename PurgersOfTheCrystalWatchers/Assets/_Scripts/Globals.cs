@@ -13,6 +13,7 @@ namespace POTCW
         public const string BOSS_LEAPING_ANIMATORBOOL = "Leaping";
         public const string BOSS_SUMMON_ANIMATORBOOL = "Summon";
         public const string BOSS_FIRING_ANIMATORBOOL = "FireProjectile";
+        public const string BOSS_CRYSTALTORNADO_ANIMATORBOOL = "CrystalTornado";
 
         public static EnemyBlackBoard BossBlackBoard;
     }

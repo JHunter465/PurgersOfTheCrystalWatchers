@@ -19,12 +19,18 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
-            currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
-            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
+            
+            board.AnimatorController.ResetTrigger(Globals.BOSS_LEAPING_ANIMATORBOOL);
 
             board.AnimatorController.SetTrigger(Globals.BOSS_FIRING_ANIMATORBOOL);
 
-            Debug.Log("Start Fire Projectile");
+            currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
+
+            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
+
+
+            Debug.Log("Start Fire Projectile+ animation lenght: " + currentClipInfo[0].clip.length);
+ 
             return State.IN_PROGRESS;
         }
 
@@ -34,12 +40,14 @@ namespace POTCW
             if (check)
             {
                 //Fire Projectile
-                GameObject projectile = GameObject.Instantiate(board.EnemyAgent.ProjectilePrefab, board.EnemyAgent.transform.position+ Vector3.up*3, board.EnemyAgent.transform.rotation);
+                GameObject projectile = GameObject.Instantiate(board.EnemyAgent.ProjectilePrefab, board.EnemyAgent.transform.position + Vector3.up * 3, board.EnemyAgent.transform.rotation);
                 projectile.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 1000);
                 return State.SUCCESS;
             }
             else
+            {
                 return State.IN_PROGRESS;
+            }
         }
     }
 }

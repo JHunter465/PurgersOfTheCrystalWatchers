@@ -20,12 +20,14 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
+            
+            board.AnimatorController.SetTrigger(Globals.BOSS_LEAPING_ANIMATORBOOL);
+
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
-            board.AnimatorController.SetTrigger(Globals.BOSS_LEAPING_ANIMATORBOOL);
 
-            Debug.Log("Start Leap");
+            Debug.Log("Start Leap + animation lenght: "+ currentClipInfo[0].clip.length);
             return State.IN_PROGRESS;
         }
 
@@ -45,8 +47,11 @@ namespace POTCW
                     board.EnemyAgent.transform.position = Vector3.MoveTowards(tmpPosition, board.EnemyAgent.Player.transform.position, step);
                     //blackBoard.Boss.transform.LerpTransform(blackBoard.Boss, blackBoard.Player.transform.position, blackBoard.BossMovementSpeed);
                     //blackBoard.Boss.transform.position = Vector3.Lerp(blackBoard.Boss.transform.position, blackBoard.Player.transform.position, step);
+                    return State.IN_PROGRESS;
+
                 }
-                return State.IN_PROGRESS;
+                else
+                    return State.SUCCESS;
             }
         }
     }

@@ -19,8 +19,8 @@ namespace POTCW
             return new SelectorNode<EnemyAgent>(
                 new Selection<EnemyAgent>(ctx => DoStandardBehaviour(),
                     new SequenceNode<EnemyAgent>(
-                        new FireProjectileNode(board),
                         new LeapNode(board),
+                        new FireProjectileNode(board),
                         new SummonNode(board))),
                 new Selection<EnemyAgent>(ctx => DoSpecialMove(),
                     GetRandomSpecialAttackNode(new List<BehaviourNode<EnemyAgent>>()
