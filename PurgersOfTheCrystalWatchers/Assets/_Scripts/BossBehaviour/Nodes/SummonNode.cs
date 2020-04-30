@@ -38,6 +38,7 @@ namespace POTCW
                 foreach (Transform spawn in board.EnemyAgent.MinionSpawns)
                 {
                     GameObject minion = GameObject.Instantiate(board.EnemyAgent.MinionPrefab, spawn.position, Quaternion.identity);
+                    minion.GetComponent<BaseMinion>().Init(board.EnemyAgent.Player);
                 }
                 return State.SUCCESS;
             }

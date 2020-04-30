@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BasHelpers;
 
 namespace POTCW
 {
@@ -8,19 +9,21 @@ namespace POTCW
     {
         public float AttackRange = 2f;
         public float MovementSpeed = 5f;
+        public float LifeTime = 10f;
 
         private GameObject player;
 
         public void Init(GameObject playerRef)
         {
             player = playerRef;
+            this.gameObject.DeactivateAfterTime(this, LifeTime);
         }
 
         private void Update()
         {
             if (player == null) return;
 
-            if (Vector3.Distance(transform.position, player.transform.position) > 2f)
+            if (Vector3.Distance(transform.position, player.transform.position) > AttackRange)
             {
                 float step = MovementSpeed * Time.deltaTime;
                 //step by step move towards the player

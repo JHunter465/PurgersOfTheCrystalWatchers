@@ -19,10 +19,11 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
+            board.AnimatorController.SetTrigger(Globals.BOSS_CRYSTALTORNADO_ANIMATORBOOL);
+
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
-            board.AnimatorController.SetTrigger(Globals.BOSS_CRYSTALTORNADO_ANIMATORBOOL);
 
             Debug.Log("Start Crystal Tornado");
             return State.IN_PROGRESS;

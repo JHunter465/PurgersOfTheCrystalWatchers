@@ -7,7 +7,7 @@ namespace POTCW
     public class MyBehaviourTree : BehaviourTree<EnemyAgent>
     {
         protected EnemyBlackBoard board;
-        protected float thresHold = 10;
+        protected float thresHold = 100;
 
         public MyBehaviourTree(EnemyBlackBoard board)
         {
@@ -22,6 +22,13 @@ namespace POTCW
                         new LeapNode(board),
                         new FireProjectileNode(board),
                         new SummonNode(board))),
+                new Selection<EnemyAgent>(ctx=> DoSpecialMove(),
+                    new ChooseRandomNode(board,
+                        new CrystalTornadoNode(board),
+                        new AoEShieldSlamNode(board),
+                        new SummonNode(board))));
+                /*
+                 * Hier ergens zit de bug:
                 new Selection<EnemyAgent>(ctx => DoSpecialMove(),
                     GetRandomSpecialAttackNode(new List<BehaviourNode<EnemyAgent>>()
                     {
@@ -60,7 +67,7 @@ namespace POTCW
             else
             {
                 Debug.Log("threshold reached, do special move");
-                thresHold = 10;
+                thresHold = 100;
                 return false;
             }
         }
