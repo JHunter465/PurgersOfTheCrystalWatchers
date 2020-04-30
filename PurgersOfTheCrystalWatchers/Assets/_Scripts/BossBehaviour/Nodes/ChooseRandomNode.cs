@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace POTCW
 {
-    public class ChooseRandomNode : ComplexSequenceNode<EnemyAgent>
+    public class ChooseRandomNode : BehaviourNode<EnemyAgent>
     {
         protected EnemyBlackBoard board;
         protected BehaviourNode<EnemyAgent>[] nodes;
@@ -13,13 +13,20 @@ namespace POTCW
         {
             this.board = board;
             this.nodes = nodes;
+
+            Debug.Log("Choose random?");
         }
 
-        public override IEnumerable<BehaviourNode<EnemyAgent>> GetChilds()
+        public override State Start()
         {
             var randomNumm = Random.Range(0, nodes.Length);
             Debug.Log("Special move :" + nodes[randomNumm]);
-            yield return nodes[randomNumm];
+            return nodes[randomNumm].Start();
+        }
+
+        public override State Update()
+        {
+            return State.SUCCESS;
         }
     }
 }

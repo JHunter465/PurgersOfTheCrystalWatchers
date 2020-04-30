@@ -16,17 +16,25 @@ namespace POTCW
 
         protected override BehaviourNode<EnemyAgent> GetRootNode()
         {
+            BehaviourNode<EnemyAgent>[] specialMoves = new BehaviourNode<EnemyAgent>[3]{ new CrystalTornadoNode(board) ,
+                        new AoEShieldSlamNode(board),
+                        new SummonNode(board) };
+
+            var randomNumm = Random.Range(0, specialMoves.Length);
+
             return new SelectorNode<EnemyAgent>(
                 new Selection<EnemyAgent>(ctx => DoStandardBehaviour(),
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
                         new FireProjectileNode(board),
                         new SummonNode(board))),
-                new Selection<EnemyAgent>(ctx=> DoSpecialMove(),
-                    new ChooseRandomNode(board,
+                new Selection<EnemyAgent>(ctx => DoSpecialMove(),
+                    specialMoves[randomNumm]));
+                    /*new ChooseRandomNode(board,
                         new CrystalTornadoNode(board),
                         new AoEShieldSlamNode(board),
                         new SummonNode(board))));
+                    
                 /*
                  * Hier ergens zit de bug:
                 new Selection<EnemyAgent>(ctx => DoSpecialMove(),
