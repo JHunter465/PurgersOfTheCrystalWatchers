@@ -29,7 +29,10 @@ namespace POTCW
         public float ShockWaveRange = 3f;
         public GameObject ShockWaveTriggerObject;
         public float TornadoLifeTime = 10f;
+        public GameObject CrystalTornadoPrefab;
         public float MovementSpeed = 10f;
+        public int SpecialAttackAmount = 3;
+        public float ThresHold;
 
         protected EnemyBlackBoard board = new EnemyBlackBoard();
 
@@ -48,12 +51,13 @@ namespace POTCW
 
         private void Start()
         {
-            //Create AIs
+            //Create AI behaviour tree
             var tree = new MyBehaviourTree(board);
 
-            // Call start to actually run the AI.
+            // Calling the start so we run the behaviour tree
             // The first argument is the MonoBehaviour the tree attaches to and depends on (like a coroutine), 
             // the second is the agent to control
+            // We use IEnumerators for performance optimazation and we are now able to pause and resume the behaviour if we wish.
             tree.Start(this, this);
         }
 

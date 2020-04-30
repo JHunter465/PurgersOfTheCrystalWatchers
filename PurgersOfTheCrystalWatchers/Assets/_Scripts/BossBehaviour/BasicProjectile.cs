@@ -18,11 +18,7 @@ namespace POTCW
 
             rBody = GetComponent<Rigidbody>();
 
-            
-
             this.gameObject.DeactivateAfterTime(this, DeactivationTime);
-
-
         }       
     }
 }

@@ -11,6 +11,7 @@ namespace POTCW
     {
         public int Damage;
         public float LifeTime = 2f;
+
         private void OnTriggerEnter(Collider other)
         {
             vDamage dmg = new vDamage(Damage);
