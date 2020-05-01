@@ -30,7 +30,10 @@ namespace POTCW
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
                         new FireProjectileNode(board),
-                        new SummonNode(board))),
+                        new SummonNode(board),
+                            new SelectorNode<EnemyAgent>(
+                                new Selection<EnemyAgent>(ctx => PlayerDistanceCheck(board.EnemyAgent.PlayerCloseRange),
+                                    new JabLegNode(board))))),
                         /*new SelectorNode<EnemyAgent>(
                             new Selection<EnemyAgent>(ctx => DoSpecialMove(),
                                 specialMoves[randomNumm])))));*/

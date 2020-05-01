@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1503666848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503666849}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1503666849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503666848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.445, z: 0.326}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7853053390952073431}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &195560763657294917
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,8 +550,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb89caf871f10aa47a9ef74cb579a063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TriggerTag:
+    tags:
+    - Player
   Damage: 30
   LifeTime: 2
+  DeactivateAfterAwake: 1
 --- !u!1 &2990692231198258433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,14 +1647,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6530500570773912260}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.84}
-  m_LocalScale: {x: 2.8018, y: 2.8018, z: 2.8018}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 439233451759349434}
   - {fileID: 3424895716198826253}
   - {fileID: 2990692232381779830}
   - {fileID: 2990692231174786154}
+  - {fileID: 1503666849}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1714,12 +1749,14 @@ MonoBehaviour:
   Stage1: 0
   Stage2: 0
   Stage3: 0
+  TimeBetweenNodes: 2
   PlayerCloseRange: 10
   PlayerFarRange: 30
   PlayerToFarRange: 50
   Player: {fileID: 0}
   SearchPlayerGameObject: {fileID: 0}
-  MinionPrefab: {fileID: 0}
+  MinionPrefab: {fileID: 1371426082643408223, guid: c03f7fea9efad6b42842c0b2937de4a7,
+    type: 3}
   MinionSpawns:
   - {fileID: 2990692231630326175}
   - {fileID: 2990692231198984740}
@@ -1727,6 +1764,7 @@ MonoBehaviour:
   - {fileID: 2990692231198258434}
   ProjectilePrefab: {fileID: 5705706006885473527, guid: d74ae45453d157449b3a94166da78831,
     type: 3}
+  ProjectileSpawn: {fileID: 1503666848}
   ShockWaveRange: 20
   ShockWaveTriggerObject: {fileID: 2990692231174786153}
   TornadoLifeTime: 10
@@ -1735,6 +1773,7 @@ MonoBehaviour:
   MovementSpeed: 10
   SpecialAttackAmount: 3
   ThresHold: 10
+  ReachedThresHold: 10
 --- !u!1 &6530985418098327253
 GameObject:
   m_ObjectHideFlags: 0
