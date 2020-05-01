@@ -296,8 +296,18 @@ namespace Invector.vCharacterController
         /// </summary>
         protected virtual void JumpInput()
         {
-            if (jumpInput.GetButtonDown() && JumpConditions())
+            Debug.Log(cc.secondJump);
+            if (jumpInput.GetButtonDown() && cc.secondJump)
+            {
+                Debug.Log("jump2");
                 cc.Jump(true);
+                cc.secondJump = false;
+            }
+            if (jumpInput.GetButtonDown() && JumpConditions())
+            {
+                cc.Jump(true);
+                cc.secondJump = true;
+            }
         }
 
         /// <summary>

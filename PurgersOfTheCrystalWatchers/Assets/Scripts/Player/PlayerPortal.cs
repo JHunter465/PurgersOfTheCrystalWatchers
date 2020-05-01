@@ -1,30 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Invector.vCharacterController;
 
 public class PlayerPortal : MonoBehaviour
 {
     private ObjectPooler objectPooler;
 
     [SerializeField] private Transform CameraTransform;
+
     public KeyCode PortalKey;
-    public KeyCode ParryKey;
+    public KeyCode VoidKey;
 
     [SerializeField] private Vector3 PortalSpawnOffset;
     [SerializeField] private LayerMask RayCastLayerMask;
 
+    [SerializeField] private GameObject voidPortal;
+
     [SerializeField] private GameObject lastPortal, currentPortal;
+
+    [SerializeField] private float crystalCostPortal, crystalCostVoid, voidPortalDuration;
+
+    private vThirdPersonController thirdPersonController;
+
+    private bool voidPortalOn;
 
     private void Start()
     {
         objectPooler = ObjectPooler.Instance;
+        thirdPersonController = GetComponent<vThirdPersonController>();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(PortalKey))
+        if(Input.GetKeyDown(PortalKey) && thirdPersonController.currentStamina >= crystalCostPortal)
         {
             SpawnPortal();
+        }
+        if(Input.GetKeyDown(VoidKey) && !voidPortalOn && thirdPersonController.currentStamina >= crystalCostVoid)
+        {
+            StartCoroutine(ActivateVoidPortal());
         }
     }
 
@@ -35,7 +50,7 @@ public class PlayerPortal : MonoBehaviour
         {
             Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 1.8f, transform.position.z), CameraTransform.forward * hit.distance, Color.magenta);
         }
-        Quaternion dir = Quaternion.FromToRotation(new Vector3(transform.up.x, transform.up.y, transform.up.z + 90), hit.normal);
+        Quaternion dir = Quaternion.FromToRotation(new Vector3(transform.forward.x, transform.forward.y, transform.forward.z + 90), hit.normal);
 
         GameObject Portal = objectPooler.SpawnFromPool("Portal", new Vector3(hit.point.x, hit.point.y, hit.point.z), dir);
 
@@ -55,5 +70,17 @@ public class PlayerPortal : MonoBehaviour
             currentPortal.transform.GetChild(0).GetComponent<Portal>().OtherPortal = lastPortal.transform;
             lastPortal.transform.GetChild(0).GetComponent<Portal>().OtherPortal = currentPortal.transform;
         }
+
+        thirdPersonController.ReduceStamina(crystalCostPortal, false);
+    }
+
+    private IEnumerator ActivateVoidPortal()
+    {
+        voidPortalOn = true;
+        thirdPersonController.ReduceStamina(crystalCostVoid, false);
+        voidPortal.SetActive(true);
+        yield return new WaitForSeconds(voidPortalDuration);
+        voidPortal.SetActive(false);
+        voidPortalOn = false;
     }
 }
