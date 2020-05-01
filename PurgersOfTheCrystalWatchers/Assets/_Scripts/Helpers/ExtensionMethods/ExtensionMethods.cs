@@ -20,16 +20,32 @@ namespace BasHelpers
             return ActivateCoroutineLerpTransformPositions(currentTransform, owner, targetPosition, speed);
         }
 
-        //public static Vector3 LerpVector(this Vector3 currentVector, MonoBehaviour owner, Vector3 targetPosition, float speed)
-        //{
-        //    
-        //}
+        public static GameObject DeactivateAfterTime(this GameObject currentGameObject, MonoBehaviour owner, float time)
+        {
+            return ActivateCoroutineDeactiateAfterTime(currentGameObject, owner, time);
+        }
 
         public static List<T> ToList<T>(this T[] array) where T : class
         {
             List<T> output = new List<T>();
             output.AddRange(array);
             return output;
+        }
+
+        public static GameObject ActivateCoroutineDeactiateAfterTime(GameObject objToDeactivate, MonoBehaviour owner, float time)
+        {
+            if (objToDeactivate == null) return null;
+
+            if(owner != null)
+            {
+                owner.StartCoroutine(ExtensionHelpers.DeactivateAfterTime(objToDeactivate, time));
+                return objToDeactivate;
+            }
+            else
+            {
+                Debug.Log("Our Owner is null");
+                return null;
+            }
         }
 
         public static RectTransform ActivateCoroutineLerpRectTransformPositions(RectTransform rectTransform, MonoBehaviour owner, Vector3 targetPosition, float speed)

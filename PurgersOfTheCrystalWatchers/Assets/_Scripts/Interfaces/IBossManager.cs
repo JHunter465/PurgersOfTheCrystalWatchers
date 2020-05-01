@@ -6,7 +6,6 @@ namespace POTCW
 {
     public interface IBossManager
     {
-        AnimationData ReturnAnimationData(string name);
-        Animator ReturnAnimator();
+        Attacks ReturnAttack(string name);
     }
 }
