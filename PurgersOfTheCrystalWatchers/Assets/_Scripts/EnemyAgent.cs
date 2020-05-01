@@ -10,6 +10,7 @@ namespace POTCW
         public bool Stage1 = false;
         public bool Stage2 = false;
         public bool Stage3 = false;
+        public float TimeBetweenNodes = 10f;
 
         [Header("Player Related")]
         public float PlayerCloseRange = 10f;
@@ -24,6 +25,7 @@ namespace POTCW
 
         [Header("Projectile Related")]
         public GameObject ProjectilePrefab;
+        public GameObject ProjectileSpawn;
 
         [Header("Mode1 (Open Terrain) Data")]
         public float ShockWaveRange = 3f;
@@ -32,7 +34,8 @@ namespace POTCW
         public GameObject CrystalTornadoPrefab;
         public float MovementSpeed = 10f;
         public int SpecialAttackAmount = 3;
-        public float ThresHold;
+        public float ThresHold = 0;
+        public float ReachedThresHold = 10f;
 
         protected EnemyBlackBoard board = new EnemyBlackBoard();
 
@@ -63,7 +66,25 @@ namespace POTCW
 
         private void LateUpdate()
         {
+            ThresHold+=Time.deltaTime;
+            if(ThresHold > ReachedThresHold)
+                ThresHold = 0;
+
             transform.LookAt(Player.transform);
+        }
+
+        public bool ThresHoldCheck()
+        {
+            if (ThresHold >= ReachedThresHold-3)
+            {
+                //Debug.Log("Threshold reached, do special");
+                return true;
+            }
+            else
+            {
+                //Debug.Log("Standard behaviour running");
+                return false;
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3157836445339342013}
   - component: {fileID: 7681551571813345835}
   - component: {fileID: 411288081613361763}
-  - component: {fileID: 8942804642502136490}
+  - component: {fileID: 6088943613906424904}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5705706006885473527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.30962086, y: 1.73, z: 1.7127528}
-  m_LocalScale: {x: 0.43846, y: 0.43846, z: 0.43846}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8942804642502136490
+--- !u!114 &6088943613906424904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,8 +120,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5705706006885473527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea788ca235f68946b1940003ab51006, type: 3}
+  m_Script: {fileID: 11500000, guid: fb89caf871f10aa47a9ef74cb579a063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  DeactivationTime: 10
+  TriggerTag:
+    tags:
+    - Player
+  Damage: 10
+  LifeTime: 5
+  DeactivateAfterAwake: 1

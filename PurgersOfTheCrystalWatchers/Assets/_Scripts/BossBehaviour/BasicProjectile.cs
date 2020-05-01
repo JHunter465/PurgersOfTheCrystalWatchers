@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 using BasHelpers;
 
 namespace POTCW
@@ -11,7 +11,7 @@ namespace POTCW
         public float DeactivationTime = 10;
 
         private Rigidbody rBody;
-
+         
         private void Start()
         {
             if (GetComponent<Rigidbody>() == null) return;

@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timers;
 
 namespace POTCW
 {
     public class MyBehaviourTree : BehaviourTree<EnemyAgent>
     {
         protected EnemyBlackBoard board;
-        protected float thresHold = 100;
+        protected float thresHold = 10;
+
+        private int randomNumm = 0;
+        BehaviourNode<EnemyAgent>[] specialMoves; 
 
         public MyBehaviourTree(EnemyBlackBoard board)
         {
@@ -16,20 +20,25 @@ namespace POTCW
 
         protected override BehaviourNode<EnemyAgent> GetRootNode()
         {
-            BehaviourNode<EnemyAgent>[] specialMoves = new BehaviourNode<EnemyAgent>[3]{ new CrystalTornadoNode(board) ,
+
+            specialMoves = new BehaviourNode<EnemyAgent>[]{ new CrystalTornadoNode(board) ,
                         new AoEShieldSlamNode(board),
                         new SummonNode(board) };
 
-            var randomNumm = Random.Range(0, specialMoves.Length);
-
             return new SelectorNode<EnemyAgent>(
-                new Selection<EnemyAgent>(ctx => DoStandardBehaviour(),
+                new Selection<EnemyAgent>(ctx => !DoSpecialMove(),
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
                         new FireProjectileNode(board),
                         new SummonNode(board))),
+                        /*new SelectorNode<EnemyAgent>(
+                            new Selection<EnemyAgent>(ctx => DoSpecialMove(),
+                                specialMoves[randomNumm])))));*/
+            
+                //This works hela fine
                 new Selection<EnemyAgent>(ctx => DoSpecialMove(),
                     specialMoves[randomNumm]));
+
                     /*new ChooseRandomNode(board,
                         new CrystalTornadoNode(board),
                         new AoEShieldSlamNode(board),
@@ -64,6 +73,9 @@ namespace POTCW
                 return false;
         }
 
+        
+        //This fucking buggs hard, when I set trheshold at 100 everything works fine but when I lower it
+        //It keeps calling the nodes multiple times
         public bool DoStandardBehaviour()
         {
             if (thresHold > 0.1f)
@@ -75,7 +87,7 @@ namespace POTCW
             else
             {
                 Debug.Log("threshold reached, do special move");
-                thresHold = 100;
+                thresHold = 10;
                 return false;
             }
         }
@@ -89,7 +101,9 @@ namespace POTCW
 
         public bool DoSpecialMove()
         {
-            return true;
+            randomNumm = Random.Range(0, specialMoves.Length);
+            Debug.Log(board.EnemyAgent.ThresHoldCheck());
+            return board.EnemyAgent.ThresHoldCheck();
         }
     }
 }

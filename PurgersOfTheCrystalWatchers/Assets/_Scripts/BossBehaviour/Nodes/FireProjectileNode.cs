@@ -29,7 +29,7 @@ namespace POTCW
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
 
-            Debug.Log("Start Fire Projectile+ animation lenght: " + currentClipInfo[0].clip.length);
+            //Debug.Log("Start Fire Projectile+ animation lenght: " + currentClipInfo[0].clip.length);
  
             return State.IN_PROGRESS;
         }

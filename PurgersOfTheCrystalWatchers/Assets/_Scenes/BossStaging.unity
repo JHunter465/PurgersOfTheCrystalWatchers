@@ -760,12 +760,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12de5a28307ef54d95161f44566c01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1378389250 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7853053390952073431, guid: c95779fa0aed56a44811df5431b2f7c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2990692231762983572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1492211442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2990692230814100582, guid: c95779fa0aed56a44811df5431b2f7c5,
     type: 3}
   m_PrefabInstance: {fileID: 2990692231762983572}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1503666848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503666849}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1503666849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503666848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.445, z: 0.326}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1378389250}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1528789128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1243,7 @@ MonoBehaviour:
   Stage1: 0
   Stage2: 0
   Stage3: 0
+  TimeBetweenNodes: 10
   PlayerCloseRange: 10
   PlayerFarRange: 30
   PlayerToFarRange: 50
@@ -1220,6 +1257,7 @@ MonoBehaviour:
   - {fileID: 1675038614}
   ProjectilePrefab: {fileID: 5705706006885473527, guid: d74ae45453d157449b3a94166da78831,
     type: 3}
+  ProjectileSpawn: {fileID: 0}
   ShockWaveRange: 20
   ShockWaveTriggerObject: {fileID: 1836136189}
   TornadoLifeTime: 10
@@ -1228,6 +1266,7 @@ MonoBehaviour:
   MovementSpeed: 10
   SpecialAttackAmount: 3
   ThresHold: 0
+  ReachedThresHold: 10
 --- !u!1 &236173947139220821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,6 +1760,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2990692231174786452, guid: c95779fa0aed56a44811df5431b2f7c5,
+        type: 3}
+      propertyPath: TriggerTag.tags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990692231174786452, guid: c95779fa0aed56a44811df5431b2f7c5,
+        type: 3}
+      propertyPath: TriggerTag.tags.Array.data[0]
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2990692231178657589, guid: c95779fa0aed56a44811df5431b2f7c5,
         type: 3}
       propertyPath: Player
@@ -1735,7 +1784,7 @@ PrefabInstance:
         type: 3}
       propertyPath: MinionPrefab
       value: 
-      objectReference: {fileID: 5040518847528597140, guid: f060125a3c1ebe947986f0fcd10c6c7f,
+      objectReference: {fileID: 1371426082643408223, guid: c03f7fea9efad6b42842c0b2937de4a7,
         type: 3}
     - target: {fileID: 2990692231178657589, guid: c95779fa0aed56a44811df5431b2f7c5,
         type: 3}
@@ -1752,6 +1801,16 @@ PrefabInstance:
       propertyPath: Stage3
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2990692231178657589, guid: c95779fa0aed56a44811df5431b2f7c5,
+        type: 3}
+      propertyPath: TimeBetweenNodes
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990692231178657589, guid: c95779fa0aed56a44811df5431b2f7c5,
+        type: 3}
+      propertyPath: ProjectileSpawn
+      value: 
+      objectReference: {fileID: 1503666848}
     - target: {fileID: 6530500570773912260, guid: c95779fa0aed56a44811df5431b2f7c5,
         type: 3}
       propertyPath: m_Name
@@ -1811,6 +1870,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853053390952073431, guid: c95779fa0aed56a44811df5431b2f7c5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853053390952073431, guid: c95779fa0aed56a44811df5431b2f7c5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853053390952073431, guid: c95779fa0aed56a44811df5431b2f7c5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c95779fa0aed56a44811df5431b2f7c5, type: 3}

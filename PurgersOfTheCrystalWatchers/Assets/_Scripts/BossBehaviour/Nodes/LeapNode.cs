@@ -24,10 +24,10 @@ namespace POTCW
             board.AnimatorController.SetTrigger(Globals.BOSS_LEAPING_ANIMATORBOOL);
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
-            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
+            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length+board.EnemyAgent.TimeBetweenNodes);
 
 
-            Debug.Log("Start Leap + animation lenght: "+ currentClipInfo[0].clip.length);
+           // Debug.Log("Start Leap + animation lenght: "+ currentClipInfo[0].clip.length);
             return State.IN_PROGRESS;
         }
 
