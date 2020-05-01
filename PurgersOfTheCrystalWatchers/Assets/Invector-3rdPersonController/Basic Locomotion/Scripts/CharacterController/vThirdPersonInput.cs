@@ -91,6 +91,7 @@ namespace Invector.vCharacterController
         protected virtual IEnumerator CharacterInit()
         {
             yield return new WaitForEndOfFrame();
+
             if (tpCamera == null)
             {
                 tpCamera = FindObjectOfType<vCamera.vThirdPersonCamera>();
