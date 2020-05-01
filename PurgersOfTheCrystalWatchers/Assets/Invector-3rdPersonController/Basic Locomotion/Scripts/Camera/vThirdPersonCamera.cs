@@ -22,7 +22,7 @@ namespace Invector.vCamera
                 return _instance;
             }
         }
-
+        
         #region inspector properties    
         public Transform target;
        
@@ -197,8 +197,8 @@ namespace Invector.vCamera
 
         public void SetMainTarget(Transform newTarget)
         {
-            target = newTarget;
-            currentTarget = newTarget;
+            //target = newTarget;
+            //currentTarget = newTarget;
             if (!isInit) Init();
         }
 
