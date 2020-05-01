@@ -19,10 +19,11 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
+            board.AnimatorController.SetTrigger(Globals.BOSS_SHIELDSLAM_ANIMATORBOOL);
+
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
-            board.AnimatorController.SetTrigger(Globals.BOSS_SHIELDSLAM_ANIMATORBOOL);
 
             Debug.Log("Start Shield Slam");
             return State.IN_PROGRESS;
@@ -36,7 +37,6 @@ namespace POTCW
                 //Shield Slam
                 board.EnemyAgent.ShockWaveTriggerObject.SetActive(true);
                 board.EnemyAgent.ShockWaveTriggerObject.GetComponent<SphereCollider>().radius = board.EnemyAgent.ShockWaveRange;
-
 
                 return State.SUCCESS;
             }
