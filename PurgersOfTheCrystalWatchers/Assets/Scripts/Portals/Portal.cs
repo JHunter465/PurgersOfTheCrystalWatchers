@@ -15,7 +15,9 @@ public class Portal : MonoBehaviour
         {
             rigidbody.AddRelativeForce(new Vector3(OtherPortal.transform.forward.x, OtherPortal.transform.forward.y, OtherPortal.transform.forward.z) * 500);
         }
-        
-        other.transform.rotation = Quaternion.Euler(OtherPortal.transform.forward.x , OtherPortal.transform.forward.y - 90f, OtherPortal.transform.forward.z);
+
+        other.transform.forward = OtherPortal.transform.forward;
+
+        //other.transform.rotation = Quaternion.Euler(OtherPortal.transform.forward.x , OtherPortal.transform.forward.y - 90f, OtherPortal.transform.forward.z);
     }
 }
