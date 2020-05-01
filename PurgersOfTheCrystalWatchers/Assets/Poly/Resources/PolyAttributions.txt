@@ -1,0 +1,7 @@
+This project uses the following items from Poly (http://poly.google.com):
+
+Title: pr vrij2: crystal arena sketch
+Author: Anna Petit
+URL: https://poly.google.com/view/5cIC17RmWmN
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
