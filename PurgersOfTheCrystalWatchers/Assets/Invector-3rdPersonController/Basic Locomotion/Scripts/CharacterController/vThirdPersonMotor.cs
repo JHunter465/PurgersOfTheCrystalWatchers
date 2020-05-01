@@ -206,7 +206,8 @@ namespace Invector.vCharacterController
             isRolling,
             isJumping,
             isInAirborne,
-            isTurningOnSpot;
+            isTurningOnSpot,
+            secondJump;
 
         internal bool customAction;
 
@@ -791,6 +792,7 @@ namespace Invector.vCharacterController
             {
                 CheckFallDamage();
                 isGrounded = true;
+
                 if (!useSnapGround && !applyingStepOffset && !isJumping && groundDistance > 0.05f)
                     _rigidbody.AddForce(transform.up * (extraGravity * 2 * Time.deltaTime), ForceMode.VelocityChange);
             }
