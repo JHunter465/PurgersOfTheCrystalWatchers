@@ -86,5 +86,10 @@ namespace POTCW
                 return false;
             }
         }
+
+        public void Die()
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }

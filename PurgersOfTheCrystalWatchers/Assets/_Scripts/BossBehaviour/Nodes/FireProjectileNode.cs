@@ -40,8 +40,8 @@ namespace POTCW
             if (check)
             {
                 //Fire Projectile
-                GameObject projectile = GameObject.Instantiate(board.EnemyAgent.ProjectilePrefab, board.EnemyAgent.transform.position + Vector3.up * 3, board.EnemyAgent.transform.rotation);
-                projectile.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 1000);
+                GameObject projectile = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.ProjectilePrefab.name, board.EnemyAgent.ProjectileSpawn.transform.position, board.EnemyAgent.transform.rotation);
+                projectile.GetComponent<Rigidbody>().AddRelativeForce(-Vector3.forward * 1000);
                 return State.SUCCESS;
             }
             else
