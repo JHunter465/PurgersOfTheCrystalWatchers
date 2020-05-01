@@ -30,6 +30,6 @@ namespace POTCW
                 Vector3 tmpPosition = transform.position;
                 transform.position = Vector3.MoveTowards(tmpPosition, player.transform.position, step);
             }
-        }
+        }       
     }
 }

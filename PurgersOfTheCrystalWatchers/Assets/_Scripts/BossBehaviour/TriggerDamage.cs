@@ -14,7 +14,6 @@ namespace POTCW
         public float LifeTime = 2f;
         public bool DeactivateAfterAwake = true;
 
-
         private void OnEnable()
         {
             if(DeactivateAfterAwake)
@@ -25,9 +24,13 @@ namespace POTCW
         {
             vDamage dmg = new vDamage(Damage);
             
-            if (other.gameObject.tag == TriggerTag.ToString())
+            if (other.gameObject.tag == "Player")
             {
-                other.GetComponent<vThirdPersonController>().TakeDamage(dmg);
+                Debug.Log("Damage player with: " + dmg.damageValue);
+                var x = other.GetComponent<vThirdPersonController>();
+                x.TakeDamage(dmg);
+                Debug.Log(x);
+
             }
         }
 

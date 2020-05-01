@@ -35,7 +35,8 @@ namespace POTCW
             if (check)
             {
                 //Summon Crystal Tornado
-                GameObject crystalTornado = GameObject.Instantiate(board.EnemyAgent.CrystalTornadoPrefab, board.EnemyAgent.transform.position, Quaternion.identity);
+                var randomNumm = Random.Range(0, board.EnemyAgent.MinionSpawns.Count);
+                GameObject crystalTornado = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.CrystalTornadoPrefab.name, board.EnemyAgent.MinionSpawns[randomNumm].position, board.EnemyAgent.CrystalTornadoPrefab.transform.rotation);
                 crystalTornado.GetComponent<CrystalTornado>().Init(board.EnemyAgent.Player);
                 return State.SUCCESS;
             }

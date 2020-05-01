@@ -343,6 +343,7 @@ namespace Invector.vCharacterController
 
         public override void TakeDamage(vDamage damage)
         {
+            
             // don't apply damage if the character is rolling, you can add more conditions here
             if (currentHealth <= 0 || (!damage.ignoreDefense && isRolling))
                 return;

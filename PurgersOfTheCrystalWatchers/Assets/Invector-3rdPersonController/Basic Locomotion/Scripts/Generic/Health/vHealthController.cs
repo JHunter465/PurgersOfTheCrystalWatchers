@@ -189,6 +189,7 @@ namespace Invector
                     currentHealth -= damage.damageValue;
                 }
 
+                
                 //if (damage.damageValue > 0)
                 onReceiveDamage.Invoke(damage);
                 HandleCheckHealthEvents();
