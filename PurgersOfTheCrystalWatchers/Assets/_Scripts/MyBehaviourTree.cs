@@ -11,7 +11,8 @@ namespace POTCW
         protected float thresHold = 10;
 
         private int randomNumm = 0;
-        BehaviourNode<EnemyAgent>[] specialMoves; 
+        BehaviourNode<EnemyAgent>[] specialMovesOpenTerrainMode;
+        BehaviourNode<EnemyAgent>[] specialMovesPlatformMode;
 
         public MyBehaviourTree(EnemyBlackBoard board)
         {
@@ -21,12 +22,25 @@ namespace POTCW
         protected override BehaviourNode<EnemyAgent> GetRootNode()
         {
 
-            specialMoves = new BehaviourNode<EnemyAgent>[]{ new CrystalTornadoNode(board) ,
+            specialMovesOpenTerrainMode = new BehaviourNode<EnemyAgent>[]{
+                        new CrystalTornadoNode(board),
                         new AoEShieldSlamNode(board),
                         new SummonNode(board) };
 
+            specialMovesPlatformMode = new BehaviourNode<EnemyAgent>[] {
+                new SelectorNode<EnemyAgent>(
+                    new Selection<EnemyAgent>(ctx => PlatformsAliveCheck(),
+                        new SequenceNode<EnemyAgent>(
+                            new FindPlatformNode(board),
+                            new YeetPlatformNode(board)))),
+                new SelectorNode<EnemyAgent>(
+                    new Selection<EnemyAgent>(ctx => PlatformsAliveCheck(),
+                        new SequenceNode<EnemyAgent>(
+                            new FindPlatformNode(board),
+                            new KristalCanonNode(board))))};
+
             return new SelectorNode<EnemyAgent>(
-                new Selection<EnemyAgent>(ctx => !DoSpecialMove(),
+                new Selection<EnemyAgent>(ctx => !DoSpecialMove(specialMovesPlatformMode),
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
                         new FireProjectileNode(board),
@@ -39,8 +53,8 @@ namespace POTCW
                                 specialMoves[randomNumm])))));*/
             
                 //This works hela fine
-                new Selection<EnemyAgent>(ctx => DoSpecialMove(),
-                    specialMoves[randomNumm]));
+                new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesPlatformMode ),
+                    specialMovesPlatformMode[randomNumm]));
 
                     /*new ChooseRandomNode(board,
                         new CrystalTornadoNode(board),
@@ -76,6 +90,14 @@ namespace POTCW
                 return false;
         }
 
+        public bool PlatformsAliveCheck()
+        {
+            if (board.EnemyAgent.Platforms.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
         
         //This fucking buggs hard, when I set trheshold at 100 everything works fine but when I lower it
         //It keeps calling the nodes multiple times
@@ -102,10 +124,9 @@ namespace POTCW
             return moves[randomNumm];
         }
 
-        public bool DoSpecialMove()
+        public bool DoSpecialMove(BehaviourNode<EnemyAgent>[] specialMoves)
         {
             randomNumm = Random.Range(0, specialMoves.Length);
-            Debug.Log(board.EnemyAgent.ThresHoldCheck());
             return board.EnemyAgent.ThresHoldCheck();
         }
     }

@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace POTCW
 {
+    public enum FindPlatformType
+    {
+        Random = 0,
+        CloseByPlayer = 1,
+    }
+
     public class EnemyAgent : MonoBehaviour
     {
         [Header("Debugging")]
@@ -37,6 +43,15 @@ namespace POTCW
         public float ThresHold = 0;
         public float ReachedThresHold = 10f;
 
+        [Header("Mode2 (Platform Area) Data")]
+        public List<Transform> Platforms;
+        public Transform CurrentSelectedPlatform;
+        public float YeetSpeed = 10f;
+        public float PlatformCloseDistance = 10f;
+        public FindPlatformType FindPlatformType;
+        public GameObject DestroyPlatformParticleEffect;
+
+        //Blackboard 
         protected EnemyBlackBoard board = new EnemyBlackBoard();
 
         private void Awake()
@@ -85,6 +100,19 @@ namespace POTCW
                 //Debug.Log("Standard behaviour running");
                 return false;
             }
+        }
+
+        public bool PlayerDistanceCheck(Transform measureTransform, float range)
+        {
+            if (Vector3.Distance(measureTransform.position, Player.transform.position) < range)
+                return true;
+            else
+                return false;
+        }
+
+        public FindPlatformType GetYeetPlatformType()
+        {
+            return FindPlatformType;
         }
 
         public void Die()
