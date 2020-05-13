@@ -6,6 +6,8 @@ namespace Invector.vCharacterController
     [vClassHeader("Input Manager", iconName = "inputIcon")]
     public class vThirdPersonInput : vMonoBehaviour
     {
+
+        public vCamera.vThirdPersonCamera TPC;
         [System.Serializable]
         public delegate void OnUpdateEvent();
 
@@ -57,9 +59,12 @@ namespace Invector.vCharacterController
         protected bool updateIK = false;
         protected bool isInit;
         
-        protected InputDevice inputDevice { get { return vInput.instance.inputDevice; } }
+        protected InputDevice inputDevice { get { return inputDevice; } }
+
         public Animator animator
+
         {
+
             get
             {
                 if (cc == null) cc = GetComponent<vThirdPersonController>();
@@ -67,6 +72,7 @@ namespace Invector.vCharacterController
                 return cc.animator;
             }
         }
+
 
         #endregion
 
@@ -94,7 +100,7 @@ namespace Invector.vCharacterController
 
             if (tpCamera == null)
             {
-                tpCamera = FindObjectOfType<vCamera.vThirdPersonCamera>();
+                tpCamera = TPC;
                 if (tpCamera && tpCamera.target != transform) tpCamera.SetMainTarget(this.transform);
             }
             if (hud == null && vHUDController.instance != null)
@@ -108,6 +114,7 @@ namespace Invector.vCharacterController
 
         protected virtual void LateUpdate()
         {            
+            
             if (cc == null || Time.timeScale == 0) return;           
             if (!updateIK) return;
             if (onLateUpdate != null) onLateUpdate.Invoke();
@@ -126,11 +133,12 @@ namespace Invector.vCharacterController
             cc.ControlLocomotionType();                                   // handle the controller locomotion type and movespeed   
             ControlRotation();                                            // handle the controller rotation type
             cc.UpdateAnimator();                                          // handle the ThirdPersonAnimator methods
-            updateIK = true;           
+            updateIK = true;                 
         }
 
         protected virtual void Update()
         {            
+
             if (cc == null || Time.timeScale == 0) return;
             if (onUpdate != null) onUpdate.Invoke();
 
@@ -140,6 +148,7 @@ namespace Invector.vCharacterController
 
         public virtual void OnAnimatorMove()
         {            
+
             cc.ControlAnimatorRootMotion();
             if (onAnimatorMove != null) onAnimatorMove.Invoke();
         }
@@ -297,10 +306,8 @@ namespace Invector.vCharacterController
         /// </summary>
         protected virtual void JumpInput()
         {
-            Debug.Log(cc.secondJump);
             if (jumpInput.GetButtonDown() && cc.secondJump)
             {
-                Debug.Log("jump2");
                 cc.Jump(true);
                 cc.secondJump = false;
             }
@@ -337,10 +344,10 @@ namespace Invector.vCharacterController
         {
             if (!cameraMain)
             {
-                if (!Camera.main) Debug.Log("Missing a Camera with the tag MainCamera, please add one.");
+                if (!MyCam) Debug.Log("Missing a Camera with the tag MainCamera, please add one.");
                 else
                 {
-                    cameraMain = Camera.main;
+                    cameraMain = MyCam;
                     cc.rotateTarget = cameraMain.transform;
                 }
             }
@@ -368,7 +375,7 @@ namespace Invector.vCharacterController
 
             if (tpCamera == null)
             {
-                tpCamera = FindObjectOfType<vCamera.vThirdPersonCamera>();
+                tpCamera = TPC;
                 if (tpCamera == null)
                     return;
                 if (tpCamera)

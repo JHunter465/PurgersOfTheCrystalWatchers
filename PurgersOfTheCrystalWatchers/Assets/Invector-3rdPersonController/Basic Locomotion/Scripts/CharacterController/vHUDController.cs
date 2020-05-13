@@ -94,7 +94,7 @@ namespace Invector.vCharacterController
         {
             UpdateDebugWindow(cc);
             UpdateSliders(cc);
-            ChangeInputDisplay();
+            //ChangeInputDisplay();
             ShowDamageSprite();
             FadeEffect();
         }

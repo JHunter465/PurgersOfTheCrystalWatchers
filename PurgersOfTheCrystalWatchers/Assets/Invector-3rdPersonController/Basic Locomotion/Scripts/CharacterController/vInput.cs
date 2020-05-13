@@ -10,6 +10,10 @@ namespace Invector.vCharacterController
     {
         public delegate void OnChangeInputType(InputDevice type);
         public event OnChangeInputType onChangeInputType;
+
+        public Camera MyCam;
+
+        /*
         private static vInput _instance;
         public static vInput instance
         {
@@ -27,6 +31,7 @@ namespace Invector.vCharacterController
                 return _instance;
             }
         }
+        */
 
         public vHUDController hud;
 
@@ -212,7 +217,7 @@ namespace Invector.vCharacterController
     [System.Serializable]
     public class GenericInput
     {
-        protected InputDevice inputDevice { get { return vInput.instance.inputDevice; } }
+        protected InputDevice inputDevice { get { return InputDevice.Joystick; } }
         public bool useInput = true;
         [SerializeField]
         private bool isAxisInUse;
@@ -338,10 +343,10 @@ namespace Invector.vCharacterController
         {
             get
             {
-                if (vInput.instance != null)
+                if (inputDevice != null)
                 {
-                    if (vInput.instance.inputDevice == InputDevice.MouseKeyboard) return keyboard.ToString();
-                    else if (vInput.instance.inputDevice == InputDevice.Joystick) return joystick;
+                    if (inputDevice == InputDevice.MouseKeyboard) return keyboard.ToString();
+                    else if (inputDevice == InputDevice.Joystick) return joystick;
                     else return mobile;
                 }
                 return string.Empty;
@@ -355,7 +360,7 @@ namespace Invector.vCharacterController
         {
             get
             {
-                if (vInput.instance != null)
+                if (this != null)
                 {
                     if (System.Enum.IsDefined(typeof(KeyCode), buttonName))
                         return true;

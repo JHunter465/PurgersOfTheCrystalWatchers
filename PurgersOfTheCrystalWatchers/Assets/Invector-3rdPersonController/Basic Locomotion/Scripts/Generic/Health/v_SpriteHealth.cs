@@ -27,7 +27,7 @@ namespace Invector.vCharacterController
 
         void Start()
         {
-            cameraMain = Camera.main ? Camera.main.transform : null;
+            cameraMain = MyCam ? MyCam.transform : null;
             healthControl = transform.GetComponentInParent<vHealthController>();
             if (healthControl == null)
             {
