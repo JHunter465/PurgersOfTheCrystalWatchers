@@ -9,10 +9,9 @@ namespace POTCW
     {
         protected EnemyBlackBoard board;
         protected float thresHold = 10;
-
-        private int randomNumm = 0;
-        BehaviourNode<EnemyAgent>[] specialMovesOpenTerrainMode;
-        BehaviourNode<EnemyAgent>[] specialMovesPlatformMode;
+        protected int randomNumm = 0;
+        protected BehaviourNode<EnemyAgent>[] specialMovesOpenTerrainMode;
+        protected BehaviourNode<EnemyAgent>[] specialMovesPlatformMode;
 
         public MyBehaviourTree(EnemyBlackBoard board)
         {
@@ -37,7 +36,8 @@ namespace POTCW
                     new Selection<EnemyAgent>(ctx => PlatformsAliveCheck(),
                         new SequenceNode<EnemyAgent>(
                             new FindPlatformNode(board),
-                            new KristalCanonNode(board))))};
+                            new KristalCanonNode(board)))),
+                new AoEProjectilesNode(board)};
 
             return new SelectorNode<EnemyAgent>(
                 new Selection<EnemyAgent>(ctx => !DoSpecialMove(specialMovesPlatformMode),
@@ -55,6 +55,9 @@ namespace POTCW
                 //This works hela fine
                 new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesPlatformMode ),
                     specialMovesPlatformMode[randomNumm]));
+
+
+
 
                     /*new ChooseRandomNode(board,
                         new CrystalTornadoNode(board),
@@ -117,11 +120,18 @@ namespace POTCW
             }
         }
 
-        public BehaviourNode<EnemyAgent> GetRandomSpecialAttackNode(List<BehaviourNode<EnemyAgent>> moves)
+        public BehaviourNode<EnemyAgent>[] GetActiveSelectedSpecialMoves()
         {
-            var randomNumm = Random.Range(0, moves.Count);
-            Debug.Log("Special move :" + moves[randomNumm]);
-            return moves[randomNumm];
+            BehaviourNode<EnemyAgent>[] activeSpecialModes;
+            //Als de speler N actie heeft gedaan moet er een lijst gekozen worden
+            //1 activeSpecialModes = specialMovesOpenTerrainMode
+            //2 activeSpecialModes = specialMovesPlatformMode
+            //3 activeSpecialModes = specialMovesNarrowCliffs
+
+            //untill we have the mode switch system, lets just do this
+            activeSpecialModes = specialMovesPlatformMode;
+
+            return activeSpecialModes;
         }
 
         public bool DoSpecialMove(BehaviourNode<EnemyAgent>[] specialMoves)

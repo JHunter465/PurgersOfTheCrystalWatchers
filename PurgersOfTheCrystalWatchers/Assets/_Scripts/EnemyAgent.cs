@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BasHelpers;
+using System.Linq;
 
 namespace POTCW
 {
@@ -45,11 +47,14 @@ namespace POTCW
 
         [Header("Mode2 (Platform Area) Data")]
         public List<Transform> Platforms;
-        public Transform CurrentSelectedPlatform;
+        [HideInInspector] public Transform CurrentSelectedPlatform;
         public float YeetSpeed = 10f;
         public float PlatformCloseDistance = 10f;
         public FindPlatformType FindPlatformType;
         public GameObject DestroyPlatformParticleEffect;
+        public Transform AoEProjectileRainSpawn;
+        public float AoEProjectileRainSpawnPlayerDistanceHeight = 20f;
+        public int AoEProjectilesAmount = 10;
 
         //Blackboard 
         protected EnemyBlackBoard board = new EnemyBlackBoard();
@@ -59,6 +64,12 @@ namespace POTCW
             //Get animator controller
             if (GetComponent<Animator>() != null)
                 board.AnimatorController = GetComponent<Animator>();
+
+            //Get all platforms in scene that can be dynamically used
+            if(Platforms.Count < 1)
+            {
+                //Platforms = FindObjectsOfType<Transform>().ToList();
+            }
 
             board.EnemyAgent = this;
             ShockWaveTriggerObject.SetActive(false);
