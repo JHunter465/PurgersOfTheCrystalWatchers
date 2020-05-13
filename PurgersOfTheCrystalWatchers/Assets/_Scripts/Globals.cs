@@ -17,6 +17,7 @@ namespace POTCW
         public const string BOSS_JABLEG_ANIMATORBOOL = "JabLeg";
         public const string BOSS_PATROLING_ANIMATORBOOL = "Patrol";
         public const string BOSS_YEETPLATFORM_ANIMATORBOOL = "YeetPlatform";
+        public const string BOSS_GRAB_ANIMATORBOOL = "Grab";
 
         public static EnemyBlackBoard BossBlackBoard;
     }

@@ -56,6 +56,10 @@ namespace POTCW
         public float AoEProjectileRainSpawnPlayerDistanceHeight = 20f;
         public int AoEProjectilesAmount = 10;
 
+        [Header("Mode3 (Narrow Clifs Area) Data")]
+        public float MineTime = 10f;
+        public float MineDepth = 20f;
+
         //Blackboard 
         protected EnemyBlackBoard board = new EnemyBlackBoard();
 

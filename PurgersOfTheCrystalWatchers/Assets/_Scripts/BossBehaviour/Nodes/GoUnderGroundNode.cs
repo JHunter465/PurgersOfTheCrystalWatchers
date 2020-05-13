@@ -6,13 +6,13 @@ using BasHelpers;
 
 namespace POTCW
 {
-    public class MineAttackNode : BehaviourNode<EnemyAgent>
+    public class GoUnderGroundNode : BehaviourNode<EnemyAgent>
     {
         EnemyBlackBoard board;
         private bool check = false;
         AnimatorClipInfo[] currentClipInfo;
 
-        public MineAttackNode(EnemyBlackBoard board)
+        public GoUnderGroundNode(EnemyBlackBoard board)
         {
             this.board = board;
         }
@@ -26,9 +26,9 @@ namespace POTCW
             TimerManager.Instance.AddTimer(() => { check = !check; }, 2);
 
             //Go underground
-            Debug.Log("Go underground");
             board.EnemyAgent.SearchPlayerGameObject.SetActive(true);
-
+            Debug.Log("Go Under Ground");
+            //10 units op de Y axis naar beneden
             board.EnemyAgent.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.transform.position - Vector3.up * board.EnemyAgent.MineDepth, board.EnemyAgent.YeetSpeed);
 
             return State.IN_PROGRESS;
@@ -39,17 +39,14 @@ namespace POTCW
         {
             if (check)
             {
-                //Go above ground
-                Debug.Log("Go Above Ground");
-                board.EnemyAgent.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.transform.position + Vector3.up * board.EnemyAgent.MineDepth, board.EnemyAgent.YeetSpeed);
-                board.EnemyAgent.SearchPlayerGameObject.SetActive(false);
+                board.EnemyAgent.transform.position = board.EnemyAgent.transform.position.KeepOwnY(board.EnemyAgent.SearchPlayerGameObject.transform.position);
+                Debug.Log("Move To Underneath player");
                 return State.SUCCESS;
             }
             else
             {
-                //Search Player Position
-                board.EnemyAgent.SearchPlayerGameObject.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.Player.transform.position, board.EnemyAgent.YeetSpeed);
-                board.EnemyAgent.transform.position = board.EnemyAgent.transform.position.KeepOwnY(board.EnemyAgent.SearchPlayerGameObject.transform.position);
+                 //Search Player Position
+                board.EnemyAgent.SearchPlayerGameObject.transform.LerpTransform(board.EnemyAgent,board.EnemyAgent.Player.transform.position, board.EnemyAgent.YeetSpeed);
 
                 return State.IN_PROGRESS;
             }

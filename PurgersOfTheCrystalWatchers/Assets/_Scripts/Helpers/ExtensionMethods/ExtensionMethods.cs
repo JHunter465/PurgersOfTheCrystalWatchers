@@ -89,6 +89,16 @@ namespace BasHelpers
         {
             return lookAt - from;
         }
+
+        public static Vector3 ToZeroY(this Vector3 vec)
+        {
+            return new Vector3(vec.x, 0, vec.z);
+        }
+
+        public static Vector3 KeepOwnY(this Vector3 vec, Vector3 newVec)
+        {
+            return new Vector3(newVec.x, vec.y, newVec.z);
+        }
     }
 }
 

@@ -12,6 +12,7 @@ namespace POTCW
         protected int randomNumm = 0;
         protected BehaviourNode<EnemyAgent>[] specialMovesOpenTerrainMode;
         protected BehaviourNode<EnemyAgent>[] specialMovesPlatformMode;
+        protected BehaviourNode<EnemyAgent>[] specialMovesNarrowClifsMode;
 
         public MyBehaviourTree(EnemyBlackBoard board)
         {
@@ -21,12 +22,16 @@ namespace POTCW
         protected override BehaviourNode<EnemyAgent> GetRootNode()
         {
 
-            specialMovesOpenTerrainMode = new BehaviourNode<EnemyAgent>[]{
-                        new CrystalTornadoNode(board),
-                        new AoEShieldSlamNode(board),
-                        new SummonNode(board) };
 
-            specialMovesPlatformMode = new BehaviourNode<EnemyAgent>[] {
+            specialMovesOpenTerrainMode = new BehaviourNode<EnemyAgent>[]
+            {
+                new CrystalTornadoNode(board),
+                new AoEShieldSlamNode(board),
+                new SummonNode(board)
+            };
+
+            specialMovesPlatformMode = new BehaviourNode<EnemyAgent>[] 
+            {
                 new SelectorNode<EnemyAgent>(
                     new Selection<EnemyAgent>(ctx => PlatformsAliveCheck(),
                         new SequenceNode<EnemyAgent>(
@@ -37,7 +42,15 @@ namespace POTCW
                         new SequenceNode<EnemyAgent>(
                             new FindPlatformNode(board),
                             new KristalCanonNode(board)))),
-                new AoEProjectilesNode(board)};
+                new AoEProjectilesNode(board)
+            };
+
+            specialMovesNarrowClifsMode = new BehaviourNode<EnemyAgent>[]
+            {
+                new SequenceNode<EnemyAgent>(
+                    new GoUnderGroundNode(board),
+                    new GoAboveGroundNode(board))
+            };
 
             return new SelectorNode<EnemyAgent>(
                 new Selection<EnemyAgent>(ctx => !DoSpecialMove(specialMovesPlatformMode),
@@ -54,7 +67,7 @@ namespace POTCW
             
                 //This works hela fine
                 new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesPlatformMode ),
-                    specialMovesPlatformMode[randomNumm]));
+                    specialMovesNarrowClifsMode[0]));
 
 
 
@@ -129,7 +142,7 @@ namespace POTCW
             //3 activeSpecialModes = specialMovesNarrowCliffs
 
             //untill we have the mode switch system, lets just do this
-            activeSpecialModes = specialMovesPlatformMode;
+            activeSpecialModes = specialMovesNarrowClifsMode;
 
             return activeSpecialModes;
         }
