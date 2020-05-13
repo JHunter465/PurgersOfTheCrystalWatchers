@@ -67,7 +67,7 @@ namespace POTCW
             
                 //This works hela fine
                 new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesPlatformMode ),
-                    specialMovesNarrowClifsMode[0]));
+                    specialMovesPlatformMode[randomNumm]));
 
 
 

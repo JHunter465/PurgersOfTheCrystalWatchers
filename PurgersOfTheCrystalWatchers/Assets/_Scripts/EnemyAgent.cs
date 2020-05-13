@@ -34,6 +34,7 @@ namespace POTCW
         [Header("Projectile Related")]
         public GameObject ProjectilePrefab;
         public GameObject ProjectileSpawn;
+        public int LineRendererLenght = 20;
 
         [Header("Mode1 (Open Terrain) Data")]
         public float ShockWaveRange = 3f;

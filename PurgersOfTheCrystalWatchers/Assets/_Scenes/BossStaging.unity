@@ -3959,6 +3959,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348873266}
   m_CullTransparentMesh: 0
+--- !u!1 &355988725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1503666848, guid: c95779fa0aed56a44811df5431b2f7c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2990692231762983572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &355988727
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355988725}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: cb92b59794ca4255b0170e3f42f12f9e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions: []
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 0, b: 0.7189846, a: 1}
+      key1: {r: 1, g: 0, b: 0.78266525, a: 0}
+      key2: {r: 0.8924439, g: 0.8997122, b: 0.990566, a: 1}
+      key3: {r: 0.99215686, g: 0.9742673, b: 0.92941177, a: 0}
+      key4: {r: 0.38560942, g: 0.36209506, b: 0.9716981, a: 1}
+      key5: {r: 0, g: 0, b: 0, a: 1}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 23119
+      ctime1: 65535
+      ctime2: 31418
+      ctime3: 43754
+      ctime4: 65535
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 17286
+      atime2: 18488
+      atime3: 42387
+      atime4: 43439
+      atime5: 65535
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 6
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
 --- !u!1 &363450760
 GameObject:
   m_ObjectHideFlags: 0
@@ -17037,6 +17138,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 5705706006885473527, guid: d74ae45453d157449b3a94166da78831,
     type: 3}
   ProjectileSpawn: {fileID: 0}
+  LineRendererLenght: 20
   ShockWaveRange: 20
   ShockWaveTriggerObject: {fileID: 1836136189}
   TornadoLifeTime: 10
@@ -17835,6 +17937,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137665905, guid: c95779fa0aed56a44811df5431b2f7c5, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503666848, guid: c95779fa0aed56a44811df5431b2f7c5, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2990692231178657589, guid: c95779fa0aed56a44811df5431b2f7c5,
