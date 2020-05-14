@@ -47,13 +47,14 @@ namespace POTCW
 
             specialMovesNarrowClifsMode = new BehaviourNode<EnemyAgent>[]
             {
+                new GrabNode(board),
                 new SequenceNode<EnemyAgent>(
                     new GoUnderGroundNode(board),
                     new GoAboveGroundNode(board))
             };
 
             return new SelectorNode<EnemyAgent>(
-                new Selection<EnemyAgent>(ctx => !DoSpecialMove(specialMovesPlatformMode),
+                new Selection<EnemyAgent>(ctx => !DoSpecialMove(specialMovesNarrowClifsMode),
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
                         new FireProjectileNode(board),
@@ -66,8 +67,8 @@ namespace POTCW
                                 specialMoves[randomNumm])))));*/
             
                 //This works hela fine
-                new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesPlatformMode ),
-                    specialMovesPlatformMode[randomNumm]));
+                new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesNarrowClifsMode),
+                    specialMovesNarrowClifsMode[randomNumm]));
 
 
 

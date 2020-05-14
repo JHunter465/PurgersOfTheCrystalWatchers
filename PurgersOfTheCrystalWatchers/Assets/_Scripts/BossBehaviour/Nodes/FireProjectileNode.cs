@@ -33,14 +33,14 @@ namespace POTCW
             board.EnemyAgent.ProjectileSpawn.SetActive(true);
             lineRenderer = board.EnemyAgent.ProjectileSpawn.GetComponent<LineRenderer>();
             lineRenderer.positionCount = board.EnemyAgent.LineRendererLenght;
-            float alpha =1.0f;
+            float alpha =0.4f;
             Gradient gradient = new Gradient();
             gradient.SetKeys(
                     new GradientColorKey[] {new GradientColorKey(Color.blue, 0.0f), new GradientColorKey(Color.red, 1.0f)},
                     new GradientAlphaKey[] {new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 0.4f)}
                 );
             lineRenderer.colorGradient = gradient;
-
+            
             return State.IN_PROGRESS;
         }
 
@@ -51,9 +51,10 @@ namespace POTCW
             {
                 board.EnemyAgent.ProjectileSpawn.SetActive(false);
 
-                //Fire Projectile
                 GameObject projectile = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.ProjectilePrefab.name, board.EnemyAgent.ProjectileSpawn.transform.position, board.EnemyAgent.ProjectileSpawn.transform.rotation);
-                projectile.GetComponent<Rigidbody>().AddRelativeForce(projectile.transform.forward * 1000);
+                
+                projectile.GetComponent<Rigidbody>().AddRelativeForce(projectile.transform.forward * board.EnemyAgent.ProjectileForceSpeed);
+
                 return State.SUCCESS;
             }
             else

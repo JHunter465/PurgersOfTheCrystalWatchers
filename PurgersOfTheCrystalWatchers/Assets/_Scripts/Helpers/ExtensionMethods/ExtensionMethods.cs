@@ -99,6 +99,11 @@ namespace BasHelpers
         {
             return new Vector3(newVec.x, vec.y, newVec.z);
         }
+
+        public static Vector3 KeepYOf(this Vector3 vec, Vector3 keepYVector)
+        {
+            return new Vector3(vec.x, keepYVector.y, vec.z);
+        }
     }
 }
 

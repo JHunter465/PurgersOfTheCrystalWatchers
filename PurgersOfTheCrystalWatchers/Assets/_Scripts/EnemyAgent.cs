@@ -19,6 +19,8 @@ namespace POTCW
         public bool Stage2 = false;
         public bool Stage3 = false;
         public float TimeBetweenNodes = 10f;
+        public GameObject Player1;
+        public GameObject Player2;
 
         [Header("Player Related")]
         public float PlayerCloseRange = 10f;
@@ -26,12 +28,14 @@ namespace POTCW
         public float PlayerToFarRange = 50f;
         public GameObject Player;
         public GameObject SearchPlayerGameObject;
+        public float PlayerSearchTime = 10f;
 
         [Header("Minions Related")]
         public GameObject MinionPrefab;
         public List<Transform> MinionSpawns;
 
         [Header("Projectile Related")]
+        public float ProjectileForceSpeed = 1000f;
         public GameObject ProjectilePrefab;
         public GameObject ProjectileSpawn;
         public int LineRendererLenght = 20;
@@ -60,6 +64,9 @@ namespace POTCW
         [Header("Mode3 (Narrow Clifs Area) Data")]
         public float MineTime = 10f;
         public float MineDepth = 20f;
+        public GameObject GrabObject;
+        public GameObject GrabSpawn;
+        public float GrabSpeed = 20f;
 
         //Blackboard 
         protected EnemyBlackBoard board = new EnemyBlackBoard();
@@ -93,6 +100,30 @@ namespace POTCW
             // the second is the agent to control
             // We use IEnumerators for performance optimazation and we are now able to pause and resume the behaviour if we wish.
             tree.Start(this, this);
+
+            //Every PlayerSearchTime seconds update the closest player we want to target
+            InvokeRepeating("FindClosestPlayer", 0.1f, PlayerSearchTime);
+        }
+
+        private void FindClosestPlayer()
+        {
+            Debug.Log("Find Closest Player");
+
+            GameObject currentClosePlayer;
+            
+            if(Player1 == null || Player2 == null)
+            {
+                return;
+            }
+            else
+            {
+                if (Vector3.Distance(Player1.transform.position, this.transform.position) < Vector3.Distance(Player2.transform.position, this.transform.position))
+                    currentClosePlayer = Player1;
+                else
+                    currentClosePlayer = Player2;
+            }
+
+            Player = currentClosePlayer;
         }
 
         private void LateUpdate()

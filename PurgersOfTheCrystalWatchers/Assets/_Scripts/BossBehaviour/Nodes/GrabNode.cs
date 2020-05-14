@@ -23,11 +23,32 @@ namespace POTCW
             board.AnimatorController.SetTrigger(Globals.BOSS_GRAB_ANIMATORBOOL);
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
+
             TimerManager.Instance.AddTimer(() => { check = !check; }, 2);
 
             //Grab player
+            board.EnemyAgent.GrabObject.SetActive(true);
+            board.EnemyAgent.GrabObject.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.Player.transform.position.KeepYOf(board.EnemyAgent.GrabSpawn.transform.position), board.EnemyAgent.GrabSpeed);
+            
+            //Transform raycastfrom = board.EnemyAgent.GrabSpawn.transform;
+            //Vector3 fwd = raycastfrom.TransformDirection(raycastfrom.forward);
+            //Debug.DrawRay(raycastfrom.position, fwd * 400, Color.green);
+            //RaycastHit objectHit;
 
+            //Debug.Log("Grab attack");
 
+            //if (Physics.Raycast(raycastfrom.position, fwd, out objectHit, 400))
+            //{
+            //    //do something if hit object ie
+            //    if (objectHit.collider.gameObject.tag == "Player")
+            //    {
+            //        Debug.Log("Grab has hit player");
+
+            //        objectHit.collider.enabled = false;
+            //    }
+            //}
+        
+            
             return State.IN_PROGRESS;
         }
 
@@ -36,12 +57,16 @@ namespace POTCW
         {
             if (check)
             {
+                Debug.Log("Pull Grab Object back");
 
+
+                //This does'nt work, why?!
+                //board.EnemyAgent.GrabObject.transform.position = board.EnemyAgent.GrabSpawn.transform.position;
+                //board.EnemyAgent.GrabObject.SetActive(false);
                 return State.SUCCESS;
             }
             else
             {
-
                 return State.IN_PROGRESS;
             }
         }
