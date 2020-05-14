@@ -97,7 +97,7 @@ namespace Invector.vCharacterController
         }
 
         public virtual void TriggerWeakAttack()
-        {                
+        {
             cc.animator.SetInteger(vAnimatorParameters.AttackID, meleeManager.GetAttackID());
             cc.animator.SetTrigger(vAnimatorParameters.WeakAttack);
         }

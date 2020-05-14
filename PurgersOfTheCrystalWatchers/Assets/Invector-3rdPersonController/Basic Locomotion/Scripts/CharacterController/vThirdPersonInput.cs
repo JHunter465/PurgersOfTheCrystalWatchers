@@ -70,6 +70,7 @@ namespace Invector.vCharacterController
                 if (cc == null) cc = GetComponent<vThirdPersonController>();
                 if (cc.animator == null) return GetComponent<Animator>();
                 return cc.animator;
+
             }
         }
 

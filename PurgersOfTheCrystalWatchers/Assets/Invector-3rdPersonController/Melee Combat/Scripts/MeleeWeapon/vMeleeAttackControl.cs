@@ -41,7 +41,7 @@ namespace Invector.vMelee
         }
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-        {
+        { 
             if (stateInfo.normalizedTime % 1 >= startDamage && stateInfo.normalizedTime % 1 <= endDamage && !isActive)
             {
                 if (debug) Debug.Log(animator.name + " attack " + damageType + " enable damage in " + System.Math.Round(stateInfo.normalizedTime % 1, 2));

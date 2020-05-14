@@ -40,6 +40,10 @@ public class Crystal : MonoBehaviour
 
     public void Die()
     {
+        if(currentPlayer == null)
+        {
+            return;
+        }
         currentPlayer.ChangeStamina(crystalGiven);
         currentPlayer.StartCoroutine(Respawn());
         gameObject.SetActive(false);

@@ -29,6 +29,8 @@ namespace Invector.vCharacterController
                 Destroy(this.gameObject);
                 return;
             }
+
+            Debug.Log(animator);
         }
 
         public virtual void MoveToPosition(Vector3 targetPosition)
