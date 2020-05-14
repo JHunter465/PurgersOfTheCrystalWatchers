@@ -67,12 +67,12 @@ namespace Invector.vCharacterController.vActions
                 tpInput.onUpdate -= UpdateGenericAction;
                 tpInput.onUpdate += UpdateGenericAction;
             }
-            if (!mainCamera) mainCamera = Camera.main;
+            if (!mainCamera) mainCamera = MyCam;
         }
 
         protected virtual void UpdateGenericAction()
         {
-            if (!mainCamera) mainCamera = Camera.main;
+            if (!mainCamera) mainCamera = MyCam;
             if (!mainCamera) return;
 
             CheckForTriggerAction();

@@ -32,10 +32,12 @@ namespace Invector.vCharacterController
         private Rect rect;
         private bool _inLockOn;
         protected bool changingTarget;
+
+        public vCamera.vThirdPersonCamera TPC;
         #endregion
 
         #region public methods   
-      
+
 
         /// <summary>
         /// change the current target to next target of possibles target
@@ -174,7 +176,7 @@ namespace Invector.vCharacterController
         /// </summary>
         protected void Init()
         {
-            if (Camera.main == null)
+            if (MyCam == null)
                 this.enabled = false;
             var width = Screen.width - (Screen.width * screenMarginX);
             var height = Screen.height - (Screen.height * screenMarginY);
@@ -209,8 +211,12 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         protected List<Transform> GetPossibleTargets()
         {
-            if (vCamera.vThirdPersonCamera.instance != null && vCamera.vThirdPersonCamera.instance.target != null)
+
+            if (TPC != null && TPC.target != null)
+                watcher = TPC.target;
+            /*if (vCamera.vThirdPersonCamera.instance != null && vCamera.vThirdPersonCamera.instance.target != null)
                 watcher = vCamera.vThirdPersonCamera.instance.target;
+                */
             else
                 watcher = transform;
             var listPrimary = new List<Transform>();
@@ -265,11 +271,11 @@ namespace Invector.vCharacterController
             var lpriority_01 = new List<Transform>();
             var lpriority_02 = new List<Transform>();
             var lpriority_03 = new List<Transform>();
-            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(MyCam);
             for (int i = 0; i < list.Count; i++)
             {
                 var _transform = list[i];
-                Vector2 screenPoint = Camera.main.WorldToScreenPoint(_transform.transform.position);
+                Vector2 screenPoint = MyCam.WorldToScreenPoint(_transform.transform.position);
                 if (GeometryUtility.TestPlanesAABB(planes, _transform.GetComponent<Collider>().bounds) && rect.Contains(screenPoint))
                     lpriority_01.Add(_transform);
                 else if (GeometryUtility.TestPlanesAABB(planes, _transform.GetComponent<Collider>().bounds))
@@ -279,15 +285,15 @@ namespace Invector.vCharacterController
             }
             lpriority_01.Sort(delegate (Transform t1, Transform t2)
             {
-                Vector2 screenPoint_01 = Camera.main.WorldToScreenPoint(t1.transform.position);
-                Vector2 screenPoint_02 = Camera.main.WorldToScreenPoint(t2.transform.position);
+                Vector2 screenPoint_01 = MyCam.WorldToScreenPoint(t1.transform.position);
+                Vector2 screenPoint_02 = MyCam.WorldToScreenPoint(t2.transform.position);
                 return Vector2.Distance(screenPoint_01, rect.center)
                     .CompareTo(Vector2.Distance(screenPoint_02, rect.center));
             });
             lpriority_02.Sort(delegate (Transform t1, Transform t2)
             {
-                Vector2 screenPoint_01 = Camera.main.WorldToScreenPoint(t1.transform.position);
-                Vector2 screenPoint_02 = Camera.main.WorldToScreenPoint(t2.transform.position);
+                Vector2 screenPoint_01 = MyCam.WorldToScreenPoint(t1.transform.position);
+                Vector2 screenPoint_02 = MyCam.WorldToScreenPoint(t2.transform.position);
                 return Vector2.Distance(screenPoint_01, rect.center)
                     .CompareTo(Vector2.Distance(screenPoint_02, rect.center));
             });

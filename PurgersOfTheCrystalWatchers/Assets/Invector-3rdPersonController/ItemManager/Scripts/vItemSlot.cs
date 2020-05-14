@@ -118,38 +118,40 @@ namespace Invector.vItemManager
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
+            /*
             if(vInput.instance.inputDevice == InputDevice.MouseKeyboard)
             {
                 EventSystem.current.SetSelectedGameObject(this.gameObject);
                 if (onSelectSlotCallBack != null)
                     onSelectSlotCallBack(this);
             }            
+            */
         }
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
-            if (vInput.instance.inputDevice == InputDevice.MouseKeyboard)
-            {
-                if (onDeselectSlotCallBack != null)
-                    onDeselectSlotCallBack(this);
-            }
+            //if (vInput.instance.inputDevice == InputDevice.MouseKeyboard)
+            //{
+            //    if (onDeselectSlotCallBack != null)
+            //        onDeselectSlotCallBack(this);
+            //}
         }
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {
-#if UNITY_ANDROID || UNITY_IOS
-            if (vInput.instance.inputDevice == InputDevice.Mobile)
-#else
-            if (vInput.instance.inputDevice == InputDevice.MouseKeyboard)
-#endif
-            {
-                if (eventData.button == PointerEventData.InputButton.Left)
-                {
-                    if (isValid)
-                        if (onSubmitSlotCallBack != null)
-                            onSubmitSlotCallBack(this);
-                }                   
-            }
+//#if UNITY_ANDROID || UNITY_IOS
+//            if (vInput.instance.inputDevice == InputDevice.Mobile)
+//#else
+//            if (vInput.instance.inputDevice == InputDevice.MouseKeyboard)
+//#endif
+//            {
+//                if (eventData.button == PointerEventData.InputButton.Left)
+//                {
+//                    if (isValid)
+//                        if (onSubmitSlotCallBack != null)
+//                            onSubmitSlotCallBack(this);
+//                }                   
+//            }
         }
     }
 }

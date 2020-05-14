@@ -7,6 +7,7 @@ namespace Invector
 {
     public class vCullingFadeControl : MonoBehaviour
     {
+        [SerializeField] private Camera MyCam;
         public Transform targetObject
         {
             get
@@ -32,8 +33,8 @@ namespace Invector
             get
             {
                 Transform cT = transform;
-                if (Camera.main != null)
-                    cT = Camera.main.transform;
+                if (MyCam != null)
+                    cT = MyCam.transform;
                 if (cT == transform)
                 {
                     Debug.LogWarning("Invector : Missing MainCamera");

@@ -152,7 +152,7 @@ namespace Invector.vCharacterController
                 }
             }
 
-            cameraMain = Camera.main;
+            cameraMain = MyCam;
             if (head)
             {
                 headHeight = Vector3.Distance(transform.position, head.position);
@@ -227,7 +227,7 @@ namespace Invector.vCharacterController
             {
                 if (!cameraMain)
                 {
-                    cameraMain = Camera.main;
+                    cameraMain = MyCam;
                 }
                 return head != null && (followCamera && cameraMain != null) || (!followCamera && (currentLookTarget || simpleTarget)) || temporaryLookTime > 0;
             }

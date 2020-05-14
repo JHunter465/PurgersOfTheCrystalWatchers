@@ -280,14 +280,14 @@ namespace Invector.vItemManager
         /// </summary>
         void OpenCurrentSlot()
         {
-            if (vInput.instance.inputDevice == InputDevice.Mobile)
-            {
-                if (currentEquipArea != null && openCurrentSlot.GetButtonDown())
-                {
-                    if (currentEquipArea.currentSelectedSlot != null)
-                        currentEquipArea.OnSubmitSlot(currentEquipArea.currentSelectedSlot);
-                }
-            }
+            //if (vInput.instance.inputDevice == InputDevice.Mobile)
+            //{
+            //    if (currentEquipArea != null && openCurrentSlot.GetButtonDown())
+            //    {
+            //        if (currentEquipArea.currentSelectedSlot != null)
+            //            currentEquipArea.OnSubmitSlot(currentEquipArea.currentSelectedSlot);
+            //    }
+            //}
         }
 
         void SelectArea(vEquipArea equipArea)
@@ -308,20 +308,20 @@ namespace Invector.vItemManager
                     UseItemInput(changeEquip);
                     if (changeEquip.equipArea != null)
                     {
-                        if (vInput.instance.inputDevice == InputDevice.MouseKeyboard|| vInput.instance.inputDevice == InputDevice.Mobile)
-                        {
-                            if (changeEquip.previousItemInput.GetButtonDown())
-                                changeEquip.equipArea.PreviousEquipSlot();
-                            if (changeEquip.nextItemInput.GetButtonDown())
-                                changeEquip.equipArea.NextEquipSlot();
-                        }
-                        else if (vInput.instance.inputDevice == InputDevice.Joystick)
-                        {
-                            if (changeEquip.previousItemInput.GetAxisButtonDown(-1))
-                                changeEquip.equipArea.PreviousEquipSlot();
-                            if (changeEquip.nextItemInput.GetAxisButtonDown(1))
-                                changeEquip.equipArea.NextEquipSlot();
-                        }
+                        //if (vInput.instance.inputDevice == InputDevice.MouseKeyboard|| vInput.instance.inputDevice == InputDevice.Mobile)
+                        //{
+                        //    if (changeEquip.previousItemInput.GetButtonDown())
+                        //        changeEquip.equipArea.PreviousEquipSlot();
+                        //    if (changeEquip.nextItemInput.GetButtonDown())
+                        //        changeEquip.equipArea.NextEquipSlot();
+                        //}
+                        //else if (vInput.instance.inputDevice == InputDevice.Joystick)
+                        //{
+                        //    if (changeEquip.previousItemInput.GetAxisButtonDown(-1))
+                        //        changeEquip.equipArea.PreviousEquipSlot();
+                        //    if (changeEquip.nextItemInput.GetAxisButtonDown(1))
+                        //        changeEquip.equipArea.NextEquipSlot();
+                        //}
                     }
                 }
             }
