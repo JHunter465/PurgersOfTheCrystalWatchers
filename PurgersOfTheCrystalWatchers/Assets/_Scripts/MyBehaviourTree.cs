@@ -54,7 +54,7 @@ namespace POTCW
             };
 
             return new SelectorNode<EnemyAgent>(
-                new Selection<EnemyAgent>(ctx => !DoSpecialMove(specialMovesNarrowClifsMode),
+                new Selection<EnemyAgent>(ctx => !DoSpecialMove(specialMovesOpenTerrainMode),
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
                         new FireProjectileNode(board),
@@ -67,8 +67,8 @@ namespace POTCW
                                 specialMoves[randomNumm])))));*/
             
                 //This works hela fine
-                new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesNarrowClifsMode),
-                    specialMovesNarrowClifsMode[randomNumm]));
+                new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesOpenTerrainMode),
+                    specialMovesOpenTerrainMode[randomNumm]));
 
 
 

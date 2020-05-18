@@ -43,7 +43,10 @@ namespace POTCW
                     //step by step move towards the player
                     Vector3 deltaPos = board.EnemyAgent.transform.position - board.EnemyAgent.Player.transform.position;
                     Vector3 tmpPosition = board.EnemyAgent.transform.position;
-                    board.EnemyAgent.transform.position = Vector3.MoveTowards(tmpPosition, board.EnemyAgent.Player.transform.position, step);
+                    //We use navmesh to move the enemy agent right now
+                    Debug.Log("Move with navmesh now");
+                    board.EnemyAgent.NavMeshAgent.SetDestination(board.EnemyAgent.Player.transform.position);
+                    //board.EnemyAgent.transform.position = Vector3.MoveTowards(tmpPosition, board.EnemyAgent.Player.transform.position, step);
                     //blackBoard.Boss.transform.LerpTransform(blackBoard.Boss, blackBoard.Player.transform.position, blackBoard.BossMovementSpeed);
                     //blackBoard.Boss.transform.position = Vector3.Lerp(blackBoard.Boss.transform.position, blackBoard.Player.transform.position, step);
                     return State.IN_PROGRESS;

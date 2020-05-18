@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BasHelpers;
 using System.Linq;
+using UnityEngine.AI;
 
 namespace POTCW
 {
@@ -74,6 +75,9 @@ namespace POTCW
         public GameObject GrabSpawn;
         public float GrabSpeed = 20f;
 
+        [HideInInspector]
+        public NavMeshAgent NavMeshAgent;
+
         //Blackboard 
         protected EnemyBlackBoard board = new EnemyBlackBoard();
 
@@ -82,6 +86,13 @@ namespace POTCW
             //Get animator controller
             if (GetComponent<Animator>() != null)
                 board.AnimatorController = GetComponent<Animator>();
+
+            //Get NavMeshAgent
+            if (GetComponent<NavMeshAgent>() != null)
+            {
+                NavMeshAgent = GetComponent<NavMeshAgent>();
+                NavMeshAgent.speed = MovementSpeed;
+            }
 
             //Get all platforms in scene that can be dynamically used
             if(Platforms.Count < 1)
@@ -143,6 +154,8 @@ namespace POTCW
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDamping);
+            //var playerDistance = playerPos.position - animator.transform.position;
+            //Vector3 newDir = Vector3.RotateTowards(animator.transform.forward, playerDistance, step, 0.0f);
             //transform.LookAt(Player.transform);
 
             if (board.EnemyAgent.GrabObject.activeSelf)
