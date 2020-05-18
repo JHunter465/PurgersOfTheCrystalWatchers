@@ -7,7 +7,6 @@ namespace POTCW
 {
     public class LeapNode : BehaviourNode<EnemyAgent>
     {
-
         EnemyBlackBoard board;
         private bool check = false;
         AnimatorClipInfo[] currentClipInfo;

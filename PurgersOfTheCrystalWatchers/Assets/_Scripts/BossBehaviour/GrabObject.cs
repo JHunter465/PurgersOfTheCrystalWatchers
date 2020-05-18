@@ -14,8 +14,8 @@ namespace POTCW
 
         private void OnEnable()
         {
-            if(getBack)
-                this.gameObject.DeactivateAfterTime(this, 2f);
+            //if(getBack)
+                //this.gameObject.DeactivateAfterTime(this, 3f);
         }
 
         private void OnDisable()

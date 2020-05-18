@@ -24,11 +24,13 @@ namespace POTCW
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
 
-            TimerManager.Instance.AddTimer(() => { check = !check; }, 2);
+            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
+
+            board.EnemyAgent.PlayerInGrabRange = false;
 
             //Grab player
             board.EnemyAgent.GrabObject.SetActive(true);
-            board.EnemyAgent.GrabObject.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.Player.transform.position.KeepYOf(board.EnemyAgent.GrabSpawn.transform.position), board.EnemyAgent.GrabSpeed);
+            board.EnemyAgent.GrabObject.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.Player.transform.position, board.EnemyAgent.GrabSpeed);
             
             //Transform raycastfrom = board.EnemyAgent.GrabSpawn.transform;
             //Vector3 fwd = raycastfrom.TransformDirection(raycastfrom.forward);
@@ -56,10 +58,7 @@ namespace POTCW
         public override State Update()
         {
             if (check)
-            {
-                Debug.Log("Pull Grab Object back");
-
-
+            {              
                 //This does'nt work, why?!
                 //board.EnemyAgent.GrabObject.transform.position = board.EnemyAgent.GrabSpawn.transform.position;
                 //board.EnemyAgent.GrabObject.SetActive(false);
@@ -67,6 +66,7 @@ namespace POTCW
             }
             else
             {
+
                 return State.IN_PROGRESS;
             }
         }

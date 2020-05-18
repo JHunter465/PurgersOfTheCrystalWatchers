@@ -29,6 +29,12 @@ namespace POTCW
         public GameObject Player;
         public GameObject SearchPlayerGameObject;
         public float PlayerSearchTime = 10f;
+        public float LookAtDamping = 10f;
+
+        [HideInInspector]
+        public Rigidbody PlayerBody;
+        [HideInInspector]
+        public bool PlayerInGrabRange = false;
 
         [Header("Minions Related")]
         public GameObject MinionPrefab;
@@ -124,6 +130,7 @@ namespace POTCW
             }
 
             Player = currentClosePlayer;
+            PlayerBody = Player.GetComponent<Rigidbody>();
         }
 
         private void LateUpdate()
@@ -132,7 +139,37 @@ namespace POTCW
             if(ThresHold > ReachedThresHold)
                 ThresHold = 0;
 
-            transform.LookAt(Player.transform);
+            var lookPos = Player.transform.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDamping);
+            //transform.LookAt(Player.transform);
+
+            if (board.EnemyAgent.GrabObject.activeSelf)
+            {
+                if (Vector3.Distance(board.EnemyAgent.Player.transform.position, board.EnemyAgent.GrabObject.transform.position) < 3f)
+                {
+                    if (!PlayerInGrabRange)
+                    {
+                        GameObject plyr = board.EnemyAgent.Player;
+                        //plyr.transform.parent = board.EnemyAgent.GrabObject.transform;
+                        board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.FreezeAll;
+                        Debug.Log("Lerp the player bitch");
+                        plyr.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.GrabSpawn.transform.position, board.EnemyAgent.GrabSpeed);
+                        PlayerInGrabRange = true;
+                        StartCoroutine(ResetPlayerBody(GrabSpeed/10));
+                        board.EnemyAgent.GrabObject.transform.position = board.EnemyAgent.GrabSpawn.transform.position;
+                        board.EnemyAgent.GrabObject.SetActive(false);
+                    }
+                }
+            }
+        }
+
+        public IEnumerator ResetPlayerBody(float time)
+        {
+            yield return new WaitForSeconds(time);
+            board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.None;
+            board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.FreezeRotation;
         }
 
         public bool ThresHoldCheck()
