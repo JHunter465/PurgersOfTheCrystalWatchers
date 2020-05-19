@@ -121,7 +121,7 @@ namespace Invector.vCharacterController
 
             if (turnOnSpotAnim)
             {
-                GetTurnOnSpotDirection(transform, Camera.main.transform, ref _speed, ref _direction, input);
+                GetTurnOnSpotDirection(transform, MyCam.transform, ref _speed, ref _direction, input);
                 FreeTurnOnSpot(_direction * 180);
                 StrafeTurnOnSpot();
             }
@@ -230,7 +230,7 @@ namespace Invector.vCharacterController
                 return;
             }
 
-            var localFwd = transform.InverseTransformDirection(Camera.main.transform.forward);
+            var localFwd = transform.InverseTransformDirection(MyCam.transform.forward);
             var angle = System.Math.Round(localFwd.x, 1);
 
             if (angle >= 0.01f && !isTurningOnSpot)

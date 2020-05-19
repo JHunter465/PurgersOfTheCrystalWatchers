@@ -12,6 +12,10 @@ public class PlayerPortal : MonoBehaviour
     public KeyCode PortalKey;
     public KeyCode VoidKey;
 
+    public GenericInput PortalInput = new GenericInput("Horizontal", "LeftAnalogHorizontal", "Horizontal");
+    public GenericInput VoidInput = new GenericInput("Horizontal", "LeftAnalogHorizontal", "Horizontal");
+
+
     [SerializeField] private Vector3 PortalSpawnOffset;
     [SerializeField] private LayerMask RayCastLayerMask;
 
@@ -33,11 +37,11 @@ public class PlayerPortal : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(PortalKey) && thirdPersonController.currentStamina >= crystalCostPortal)
+        if(PortalInput.GetButtonDown() && thirdPersonController.currentStamina >= crystalCostPortal)
         {
             SpawnPortal();
         }
-        if(Input.GetKeyDown(VoidKey) && !voidPortalOn && thirdPersonController.currentStamina >= crystalCostVoid)
+        if(VoidInput.GetButtonDown() && !voidPortalOn && thirdPersonController.currentStamina >= crystalCostVoid)
         {
             StartCoroutine(ActivateVoidPortal());
         }

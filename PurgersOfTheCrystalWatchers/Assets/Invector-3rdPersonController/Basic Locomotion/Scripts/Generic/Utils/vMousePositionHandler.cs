@@ -8,7 +8,10 @@ namespace Invector.vCharacterController
 {
     public class vMousePositionHandler : MonoBehaviour
     {
+        [SerializeField] public static Camera MyCam;
         public Camera mainCamera;
+        public vInput INpuuuut;
+        /*
         protected static vMousePositionHandler _instance;
         public static vMousePositionHandler Instance
         {
@@ -19,10 +22,17 @@ namespace Invector.vCharacterController
                 {
                     var go = new GameObject("MousePositionHandler");
                     _instance = go.AddComponent<vMousePositionHandler>();
-                    _instance.mainCamera = Camera.main;
+                    _instance.mainCamera = MyCam;
                 }
                 return _instance;
             }
+        }
+        */
+
+        private void Awake()
+        {
+            //var go = new GameObject("MousePositionHandler");
+            //go.AddComponent<vMousePositionHandler>();
         }
 
         public string joystickHorizontalAxis = "RightAnalogHorizontal";
@@ -34,7 +44,7 @@ namespace Invector.vCharacterController
         {
             get
             {
-                var inputDevice = vInput.instance.inputDevice;
+                var inputDevice = INpuuuut.inputDevice;
                 switch (inputDevice)
                 {
                     case InputDevice.MouseKeyboard:
@@ -73,14 +83,14 @@ namespace Invector.vCharacterController
         {
             if (!mainCamera)
             {              
-                if(!Camera.main)
+                if(!MyCam)
                 {
                     Debug.LogWarning("Trying to get the world mouse position but a MainCamera is missing from the scene");
                     return Vector3.zero;
                 }
                else
                 {
-                    mainCamera = Camera.main;
+                    mainCamera = MyCam;
                     return Vector3.zero;
                 }
             }

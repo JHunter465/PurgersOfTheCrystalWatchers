@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81ef996067970074d8dd88ba76874a9d, type: 3}
-  m_Name: BossProjectile
+  m_Name: CrystalExplosion
   m_EditorClassIdentifier: 
-  Tag: Projectile
-  Prefab: {fileID: 5705706006885473527, guid: d74ae45453d157449b3a94166da78831, type: 3}
-  Amount: 10
+  Tag: CrystalExplosion
+  Prefab: {fileID: 621765655983032685, guid: a59929c9940532940935635ce64db223, type: 3}
+  Amount: 5

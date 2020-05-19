@@ -10,6 +10,7 @@ namespace Invector.vEventSystems
         public List<vAnimatorStateInfos> stateInfos = new List<vAnimatorStateInfos>();
         public event OnStateTrigger onStateEnter;
         public event OnStateTrigger onStateExit;
+
         public virtual void AddStateInfoListener(vAnimatorStateInfos stateInfo)
         {
             if (!stateInfos.Contains(stateInfo))

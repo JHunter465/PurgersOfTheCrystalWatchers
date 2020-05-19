@@ -275,7 +275,7 @@ namespace Invector.vCharacterController.vActions
             // enter the ladder automatically if checked with autoAction
             if (ladderAction.autoAction && tpInput.cc.input != Vector3.zero && !tpInput.cc.customAction)
             {
-                var inputDir = Camera.main.transform.TransformDirection(new Vector3(tpInput.cc.input.x, 0f, tpInput.cc.input.z));
+                var inputDir = MyCam.transform.TransformDirection(new Vector3(tpInput.cc.input.x, 0f, tpInput.cc.input.z));
                 inputDir.y = 0f;
                 var dist = Vector3.Distance(inputDir.normalized, ladderAction.transform.forward);
                 if (dist < 0.8f)

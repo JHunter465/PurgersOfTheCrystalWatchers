@@ -22,7 +22,8 @@ namespace Invector
                 parent = transform.parent;
                 transform.SetParent(null);
             }
-            cameraMain = Camera.main;
+            Debug.LogWarning("Camera not asigned yet check script line");
+            //cameraMain = MyCam;
         }
 
         void FixedUpdate()

@@ -6,22 +6,7 @@ namespace Invector.vCamera
 {
     public class vThirdPersonCamera : MonoBehaviour
     {
-        private static vThirdPersonCamera _instance;
-        public static vThirdPersonCamera instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = GameObject.FindObjectOfType<vThirdPersonCamera>();
-
-                    //Tell unity not to destroy this object when loading a new scene!
-                    //DontDestroyOnLoad(_instance.gameObject);
-                }
-
-                return _instance;
-            }
-        }
+       public Camera MyCam;
         
         #region inspector properties    
         public Transform target;
@@ -130,7 +115,7 @@ namespace Invector.vCamera
             targetLookAt.hideFlags = HideFlags.HideInHierarchy;
             if (startSmooth)
                 distance = Vector3.Distance(targetLookAt.position, transform.position);
-            if(!targetCamera) targetCamera = Camera.main;
+            if(!targetCamera) targetCamera = MyCam;
             currentTarget = target;
             switchRight = 1f;
             currentSwitchRight = 1f;

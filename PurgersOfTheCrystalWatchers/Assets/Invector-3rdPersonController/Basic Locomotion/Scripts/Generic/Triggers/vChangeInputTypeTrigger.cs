@@ -4,18 +4,24 @@ using Invector.vCharacterController;
 using UnityEngine.Events;
 namespace Invector.vItemManager
 {
+    
     public class vChangeInputTypeTrigger : MonoBehaviour
     {
         [Header("Events called when InputType changed")]
         public UnityEvent OnChangeToKeyboard;
         public UnityEvent OnChangeToMobile;
-        public UnityEvent OnChangeToJoystick;       
+        public UnityEvent OnChangeToJoystick;
+
+        public Camera MyCam;
+        public vInput vInpuut;
 
         void Start()
-        {            
-            vInput.instance.onChangeInputType -= OnChangeInput;
-            vInput.instance.onChangeInputType += OnChangeInput;
-            OnChangeInput(vInput.instance.inputDevice);
+        {/*
+            vCamera.vThirdPersonCamera TPC = null;
+            vInpuut.onChangeInputType -= OnChangeInput;
+            vInpuut.onChangeInputType += OnChangeInput;
+            OnChangeInput(vInpuut.inputDevice);
+            */
         }
 
         public void OnChangeInput(InputDevice type)
@@ -34,5 +40,5 @@ namespace Invector.vItemManager
             }
         }
     }
-
+    
 }

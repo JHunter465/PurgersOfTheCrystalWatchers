@@ -185,7 +185,7 @@ namespace Invector.vCharacterController
                     aimImage.transform.gameObject.SetActive(false);
             }
             if (currentTarget && aimImage && aimCanvas)
-                aimImage.anchoredPosition = currentTarget.GetScreenPointOffBoundsCenter(aimCanvas, Camera.main, spriteHeight);
+                aimImage.anchoredPosition = currentTarget.GetScreenPointOffBoundsCenter(aimCanvas, MyCam, spriteHeight);
             else if (aimCanvas)
                 aimImage.anchoredPosition = Vector2.zero;
         }
