@@ -1,5 +1,84 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &823168329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823168330}
+  - component: {fileID: 823168332}
+  - component: {fileID: 823168331}
+  m_Layer: 8
+  m_Name: BetterCrystal01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &823168330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823168329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.83, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.5, z: 1.2}
+  m_Children: []
+  m_Father: {fileID: 3202223165868845117}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &823168332
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823168329}
+  m_Mesh: {fileID: 4300000, guid: 78ffc1ed5f72076498d0614872cf48ec, type: 3}
+--- !u!23 &823168331
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823168329}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 2cd8708e4ff27c14fbe9f8b57f44c850, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &895491230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,6 +3323,7 @@ Transform:
   - {fileID: 3202223165868741227}
   - {fileID: 3202223165868842897}
   - {fileID: 1230236633}
+  - {fileID: 823168330}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3281,7 +3361,7 @@ MonoBehaviour:
   MyCam: {fileID: 0}
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 9
+  selectedToolbar: 2
   _isDead: 0
   _currentHealth: 100
   isImmortal: 0
@@ -3416,6 +3496,16 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   matchTarget: {fileID: 0}
   useInstance: 0
+  BaseSpeed:
+    movementSmooth: 6
+    animationSmooth: 0.2
+    rotationSpeed: 16
+    walkByDefault: 0
+    rotateWithCamera: 0
+    walkSpeed: 2
+    runningSpeed: 4
+    sprintSpeed: 6
+    crouchSpeed: 2
 --- !u!114 &3202223165875574533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3601,7 +3691,7 @@ MonoBehaviour:
     buttomTimer: 0
     inButtomTimer: 0
   strongAttackInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: Alpha1
     keyboardAxis: 0
@@ -3615,11 +3705,11 @@ MonoBehaviour:
     buttomTimer: 0
     inButtomTimer: 0
   blockInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: Mouse1
     keyboardAxis: 0
-    joystick: Debug Next
+    joystick: Enable Debug Button 1
     joystickAxis: 0
     mobile: LB
     mobileAxis: 0

@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour
         BaseEnemy enemy = other.GetComponent<BaseEnemy>();
         if(enemy != null)
         {
-            enemy.TakeDamage(1);
+            //enemy.TakeDamage(1);
         }
     }
 }

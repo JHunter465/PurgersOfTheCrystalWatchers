@@ -10,12 +10,17 @@ namespace Invector.vCharacterController
         [vHelpBox("Check this option to transfer your character from one scene to another, uncheck if you're planning to use the controller with any kind of Multiplayer local or online")]
         public bool useInstance = true;
         public static vThirdPersonController instance;
+        public vMovementSpeed BaseSpeed = new vMovementSpeed();
 
         #endregion
 
         protected override void Start()
         {
             base.Start();
+            BaseSpeed.walkSpeed = freeSpeed.walkSpeed;
+            BaseSpeed.runningSpeed = freeSpeed.runningSpeed;
+            BaseSpeed.sprintSpeed = freeSpeed.sprintSpeed;
+
             if (!useInstance) return;
 
             if (instance == null)

@@ -1917,8 +1917,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8183302502037350798}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 340f99b8334a14c4a8a01dce6e1e5348, type: 3}
-  m_Controller: {fileID: 9100000, guid: 7db84b79b9d6e4a4e84f8449c4d5317f, type: 2}
+  m_Avatar: {fileID: 9000000, guid: b92659d3a19f72e4e84f6a4d3cb362ea, type: 3}
+  m_Controller: {fileID: 9100000, guid: bdb5684d340b28a458ba3d7e14b1a9b1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   MyCam: {fileID: 0}
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 3
+  selectedToolbar: 8
   _isDead: 0
   _currentHealth: 100
   isImmortal: 1
@@ -2077,6 +2077,16 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   matchTarget: {fileID: 0}
   useInstance: 0
+  BaseSpeed:
+    movementSmooth: 6
+    animationSmooth: 0.2
+    rotationSpeed: 16
+    walkByDefault: 0
+    rotateWithCamera: 0
+    walkSpeed: 2
+    runningSpeed: 4
+    sprintSpeed: 6
+    crouchSpeed: 2
 --- !u!114 &8183302502031912874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,7 +2272,7 @@ MonoBehaviour:
     buttomTimer: 0
     inButtomTimer: 0
   strongAttackInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: Alpha1
     keyboardAxis: 0
@@ -2276,11 +2286,11 @@ MonoBehaviour:
     buttomTimer: 0
     inButtomTimer: 0
   blockInput:
-    useInput: 1
+    useInput: 0
     isAxisInUse: 0
     keyboard: Mouse1
     keyboardAxis: 0
-    joystick: Debug Next
+    joystick: Debug Multiplier
     joystickAxis: 0
     mobile: LB2
     mobileAxis: 0
