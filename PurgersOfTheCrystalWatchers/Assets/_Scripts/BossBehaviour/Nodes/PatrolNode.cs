@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timers;
+using BasHelpers;
 
 namespace POTCW
 {
@@ -23,28 +24,43 @@ namespace POTCW
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
-
             return State.IN_PROGRESS;
         }
 
         //Called everey frame while the node is active
         public override State Update()
         {
-            if (Vector3.Distance(board.EnemyAgent.transform.position, board.EnemyAgent.Player.transform.position) < board.EnemyAgent.PlayerCloseRange)
+            Vector3 enemyAgentPosition = board.EnemyAgent.transform.position;
+            Vector3 playerPosition = board.EnemyAgent.transform.position;
+            if (Vector3.Distance(enemyAgentPosition, playerPosition) < board.EnemyAgent.PlayerCloseRange)
             {
-                return State.SUCCESS;
+                if (Vector3.Distance(enemyAgentPosition.ToZeroY(), board.EnemyAgent.PatrolPoints[board.EnemyAgent.PatrolIndex].transform.position.ToZeroY()) < 10f)
+                {
+                    Debug.Log("Move to patrol point: " + board.EnemyAgent.PatrolIndex);
+
+                    if (board.EnemyAgent.PatrolIndex < board.EnemyAgent.PatrolPoints.Count-1)
+                        board.EnemyAgent.PatrolIndex++;
+                    else
+                        board.EnemyAgent.PatrolIndex = 0;
+                }
+                else
+                {
+                    if (board.EnemyAgent.PatrolIndex <= board.EnemyAgent.PatrolPoints.Count-1)
+                    {
+                        board.EnemyAgent.LookTransform = board.EnemyAgent.PatrolPoints[board.EnemyAgent.PatrolIndex];
+
+                        board.EnemyAgent.NavMeshAgent.SetDestination(board.EnemyAgent.PatrolPoints[board.EnemyAgent.PatrolIndex].transform.position);
+                    }
+                    else
+                    {
+                        board.EnemyAgent.PatrolIndex = 0;
+                    }
+                }
+                return State.IN_PROGRESS;
             }
             else
             {
-                if (Vector3.Distance(board.EnemyAgent.transform.position, board.EnemyAgent.Player.transform.position) > board.EnemyAgent.PlayerCloseRange)
-                {
-                    float step = board.EnemyAgent.MovementSpeed * Time.deltaTime;
-                    //step by step move towards the player
-                    Vector3 deltaPos = board.EnemyAgent.transform.position - board.EnemyAgent.Player.transform.position;
-                    Vector3 tmpPosition = board.EnemyAgent.transform.position;
-                    board.EnemyAgent.transform.position = Vector3.MoveTowards(tmpPosition, board.EnemyAgent.Player.transform.position, step);
-                }
-                    return State.IN_PROGRESS;
+                return State.SUCCESS;
             }
         }
     }

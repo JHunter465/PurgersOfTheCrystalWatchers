@@ -39,12 +39,13 @@ namespace POTCW
             {
                 if (Vector3.Distance(board.EnemyAgent.transform.position, board.EnemyAgent.Player.transform.position) > board.EnemyAgent.PlayerCloseRange)
                 {
-                    float step = board.EnemyAgent.MovementSpeed * Time.deltaTime;
+                    float step = board.EnemyAgent.ProjectileForceSpeed*Time.deltaTime;
                     //step by step move towards the player
                     Vector3 deltaPos = board.EnemyAgent.transform.position - board.EnemyAgent.Player.transform.position;
                     Vector3 tmpPosition = board.EnemyAgent.transform.position;
                     //We use navmesh to move the enemy agent right now
-                    Debug.Log("Move with navmesh now");
+                    Debug.Log("Jump at player");
+                    board.EnemyAgent.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0,1,1) * step);
                     board.EnemyAgent.NavMeshAgent.SetDestination(board.EnemyAgent.Player.transform.position);
                     //board.EnemyAgent.transform.position = Vector3.MoveTowards(tmpPosition, board.EnemyAgent.Player.transform.position, step);
                     //blackBoard.Boss.transform.LerpTransform(blackBoard.Boss, blackBoard.Player.transform.position, blackBoard.BossMovementSpeed);

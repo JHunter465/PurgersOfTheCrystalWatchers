@@ -13,15 +13,20 @@ namespace POTCW
         CloseByPlayer = 1,
     }
 
+    public enum SpecialMode
+    {
+        OpenTerrain = 0,
+        PlatformArea = 1,
+        NarrowClifs = 2,
+    }
+
     public class EnemyAgent : MonoBehaviour
     {
         [Header("Debugging")]
-        public bool Stage1 = false;
-        public bool Stage2 = false;
-        public bool Stage3 = false;
         public float TimeBetweenNodes = 10f;
         public GameObject Player1;
         public GameObject Player2;
+        public SpecialMode SpecialModeActive;
 
         [Header("Player Related")]
         public float PlayerCloseRange = 10f;
@@ -36,6 +41,14 @@ namespace POTCW
         public Rigidbody PlayerBody;
         [HideInInspector]
         public bool PlayerInGrabRange = false;
+
+        [Header("Standard Behaviour")]
+        public float MovementSpeed = 10f;
+        public float ThresHold = 0;
+        public float ReachedThresHold = 10f;
+        public List<Transform> PatrolPoints;
+        public int PatrolIndex = 0;
+        public Transform LookTransform;
 
         [Header("Minions Related")]
         public GameObject MinionPrefab;
@@ -52,10 +65,8 @@ namespace POTCW
         public GameObject ShockWaveTriggerObject;
         public float TornadoLifeTime = 10f;
         public GameObject CrystalTornadoPrefab;
-        public float MovementSpeed = 10f;
         public int SpecialAttackAmount = 3;
-        public float ThresHold = 0;
-        public float ReachedThresHold = 10f;
+
 
         [Header("Mode2 (Platform Area) Data")]
         public List<Transform> Platforms;
@@ -120,6 +131,13 @@ namespace POTCW
 
             //Every PlayerSearchTime seconds update the closest player we want to target
             InvokeRepeating("FindClosestPlayer", 0.1f, PlayerSearchTime);
+
+            EventManager<SpecialMode>.AddHandler(EVENT.SwitchBossSpecialModeType, SetActiveSpecialModeType);
+        }
+
+        public void SetActiveSpecialModeType(SpecialMode type)
+        {
+            SpecialModeActive = type;
         }
 
         private void FindClosestPlayer()
@@ -150,10 +168,7 @@ namespace POTCW
             if(ThresHold > ReachedThresHold)
                 ThresHold = 0;
 
-            var lookPos = Player.transform.position - transform.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDamping);
+            RotateAgent(LookTransform);
             //var playerDistance = playerPos.position - animator.transform.position;
             //Vector3 newDir = Vector3.RotateTowards(animator.transform.forward, playerDistance, step, 0.0f);
             //transform.LookAt(Player.transform);
@@ -167,7 +182,7 @@ namespace POTCW
                         GameObject plyr = board.EnemyAgent.Player;
                         //plyr.transform.parent = board.EnemyAgent.GrabObject.transform;
                         board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.FreezeAll;
-                        Debug.Log("Lerp the player bitch");
+                        Debug.Log("Pull the player bitch");
                         plyr.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.GrabSpawn.transform.position, board.EnemyAgent.GrabSpeed);
                         PlayerInGrabRange = true;
                         StartCoroutine(ResetPlayerBody(GrabSpeed/10));
@@ -176,6 +191,14 @@ namespace POTCW
                     }
                 }
             }
+        }
+
+        public void RotateAgent(Transform lookat)
+        {
+            var lookPos = lookat.transform.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDamping);
         }
 
         public IEnumerator ResetPlayerBody(float time)

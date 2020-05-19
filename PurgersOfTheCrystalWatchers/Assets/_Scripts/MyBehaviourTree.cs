@@ -10,6 +10,7 @@ namespace POTCW
         protected EnemyBlackBoard board;
         protected float thresHold = 10;
         protected int randomNumm = 0;
+        protected bool patroling = true;
         protected BehaviourNode<EnemyAgent>[] specialMovesOpenTerrainMode;
         protected BehaviourNode<EnemyAgent>[] specialMovesPlatformMode;
         protected BehaviourNode<EnemyAgent>[] specialMovesNarrowClifsMode;
@@ -54,7 +55,9 @@ namespace POTCW
             };
 
             return new SelectorNode<EnemyAgent>(
-                new Selection<EnemyAgent>(ctx => !DoSpecialMove(specialMovesOpenTerrainMode),
+                new Selection<EnemyAgent>(ctx => DoPatrolUntil(),
+                    new PatrolNode(board)),
+                new Selection<EnemyAgent>(ctx => !DoSpecialMove(GetActiveSelectedSpecialMoves()),
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
                         new FireProjectileNode(board),
@@ -67,8 +70,8 @@ namespace POTCW
                                 specialMoves[randomNumm])))));*/
             
                 //This works hela fine
-                new Selection<EnemyAgent>(ctx => DoSpecialMove(specialMovesOpenTerrainMode),
-                    specialMovesOpenTerrainMode[randomNumm]));
+                new Selection<EnemyAgent>(ctx => DoSpecialMove(GetActiveSelectedSpecialMoves()),
+                    GetActiveSelectedSpecialMoves()[randomNumm]));
 
 
 
@@ -107,6 +110,22 @@ namespace POTCW
                 return false;
         }
 
+        public bool DoPatrolUntil()
+        {
+            if (patroling)
+            {
+                if (PlayerDistanceCheck(board.EnemyAgent.PlayerCloseRange))
+                {
+                    patroling = false;
+                    board.EnemyAgent.LookTransform = board.EnemyAgent.Player.transform;
+                    return false;
+                }
+                return true;
+            }
+            else
+                return false;
+        }
+
         public bool PlatformsAliveCheck()
         {
             if (board.EnemyAgent.Platforms.Count > 0)
@@ -137,13 +156,24 @@ namespace POTCW
         public BehaviourNode<EnemyAgent>[] GetActiveSelectedSpecialMoves()
         {
             BehaviourNode<EnemyAgent>[] activeSpecialModes;
-            //Als de speler N actie heeft gedaan moet er een lijst gekozen worden
-            //1 activeSpecialModes = specialMovesOpenTerrainMode
-            //2 activeSpecialModes = specialMovesPlatformMode
-            //3 activeSpecialModes = specialMovesNarrowCliffs
 
-            //untill we have the mode switch system, lets just do this
-            activeSpecialModes = specialMovesNarrowClifsMode;
+            //Afhankelijk van welke pyramide kan de speler heeft aangezet voor het laast
+            //Moeten we de boss het huidige active special moves aanzetten. 
+            switch(board.EnemyAgent.SpecialModeActive)
+            {
+                case SpecialMode.OpenTerrain:
+                    activeSpecialModes = specialMovesOpenTerrainMode;
+                    break;
+                case SpecialMode.PlatformArea:
+                    activeSpecialModes = specialMovesPlatformMode;
+                    break;
+                case SpecialMode.NarrowClifs:
+                    activeSpecialModes = specialMovesNarrowClifsMode;
+                    break;
+                default:
+                    activeSpecialModes = specialMovesOpenTerrainMode;
+                    break;
+            }
 
             return activeSpecialModes;
         }
