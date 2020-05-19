@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour
+namespace POTCW
 {
-    private void OnTriggerEnter(Collider other)
+    public class Sword : MonoBehaviour
     {
-        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
-        if(enemy != null)
+        private void OnTriggerEnter(Collider other)
         {
-            //enemy.TakeDamage(1);
+            BaseEnemy enemy = other.GetComponent<BaseEnemy>();
+            if (enemy != null)
+            {
+                //enemy.TakeDamage(1);
+            }
         }
     }
 }

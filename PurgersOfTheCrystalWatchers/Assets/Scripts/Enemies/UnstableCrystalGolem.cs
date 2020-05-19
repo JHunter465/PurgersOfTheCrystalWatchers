@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace POTCW
+{ 
 public class UnstableCrystalGolem : BaseEnemy
 {
     //Variables
@@ -61,19 +63,20 @@ public class UnstableCrystalGolem : BaseEnemy
         gameObject.SetActive(false);
     }
 
-    //Juice to implement later: Currently does lerp number but visuals don't change.
-    public IEnumerator lerpEmission(float start, float end, float LerpTime)
-    {
-        float StartTime = Time.time;
-        float EndTime = StartTime + LerpTime;
-
-        while (Time.time < EndTime)
+        //Juice to implement later: Currently does lerp number but visuals don't change.
+        public IEnumerator lerpEmission(float start, float end, float LerpTime)
         {
-            float timeProgressed = (Time.time - StartTime) / LerpTime;  // this will be 0 at the beginning and 1 at the end.
-            material.SetFloat("_EmissiveIntensity", Mathf.Lerp(start, end, timeProgressed));
+            float StartTime = Time.time;
+            float EndTime = StartTime + LerpTime;
 
-            yield return new WaitForFixedUpdate();
+            while (Time.time < EndTime)
+            {
+                float timeProgressed = (Time.time - StartTime) / LerpTime;  // this will be 0 at the beginning and 1 at the end.
+                material.SetFloat("_EmissiveIntensity", Mathf.Lerp(start, end, timeProgressed));
+
+                yield return new WaitForFixedUpdate();
+            }
+            material.SetFloat("_EmissiveIntensity", end);
         }
-        material.SetFloat("_EmissiveIntensity", end);
     }
 }

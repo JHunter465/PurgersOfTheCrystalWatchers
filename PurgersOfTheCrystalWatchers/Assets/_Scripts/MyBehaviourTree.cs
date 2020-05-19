@@ -114,7 +114,7 @@ namespace POTCW
         {
             if (patroling)
             {
-                if (PlayerDistanceCheck(board.EnemyAgent.PlayerCloseRange))
+                if (PlayerDistanceCheck(board.EnemyAgent.PlayerFarRange))
                 {
                     patroling = false;
                     board.EnemyAgent.LookTransform = board.EnemyAgent.Player.transform;

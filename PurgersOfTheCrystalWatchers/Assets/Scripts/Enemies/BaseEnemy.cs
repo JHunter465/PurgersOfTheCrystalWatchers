@@ -2,80 +2,88 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour
+namespace POTCW
 {
-    //References
-    protected Transform player;
-
-    //Variables
-    [SerializeField] protected float BaseSpeed, RotationSpeed, StopDistance;
-
-    protected float currentSpeed;
-
-    //Components
-    protected Animator animator;
-
-    protected virtual void Awake()
+    public class BaseEnemy : MonoBehaviour, IMinion
     {
-        animator = GetComponent<Animator>();
-    }
+        //References
+        protected Transform player;
 
-    protected virtual void OnEnable()
-    {
-        player = null;
-        currentSpeed = BaseSpeed;
-    }
+        //Variables
+        [SerializeField] protected float BaseSpeed, RotationSpeed, StopDistance;
 
-    protected virtual void OnTriggerStay(Collider other)
-    {
-        if (player == null && other.tag == "Player")
+        protected float currentSpeed;
+
+        //Components
+        protected Animator animator;
+
+        protected virtual void Awake()
         {
-            animator.SetBool("Running", true);
-            player = other.transform;
+            animator = GetComponent<Animator>();
         }
-    }
 
-    protected virtual void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
+        protected virtual void OnEnable()
         {
-            animator.SetBool("Running", false);
             player = null;
+            currentSpeed = BaseSpeed;
         }
-    }
 
-    protected virtual void Update()
-    {
-        Move();
-        Rotate();
-    }
-
-    protected virtual void Move()
-    {
-        //return out of method if there is no player assigned
-        if (player == null)
+        public void Init(GameObject playerRef)
         {
-            return;
+            player = playerRef.transform;
         }
 
-        //Run towards player
-        if (Vector3.Distance(transform.position, player.position) > StopDistance)
+        protected virtual void OnTriggerStay(Collider other)
         {
-            transform.position += transform.forward * currentSpeed * Time.deltaTime;
+            if (player == null && other.tag == "Player")
+            {
+                animator.SetBool("Running", true);
+                player = other.transform;
+            }
         }
-    }
 
-    protected virtual void Rotate()
-    {
-        //return out of method if there is no player assigned
-        if (player == null)
+        protected virtual void OnTriggerExit(Collider other)
         {
-            return;
+            if (other.tag == "Player")
+            {
+                animator.SetBool("Running", false);
+                player = null;
+            }
         }
 
-        var lookPos = player.position - transform.position;
-        lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+        protected virtual void Update()
+        {
+            Move();
+            Rotate();
+        }
+
+        protected virtual void Move()
+        {
+            //return out of method if there is no player assigned
+            if (player == null)
+            {
+                return;
+            }
+
+            //Run towards player
+            if (Vector3.Distance(transform.position, player.position) > StopDistance)
+            {
+                transform.position += transform.forward * currentSpeed * Time.deltaTime;
+            }
+        }
+
+        protected virtual void Rotate()
+        {
+            //return out of method if there is no player assigned
+            if (player == null)
+            {
+                return;
+            }
+
+            var lookPos = player.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+        }
     }
 }
