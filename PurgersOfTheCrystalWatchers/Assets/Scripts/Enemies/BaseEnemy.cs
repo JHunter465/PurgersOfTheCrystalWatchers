@@ -6,6 +6,9 @@ namespace POTCW
 {
     public class BaseEnemy : MonoBehaviour, IMinion
     {
+        //Minion type
+        [SerializeField] private MinionType currentMinionType;
+
         //References
         protected Transform player;
 
@@ -31,6 +34,11 @@ namespace POTCW
         public void Init(GameObject playerRef)
         {
             player = playerRef.transform;
+        }
+
+        public MinionType GetMinionType()
+        {
+            return currentMinionType;
         }
 
         protected virtual void OnTriggerStay(Collider other)

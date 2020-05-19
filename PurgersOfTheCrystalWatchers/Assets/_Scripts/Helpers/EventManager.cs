@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum EVENT { GetPlayerDistance, SwitchBossSpecialModeType }; // ... Other events
+public enum EVENT { GetPlayerDistance, SwitchBossSpecialModeType, CollectMinions }; // ... Other events
 /// <summary>
 /// Generic event management/ this class is re-usable in every project
 /// </summary>

@@ -6,6 +6,7 @@ namespace POTCW
 {
     public interface IMinion
     {
+        MinionType GetMinionType();
         void Init(GameObject playerRef);
     }
 }
