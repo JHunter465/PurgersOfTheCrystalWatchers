@@ -9,10 +9,10 @@ namespace POTCW
     {
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.HasComponent<SpecialMoveActivator>())
+            if(other.gameObject.HasComponent<IInteractable>())
             {
-                SpecialMoveActivator activator = other.gameObject.GetComponent<SpecialMoveActivator>();
-                activator.ActivateSpecialMode();
+                IInteractable activator = other.gameObject.GetComponent<IInteractable>();
+                activator.Interact();
 
                 this.gameObject.SetActive(false);
             }

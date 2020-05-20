@@ -6,12 +6,12 @@ using BasHelpers;
 
 namespace POTCW
 {
-    public class SpecialMoveActivator : MonoBehaviour
+    public class SpecialMoveActivator : MonoBehaviour, IInteractable
     {
         public TextMeshProUGUI FeedbackTextField;
         public SpecialMode ActivateSpecialModeType;
         
-        public void ActivateSpecialMode()
+        public void Interact()
         {
             Debug.Log("Activated: " + ActivateSpecialModeType.ToString());
             FeedbackTextField.gameObject.SetActive(true);

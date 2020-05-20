@@ -15,15 +15,26 @@ namespace POTCW
     public class ReceiveMinion : MonoBehaviour
     {
         public MinionType RequiredMinionType;
+        public int ID;
 
-        private void OnTriggerEnter(Collider other)
+        private Dictionary<int, MinionType> container = new Dictionary<int, MinionType>();
+
+        private void Start()
+        {
+            container.Add(ID, RequiredMinionType);
+        }
+
+        private void OnCollisionEnter(Collision other)
         {
             if(other.gameObject.HasComponent<IMinion>())
             {
                 IMinion minion = other.gameObject.GetComponent<IMinion>();
 
                 if (minion.GetMinionType() == RequiredMinionType)
-                    EventManager<MinionType>.BroadCast(EVENT.CollectMinions, RequiredMinionType);
+                {
+                    EventManager<Dictionary<int, MinionType>>.BroadCast(EVENT.CollectMinions, container);
+                    other.gameObject.SetActive(false);
+                }
                 else
                     return;
             }
