@@ -30384,7 +30384,32 @@ PrefabInstance:
     - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
       propertyPath: PortalInput.joystick
-      value: RT
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
+        type: 3}
+      propertyPath: crystalCostPortal
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
+        type: 3}
+      propertyPath: VoidInput.joystickAxis
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
+        type: 3}
+      propertyPath: PortalInput.joystickAxis
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
+        type: 3}
+      propertyPath: PortalInput.joystickAxisInvert
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
+        type: 3}
+      propertyPath: PortalInput.keyboardAxisInvert
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3202223165868845117, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
@@ -30798,6 +30823,36 @@ PrefabInstance:
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 47711422}
+    - target: {fileID: 8183302501971504880, guid: cbfa3d205699d434ab26b0159061c02e,
+        type: 3}
+      propertyPath: crystalCostPortal
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183302501971504880, guid: cbfa3d205699d434ab26b0159061c02e,
+        type: 3}
+      propertyPath: VoidInput.joystickAxis
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183302501971504880, guid: cbfa3d205699d434ab26b0159061c02e,
+        type: 3}
+      propertyPath: PortalInput.joystickAxis
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183302501971504880, guid: cbfa3d205699d434ab26b0159061c02e,
+        type: 3}
+      propertyPath: PortalInput.joystickAxisInvert
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183302501971504880, guid: cbfa3d205699d434ab26b0159061c02e,
+        type: 3}
+      propertyPath: PortalInput.keyboardAxisInvert
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183302501971504880, guid: cbfa3d205699d434ab26b0159061c02e,
+        type: 3}
+      propertyPath: PortalInput.joystick
+      value: A2
+      objectReference: {fileID: 0}
     - target: {fileID: 8183302501971504883, guid: cbfa3d205699d434ab26b0159061c02e,
         type: 3}
       propertyPath: MyCam

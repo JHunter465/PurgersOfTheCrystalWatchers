@@ -8,14 +8,17 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.position = OtherPortal.position + OtherPortal.forward * 3;
-        
-        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-        if(rigidbody != null)
+        if (OtherPortal != null)
         {
-            rigidbody.AddRelativeForce(new Vector3(OtherPortal.transform.forward.x, OtherPortal.transform.forward.y, OtherPortal.transform.forward.z) * 500);
-        }
+            other.transform.position = OtherPortal.position + OtherPortal.forward * 3;
 
-        other.transform.forward = transform.forward;
+            Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+            if (rigidbody != null)
+            {
+                rigidbody.AddRelativeForce(new Vector3(OtherPortal.transform.forward.x, OtherPortal.transform.forward.y, OtherPortal.transform.forward.z) * 500);
+            }
+
+            other.transform.forward = transform.forward;
+        }
     }
 }
