@@ -595,7 +595,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 5
+    axis: 6
     joyNum: 2
   - serializedVersion: 3
     m_Name: D-Pad Vertical
@@ -627,7 +627,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 6
+    axis: 7
     joyNum: 2
   - serializedVersion: 3
     m_Name: Triggers
