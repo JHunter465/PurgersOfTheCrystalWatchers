@@ -26,11 +26,8 @@ namespace POTCW
             
             if (other.gameObject.tag == "Player")
             {
-                Debug.Log("Damage player with: " + dmg.damageValue);
                 var x = other.GetComponent<vThirdPersonController>();
                 x.TakeDamage(dmg);
-                Debug.Log(x);
-
             }
         }
 

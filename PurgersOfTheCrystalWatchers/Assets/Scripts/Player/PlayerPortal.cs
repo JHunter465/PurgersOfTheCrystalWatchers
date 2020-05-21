@@ -55,7 +55,7 @@ public class PlayerPortal : MonoBehaviour
         {
             Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 1.8f, transform.position.z), CameraTransform.forward * hit.distance, Color.magenta);
         }
-        Debug.Log(hit.point);
+
         Quaternion dir = Quaternion.FromToRotation(new Vector3(transform.forward.x, transform.forward.y, transform.forward.z + 90), hit.normal);
 
         GameObject Portal = objectPooler.SpawnFromPool("Portal", new Vector3(hit.point.x, hit.point.y, hit.point.z), dir);

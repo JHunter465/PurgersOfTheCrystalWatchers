@@ -24,8 +24,6 @@ namespace POTCW
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
-
-            Debug.Log("Start Shield Slam");
             return State.IN_PROGRESS;
         }
 

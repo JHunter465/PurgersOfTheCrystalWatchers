@@ -39,7 +39,6 @@ namespace POTCW
 
         public void CollectMinion(Dictionary<int, MinionType> incoming)
         {
-            Debug.Log("Inside collect minion event");
             //Fist reset al barriers so we are sure the player is not able to change the boss mode
 
 

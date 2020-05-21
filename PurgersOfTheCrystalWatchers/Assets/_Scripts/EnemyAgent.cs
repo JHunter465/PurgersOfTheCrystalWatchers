@@ -115,7 +115,6 @@ namespace POTCW
             ShockWaveTriggerObject.SetActive(false);
             Globals.BossBlackBoard = board;
 
-            Debug.Log("EnemyAgentAwakes with blackboard:  " + board);
         }
 
         private void Start()
@@ -142,7 +141,6 @@ namespace POTCW
 
         private void FindClosestPlayer()
         {
-            Debug.Log("Find Closest Player");
 
             GameObject currentClosePlayer;
             

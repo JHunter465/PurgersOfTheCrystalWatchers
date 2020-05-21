@@ -44,7 +44,6 @@ namespace POTCW
                     Vector3 deltaPos = board.EnemyAgent.transform.position - board.EnemyAgent.Player.transform.position;
                     Vector3 tmpPosition = board.EnemyAgent.transform.position;
                     //We use navmesh to move the enemy agent right now
-                    Debug.Log("Jump at player");
                     //board.EnemyAgent.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0,1,1) * step);
                     board.EnemyAgent.NavMeshAgent.SetDestination(board.EnemyAgent.Player.transform.position);
                     //board.EnemyAgent.transform.position = Vector3.MoveTowards(tmpPosition, board.EnemyAgent.Player.transform.position, step);

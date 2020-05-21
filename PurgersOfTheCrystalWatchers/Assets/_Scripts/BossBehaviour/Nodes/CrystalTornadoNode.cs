@@ -25,7 +25,6 @@ namespace POTCW
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
 
-            Debug.Log("Start Crystal Tornado");
             return State.IN_PROGRESS;
         }
 
