@@ -7866,47 +7866,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Feet Gnawer (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
---- !u!1 &454590098 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
-    type: 3}
-  m_PrefabInstance: {fileID: 454590097}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &454590099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454590098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7d5d6ad68172f4eb20fb7e613fa70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 5.5
-  RotationSpeed: 8
-  StopDistance: 0.5
-  slowDistance: 1
-  slowPercentage: 10
-  buttonsPressesForRelease: 0
-  AntiSlowKey:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: Horizontal
-    keyboardAxis: 0
-    joystick: LeftAnalogHorizontal
-    joystickAxis: 0
-    mobile: Horizontal
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
-    buttomTimer: 0
-    inButtomTimer: 0
 --- !u!4 &454590107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
@@ -30015,7 +29976,7 @@ PrefabInstance:
     - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
       propertyPath: PortalInput.joystick
-      value: A
+      value: D-Pad Horizontal
       objectReference: {fileID: 0}
     - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
@@ -30025,12 +29986,12 @@ PrefabInstance:
     - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
       propertyPath: VoidInput.joystickAxis
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
       propertyPath: PortalInput.joystickAxis
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
@@ -30040,6 +30001,16 @@ PrefabInstance:
     - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
       propertyPath: PortalInput.keyboardAxisInvert
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
+        type: 3}
+      propertyPath: VoidInput.joystick
+      value: D-Pad Vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202223165131757151, guid: 608efa7f31552f047804ebad13574699,
+        type: 3}
+      propertyPath: VoidInput.joystickAxisInvert
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3202223165868845117, guid: 608efa7f31552f047804ebad13574699,
@@ -30270,25 +30241,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4998794260279332104, guid: 557e36594daa90341b7297ec577646a1,
-        type: 3}
-      propertyPath: BaseSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998794260279332104, guid: 557e36594daa90341b7297ec577646a1,
-        type: 3}
-      propertyPath: ExplosionDamage
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 8362252430132896951, guid: 557e36594daa90341b7297ec577646a1,
         type: 3}
       propertyPath: m_Name
       value: Unstable Crystal Golem
-      objectReference: {fileID: 0}
-    - target: {fileID: 8362252430132896951, guid: 557e36594daa90341b7297ec577646a1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 557e36594daa90341b7297ec577646a1, type: 3}
