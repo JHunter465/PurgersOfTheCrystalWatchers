@@ -23,12 +23,11 @@ namespace POTCW
         protected override BehaviourNode<EnemyAgent> GetRootNode()
         {
 
-
             specialMovesOpenTerrainMode = new BehaviourNode<EnemyAgent>[]
             {
                 new CrystalTornadoNode(board),
                 new AoEShieldSlamNode(board),
-                new SummonNode(board)
+                new SummonNode(board, board.EnemyAgent.MinionSpawnAmount)
             };
 
             specialMovesPlatformMode = new BehaviourNode<EnemyAgent>[] 
@@ -60,8 +59,8 @@ namespace POTCW
                 new Selection<EnemyAgent>(ctx => !DoSpecialMove(GetActiveSelectedSpecialMoves()),
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
-                        new FireProjectileNode(board),
-                        new SummonNode(board),
+                        new FireProjectileNode(board),                        
+                        new SummonNode(board, board.EnemyAgent.MinionSpawnAmount/2),
                             new SelectorNode<EnemyAgent>(
                                 new Selection<EnemyAgent>(ctx => PlayerDistanceCheck(board.EnemyAgent.PlayerCloseRange),
                                     new JabLegNode(board))))),

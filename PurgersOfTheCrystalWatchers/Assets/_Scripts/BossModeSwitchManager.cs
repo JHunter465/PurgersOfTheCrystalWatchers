@@ -40,8 +40,6 @@ namespace POTCW
         public void CollectMinion(Dictionary<int, MinionType> incoming)
         {
             //Fist reset al barriers so we are sure the player is not able to change the boss mode
-
-
             PuzzleElement container = null;
             MinionCollectContainer minionCollectContainer = null;
 
