@@ -58,7 +58,8 @@ namespace POTCW
         public List<Transform> PatrolPoints;
         public int PatrolIndex = 0;
         public Transform LookTransform;
-        public int MaxHealth = 1000;
+        public float CurrentHealth = 1000;
+        public float MaxHealth = 1000;
         public List<CrystalContainer> CrystalsInAreas;
         public SpecialMode CurrentArea;
 
@@ -80,7 +81,7 @@ namespace POTCW
         public GameObject ShockWaveTriggerObject;
         public float TornadoLifeTime = 10f;
         public GameObject CrystalTornadoPrefab;
-        public int SpecialAttackAmount = 3;
+        public int MinionSpawnAmount = 10;
 
         [Header("Mode2 (Platform Area) Data")]
         public List<Transform> Platforms;
@@ -122,7 +123,7 @@ namespace POTCW
             if(GetComponent<vHealthController>() != null)
             {
                 CurrentVHealthController = GetComponent<vHealthController>();
-                CurrentVHealthController.ChangeHealth(MaxHealth);
+                CurrentVHealthController.ChangeHealth((int)CurrentHealth);
             }
 
             //Get all platforms in scene that can be dynamically used
@@ -205,6 +206,7 @@ namespace POTCW
 
 
             RotateAgent(LookTransform);
+            DestroyAllCrystalsInCurrentArea(25);
 
             /*This needs cleaning*/
             //This is for the pull
@@ -229,13 +231,16 @@ namespace POTCW
 
         public void DestroyAllCrystalsInCurrentArea(float percentage)
         {
-            if (CurrentVHealthController.currentHealth < MaxHealth - (MaxHealth/100*percentage))
+            var tmpHP = CurrentHealth - (MaxHealth / 100 * percentage);
+            if (CurrentVHealthController.currentHealth < tmpHP)
             {
-                CrystalContainer currentCrystalsInArea = CrystalsInAreas.Find(cia => cia.Area == SpecialModeActive);
+                //CurrentHealth = tmpHP;
+                CrystalContainer currentCrystalsInArea = CrystalsInAreas.Find(cia => cia.Area == CurrentArea);
                 foreach(Crystal crystal in currentCrystalsInArea.AllCrystalsInArea)
                 {
                     //Destroy all crystals in current area
-                    crystal.Die();
+                    //crystal.Die();
+                    crystal.gameObject.SetActive(false);
                 }
             }
         }
@@ -296,6 +301,18 @@ namespace POTCW
                 return false;
         }
 
+
+        public int GetPlayerDistanceFromBoss()
+        {
+            if (!PlayerDistanceCheck(this.transform, PlayerFarRange))
+                return 0;
+            else if (!PlayerDistanceCheck(this.transform, PlayerCloseRange))
+                return 1;
+            else if (PlayerDistanceCheck(this.transform, PlayerCloseRange))
+                return 2;
+            else
+                return 0;
+        }
 
         /// <summary>
         /// Returns the current platform search choice
