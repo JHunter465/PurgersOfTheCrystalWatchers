@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &756495610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 756495611}
+  - component: {fileID: 756495612}
+  - component: {fileID: 2897201119829206081}
+  m_Layer: 20
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &756495611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756495610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4780546400123426468}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &756495612
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756495610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2897201119829206081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756495610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bcbb1e645cf59549b45b42dd193b73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &136970649083577234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,7 +1937,6 @@ GameObject:
   - component: {fileID: 3554457908335282391}
   - component: {fileID: 3554457908335282390}
   - component: {fileID: 3554457908335282393}
-  - component: {fileID: 4998794260279332103}
   - component: {fileID: 4998794260279332104}
   m_Layer: 9
   m_Name: Unstable Crystal Golem
@@ -1902,6 +1958,7 @@ Transform:
   m_Children:
   - {fileID: 2933030364976033993}
   - {fileID: 84411083892776830}
+  - {fileID: 756495611}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2015,19 +2072,6 @@ MonoBehaviour:
   selectedToolbar: 0
   defaultDamageEffect: {fileID: 0}
   customDamageEffects: []
---- !u!135 &4998794260279332103
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8362252430132896951}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4998794260279332104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,9 +2084,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade6fcdc65ab42046a91b43946ec790b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMinionType: 0
+  player: {fileID: 0}
   BaseSpeed: 5
   RotationSpeed: 1.5
   StopDistance: 1.5
+  animator: {fileID: 0}
+  distanceTrigger: {fileID: 2897201119829206081}
   ExplosionDistance: 1.5
   ExplosionDamage: 40
   materialHolder: {fileID: 9147534380945570289}

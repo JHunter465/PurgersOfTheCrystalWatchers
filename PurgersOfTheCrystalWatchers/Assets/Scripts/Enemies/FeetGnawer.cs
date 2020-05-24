@@ -19,26 +19,11 @@ namespace POTCW
 
         private bool slowed;
 
-        protected override void OnTriggerStay(Collider other)
-        {
-            if (!slowed)
-            {
-                base.OnTriggerStay(other);
-            }
-        }
-
-        protected override void OnTriggerExit(Collider other)
-        {
-            if (!slowed)
-            {
-                base.OnTriggerExit(other);
-            }
-        }
-
         protected override void OnEnable()
         {
             base.OnEnable();
             currentSpeed = BaseSpeed;
+            distanceTrigger.gameObject.SetActive(true);
         }
 
         protected override void Update()
@@ -85,6 +70,7 @@ namespace POTCW
 
         private void SlowPlayer()
         {
+            distanceTrigger.gameObject.SetActive(false);
             GetComponent<CapsuleCollider>().enabled = false;
             transform.parent = player.transform;
             controller = player.GetComponent<vThirdPersonController>();

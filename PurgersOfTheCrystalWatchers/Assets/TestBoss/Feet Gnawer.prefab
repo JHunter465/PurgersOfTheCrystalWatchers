@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &48630693847721545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5056049018845868894}
+  - component: {fileID: 82653522995859891}
+  - component: {fileID: 4511617655887743773}
+  m_Layer: 20
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5056049018845868894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48630693847721545}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 4914170632278873631}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &82653522995859891
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48630693847721545}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4511617655887743773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48630693847721545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bcbb1e645cf59549b45b42dd193b73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &249103651110967537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,9 +1937,7 @@ GameObject:
   - component: {fileID: 3978566447028078700}
   - component: {fileID: 3978566447028078701}
   - component: {fileID: 3978566447028078690}
-  - component: {fileID: 4844190246452366780}
   - component: {fileID: 5545481061924122392}
-  - component: {fileID: 454590099}
   m_Layer: 9
   m_Name: Feet Gnawer
   m_TagString: Enemy
@@ -1903,6 +1958,7 @@ Transform:
   m_Children:
   - {fileID: 3373611924046884978}
   - {fileID: 526550444681093061}
+  - {fileID: 5056049018845868894}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2016,19 +2072,6 @@ MonoBehaviour:
   selectedToolbar: 0
   defaultDamageEffect: {fileID: 0}
   customDamageEffects: []
---- !u!135 &4844190246452366780
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244399867644175372}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5545481061924122392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2042,9 +2085,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMinionType: 1
+  player: {fileID: 0}
   BaseSpeed: 5.5
   RotationSpeed: 8
   StopDistance: 0.5
+  animator: {fileID: 0}
+  distanceTrigger: {fileID: 4511617655887743773}
   slowDistance: 0.6
   slowPercentage: 12
   buttonsPressesForRelease: 7
@@ -2054,38 +2100,6 @@ MonoBehaviour:
     keyboard: Horizontal
     keyboardAxis: 0
     joystick: B
-    joystickAxis: 0
-    mobile: Horizontal
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
-    buttomTimer: 0
-    inButtomTimer: 0
---- !u!114 &454590099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244399867644175372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7d5d6ad68172f4eb20fb7e613fa70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 5.5
-  RotationSpeed: 8
-  StopDistance: 0.5
-  slowDistance: 1
-  slowPercentage: 10
-  buttonsPressesForRelease: 0
-  AntiSlowKey:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: Horizontal
-    keyboardAxis: 0
-    joystick: LeftAnalogHorizontal
     joystickAxis: 0
     mobile: Horizontal
     mobileAxis: 0

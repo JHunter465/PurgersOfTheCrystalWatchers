@@ -3819,6 +3819,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2140528272}
     m_Modifications:
+    - target: {fileID: 2055639334329839555, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3832,7 +3837,7 @@ PrefabInstance:
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.379999
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
@@ -3881,46 +3886,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
+    - {fileID: 454590099, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
---- !u!1 &223406498 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
-    type: 3}
-  m_PrefabInstance: {fileID: 223406497}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &223406499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223406498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7d5d6ad68172f4eb20fb7e613fa70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMinionType: 0
-  BaseSpeed: 5.5
-  RotationSpeed: 8
-  StopDistance: 0.5
-  slowDistance: 1
-  slowPercentage: 10
-  buttonsPressesForRelease: 0
-  AntiSlowKey:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: Horizontal
-    keyboardAxis: 0
-    joystick: LeftAnalogHorizontal
-    joystickAxis: 0
-    mobile: Horizontal
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
-    buttomTimer: 0
-    inButtomTimer: 0
 --- !u!4 &223406507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
@@ -4747,6 +4714,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2140528272}
     m_Modifications:
+    - target: {fileID: 2055639334329839555, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4760,7 +4732,7 @@ PrefabInstance:
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.940001
+      value: 2.2399986
       objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
@@ -4809,46 +4781,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
+    - {fileID: 454590099, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
---- !u!1 &255290360 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
-    type: 3}
-  m_PrefabInstance: {fileID: 255290359}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &255290361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255290360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7d5d6ad68172f4eb20fb7e613fa70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMinionType: 0
-  BaseSpeed: 5.5
-  RotationSpeed: 8
-  StopDistance: 0.5
-  slowDistance: 1
-  slowPercentage: 10
-  buttonsPressesForRelease: 0
-  AntiSlowKey:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: Horizontal
-    keyboardAxis: 0
-    joystick: LeftAnalogHorizontal
-    joystickAxis: 0
-    mobile: Horizontal
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
-    buttomTimer: 0
-    inButtomTimer: 0
 --- !u!4 &255290369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
@@ -6925,6 +6859,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2140528272}
     m_Modifications:
+    - target: {fileID: 2055639334329839555, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6938,7 +6877,7 @@ PrefabInstance:
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.379999
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
@@ -6987,46 +6926,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
+    - {fileID: 454590099, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
---- !u!1 &412778825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
-    type: 3}
-  m_PrefabInstance: {fileID: 412778824}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &412778826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412778825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7d5d6ad68172f4eb20fb7e613fa70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMinionType: 0
-  BaseSpeed: 5.5
-  RotationSpeed: 8
-  StopDistance: 0.5
-  slowDistance: 1
-  slowPercentage: 10
-  buttonsPressesForRelease: 0
-  AntiSlowKey:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: Horizontal
-    keyboardAxis: 0
-    joystick: LeftAnalogHorizontal
-    joystickAxis: 0
-    mobile: Horizontal
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
-    buttomTimer: 0
-    inButtomTimer: 0
 --- !u!4 &412778834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
@@ -7809,6 +7710,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2140528272}
     m_Modifications:
+    - target: {fileID: 2055639334329839555, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7822,7 +7728,7 @@ PrefabInstance:
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.940001
+      value: 2.2399986
       objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
@@ -7871,46 +7777,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
+    - {fileID: 454590099, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
---- !u!1 &454590098 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
-    type: 3}
-  m_PrefabInstance: {fileID: 454590097}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &454590099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454590098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7d5d6ad68172f4eb20fb7e613fa70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMinionType: 0
-  BaseSpeed: 5.5
-  RotationSpeed: 8
-  StopDistance: 0.5
-  slowDistance: 1
-  slowPercentage: 10
-  buttonsPressesForRelease: 0
-  AntiSlowKey:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: Horizontal
-    keyboardAxis: 0
-    joystick: LeftAnalogHorizontal
-    joystickAxis: 0
-    mobile: Horizontal
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
-    buttomTimer: 0
-    inButtomTimer: 0
 --- !u!4 &454590107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
@@ -27848,6 +27716,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2140528272}
     m_Modifications:
+    - target: {fileID: 2055639334329839555, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27861,7 +27734,7 @@ PrefabInstance:
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.93
+      value: 5.249999
       objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
@@ -27910,46 +27783,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
+    - {fileID: 454590099, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
---- !u!1 &1974936977 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1974936976}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1974936978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974936977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7d5d6ad68172f4eb20fb7e613fa70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMinionType: 0
-  BaseSpeed: 5.5
-  RotationSpeed: 8
-  StopDistance: 0.5
-  slowDistance: 1
-  slowPercentage: 10
-  buttonsPressesForRelease: 0
-  AntiSlowKey:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: Horizontal
-    keyboardAxis: 0
-    joystick: LeftAnalogHorizontal
-    joystickAxis: 0
-    mobile: Horizontal
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
-    buttomTimer: 0
-    inButtomTimer: 0
 --- !u!4 &1974936986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
@@ -30287,7 +30122,7 @@ PrefabInstance:
     - target: {fileID: 7853053390952073431, guid: c95779fa0aed56a44811df5431b2f7c5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -56.5
       objectReference: {fileID: 0}
     - target: {fileID: 7853053390952073431, guid: c95779fa0aed56a44811df5431b2f7c5,
         type: 3}
@@ -30639,25 +30474,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4998794260279332104, guid: 557e36594daa90341b7297ec577646a1,
-        type: 3}
-      propertyPath: BaseSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998794260279332104, guid: 557e36594daa90341b7297ec577646a1,
-        type: 3}
-      propertyPath: ExplosionDamage
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 8362252430132896951, guid: 557e36594daa90341b7297ec577646a1,
         type: 3}
       propertyPath: m_Name
       value: Unstable Crystal Golem
-      objectReference: {fileID: 0}
-    - target: {fileID: 8362252430132896951, guid: 557e36594daa90341b7297ec577646a1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 557e36594daa90341b7297ec577646a1, type: 3}
@@ -30687,7 +30507,7 @@ PrefabInstance:
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.93
+      value: 2.159999
       objectReference: {fileID: 0}
     - target: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
         type: 3}
@@ -30734,48 +30554,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Feet Gnawer
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
---- !u!1 &5545481061924122391 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
-    type: 3}
-  m_PrefabInstance: {fileID: 4511617655887743771}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5545481061924122392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5545481061924122391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7d5d6ad68172f4eb20fb7e613fa70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMinionType: 0
-  BaseSpeed: 5.5
-  RotationSpeed: 8
-  StopDistance: 0.5
-  slowDistance: 1
-  slowPercentage: 10
-  buttonsPressesForRelease: 0
-  AntiSlowKey:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: Horizontal
-    keyboardAxis: 0
-    joystick: LeftAnalogHorizontal
-    joystickAxis: 0
-    mobile: Horizontal
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
-    buttomTimer: 0
-    inButtomTimer: 0
 --- !u!4 &5545481061924122400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4914170632278873631, guid: 0a0810459bc2bd94ea225a86b7706efd,
