@@ -29,6 +29,8 @@ namespace POTCW
         public List<Crystal> AllCrystalsInArea;
     }
 
+    [RequireComponent(typeof(Rigidbody),typeof(NavMeshAgent),typeof(CapsuleCollider))]
+    [RequireComponent(typeof(vHealthController), typeof(vHitDamageParticle))]
     public class EnemyAgent : MonoBehaviour
     {
         [Header("Debugging")]
