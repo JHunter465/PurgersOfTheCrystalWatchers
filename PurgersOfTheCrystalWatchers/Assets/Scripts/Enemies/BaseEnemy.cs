@@ -10,7 +10,7 @@ namespace POTCW
         [SerializeField] private MinionType currentMinionType;
 
         //References
-        protected Transform player;
+        public Transform player;
 
         //Variables
         [SerializeField] protected float BaseSpeed, RotationSpeed, StopDistance;
@@ -18,7 +18,9 @@ namespace POTCW
         protected float currentSpeed;
 
         //Components
-        protected Animator animator;
+        public Animator animator;
+
+        [SerializeField] protected EnemyTrigger distanceTrigger;
 
         protected virtual void Awake()
         {
@@ -39,24 +41,6 @@ namespace POTCW
         public MinionType GetMinionType()
         {
             return currentMinionType;
-        }
-
-        protected virtual void OnTriggerStay(Collider other)
-        {
-            if (player == null && other.tag == "Player")
-            {
-                animator.SetBool("Running", true);
-                player = other.transform;
-            }
-        }
-
-        protected virtual void OnTriggerExit(Collider other)
-        {
-            if (other.tag == "Player")
-            {
-                animator.SetBool("Running", false);
-                player = null;
-            }
         }
 
         protected virtual void Update()
