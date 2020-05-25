@@ -41,8 +41,11 @@ namespace POTCW
                     new Selection<EnemyAgent>(ctx => PlatformsAliveCheck(),
                         new SequenceNode<EnemyAgent>(
                             new FindPlatformNode(board),
+                            new AoEProjectileSpawnNode(board),
                             new KristalCanonNode(board)))),
-                new AoEProjectilesNode(board)
+                new SequenceNode<EnemyAgent>(
+                    new AoEProjectileSpawnNode(board),
+                    new AoEProjectilesNode(board))
             };
 
             specialMovesNarrowClifsMode = new BehaviourNode<EnemyAgent>[]
