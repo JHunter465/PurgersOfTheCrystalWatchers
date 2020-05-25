@@ -25,8 +25,6 @@ namespace POTCW
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length+board.EnemyAgent.TimeBetweenNodes);
 
-
-           // Debug.Log("Start Leap + animation lenght: "+ currentClipInfo[0].clip.length);
             return State.IN_PROGRESS;
         }
 
@@ -50,7 +48,6 @@ namespace POTCW
                     //blackBoard.Boss.transform.LerpTransform(blackBoard.Boss, blackBoard.Player.transform.position, blackBoard.BossMovementSpeed);
                     //blackBoard.Boss.transform.position = Vector3.Lerp(blackBoard.Boss.transform.position, blackBoard.Player.transform.position, step);
                     return State.IN_PROGRESS;
-
                 }
                 else
                     return State.SUCCESS;

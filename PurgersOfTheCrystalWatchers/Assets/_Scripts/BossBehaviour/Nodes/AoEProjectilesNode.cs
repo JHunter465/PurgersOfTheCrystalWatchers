@@ -20,12 +20,11 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
-            board.AnimatorController.SetTrigger(Globals.BOSS_YEETPLATFORM_ANIMATORBOOL);
+            board.AnimatorController.SetTrigger(Globals.BOSS_AOEBARRAGE_ANIMATORBOOL);
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
-
-           
+      
             return State.IN_PROGRESS;
         }
 

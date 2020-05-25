@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timers;
-using BasHelpers;
 
 namespace POTCW
 {
-    public class KristalCanonNode : BehaviourNode<EnemyAgent>
+    public class AoEProjectileSpawnNode : BehaviourNode<EnemyAgent>
     {
         EnemyBlackBoard board;
         private bool check = false;
         AnimatorClipInfo[] currentClipInfo;
 
-        public KristalCanonNode(EnemyBlackBoard board)
+        public AoEProjectileSpawnNode(EnemyBlackBoard board)
         {
             this.board = board;
         }
@@ -20,11 +19,11 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
-            board.AnimatorController.SetTrigger(Globals.BOSS_DESTROYPLATFORM_ANIMATORBOOL);
+            board.AnimatorController.SetTrigger(Globals.BOSS_AOEBARRAGE_ANIMATORBOOL);
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
-            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
+            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
             return State.IN_PROGRESS;
         }
@@ -34,16 +33,15 @@ namespace POTCW
         {
             if (check)
             {
-                //Destroy platform 
-                GameObject destroyPlatformParticle = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.DestroyPlatformParticleEffect.name, board.EnemyAgent.CurrentSelectedPlatform.transform.position, Quaternion.identity);
-                board.EnemyAgent.CurrentSelectedPlatform.gameObject.DeactivateAfterTime(board.EnemyAgent, 1f);
-                board.EnemyAgent.Platforms.Remove(board.EnemyAgent.CurrentSelectedPlatform);
                 return State.SUCCESS;
             }
             else
             {
                 //Do some visuals to show we are shooting at a platform
-
+                for (int i = 0; i < board.EnemyAgent.AoEProjectilesAmount; i++)
+                {
+                    GameObject aoEProjectile = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.ProjectilePrefab.name, board.EnemyAgent.ProjectileSpawn.transform.position, board.EnemyAgent.ProjectileSpawn.transform.rotation);
+                }
                 return State.IN_PROGRESS;
             }
         }
