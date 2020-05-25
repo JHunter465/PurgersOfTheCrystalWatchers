@@ -384,6 +384,7 @@ namespace Invector.vCharacterController
         {
             currentStamina += value;
             currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+            uIController.AddStamina(value);
         }
 
         /// <summary>

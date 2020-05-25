@@ -29,6 +29,11 @@ namespace POTCW
         {
             crystalBar.value -= value;
         }
+
+        public void AddStamina(float value)
+        {
+            crystalBar.value += value;
+        }
     }
 }
 
