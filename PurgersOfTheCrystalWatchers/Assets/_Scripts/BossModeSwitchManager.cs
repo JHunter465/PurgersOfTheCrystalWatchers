@@ -45,7 +45,6 @@ namespace POTCW
 
             foreach(KeyValuePair<int, MinionType> keyValuePair in incoming)
             {
-
                 container = BossModeSwitchSides?.Find(bmss => bmss.ID == keyValuePair.Key);
                 minionCollectContainer = container.MinionCollectContainers?.Find(mcc => mcc.MinionType == keyValuePair.Value);
             }
@@ -53,10 +52,9 @@ namespace POTCW
             if (container == null) return;
             if (minionCollectContainer == null) return;
 
-            //Debug.Log("CollectMinion: " + minionCollectContainer.MinionType + "we have: "+ minioncoll);
-
             //Using list container
             minionCollectContainer.Collected++;
+            
             if(minionCollectContainer.MinionsNeeded == minionCollectContainer.Collected)
             {
                 //Unlock this minionType puzzle element

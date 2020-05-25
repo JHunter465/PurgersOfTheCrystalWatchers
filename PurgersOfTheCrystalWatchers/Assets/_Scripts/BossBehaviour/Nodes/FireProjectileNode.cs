@@ -32,7 +32,7 @@ namespace POTCW
             //Use line renderer to determine and show player where the laser will be going
             board.EnemyAgent.ProjectileSpawn.SetActive(true);
             lineRenderer = board.EnemyAgent.ProjectileSpawn.GetComponent<LineRenderer>();
-            lineRenderer.positionCount = board.EnemyAgent.LineRendererLenght;
+            //lineRenderer.positionCount = board.EnemyAgent.LineRendererLenght;
             float alpha =0.4f;
             Gradient gradient = new Gradient();
             gradient.SetKeys(
@@ -52,8 +52,9 @@ namespace POTCW
                 board.EnemyAgent.ProjectileSpawn.SetActive(false);
 
                 GameObject projectile = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.ProjectilePrefab.name, board.EnemyAgent.ProjectileSpawn.transform.position, board.EnemyAgent.ProjectileSpawn.transform.rotation);
-                
-                projectile.GetComponent<Rigidbody>().AddRelativeForce(projectile.transform.forward * board.EnemyAgent.ProjectileForceSpeed);
+
+                projectile.GetComponent<Projectile>().ProjectileSpeed = board.EnemyAgent.ProjectileSpeed;
+                //projectile.GetComponent<Rigidbody>().AddRelativeForce(projectile.transform.forward * board.EnemyAgent.ProjectileForceSpeed);
 
                 return State.SUCCESS;
             }
@@ -61,12 +62,15 @@ namespace POTCW
             {
                 if(lineRenderer != null)
                 {
+                    lineRenderer.SetPosition(0, board.EnemyAgent.ProjectileSpawn.transform.position);
+                    lineRenderer.SetPosition(1, board.EnemyAgent.Player.transform.position);
+                    /*
                     var points = new Vector3[board.EnemyAgent.LineRendererLenght];
                     for(int i = 0; i < board.EnemyAgent.LineRendererLenght; i++)
                     {
                         points[i] = board.EnemyAgent.ProjectileSpawn.transform.position + board.EnemyAgent.ProjectileSpawn.transform.forward * i;
                     }
-                    lineRenderer.SetPositions(points);
+                    lineRenderer.SetPositions(points);*/
                 }
                 return State.IN_PROGRESS;
             }

@@ -32,6 +32,8 @@ namespace POTCW
         {
             Vector3 enemyAgentPosition = board.EnemyAgent.transform.position;
             Vector3 playerPosition = board.EnemyAgent.Player.transform.position;
+            //EventManager<int>.BroadCast(EVENT.GetPlayerDistance, board.EnemyAgent.GetPlayerDistanceFromBoss());
+
             if (Vector3.Distance(enemyAgentPosition, playerPosition) > board.EnemyAgent.PlayerCloseRange)
             {
                 if (Vector3.Distance(enemyAgentPosition.ToZeroY(), board.EnemyAgent.PatrolPoints[board.EnemyAgent.PatrolIndex].transform.position.ToZeroY()) < 10f)
@@ -39,7 +41,6 @@ namespace POTCW
 
                     if (board.EnemyAgent.PatrolIndex < board.EnemyAgent.PatrolPoints.Count - 1)
                     {
-                        EventManager<int>.BroadCast(EVENT.GetPlayerDistance, board.EnemyAgent.GetPlayerDistanceFromBoss());
                         board.EnemyAgent.PatrolIndex++;
                     }
                     else

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 171377608}
   - component: {fileID: 171377607}
   - component: {fileID: 171377610}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171377605}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 618178160}
   - component: {fileID: 618178159}
   - component: {fileID: 618178162}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618178157}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 691395470}
   - component: {fileID: 691395469}
   - component: {fileID: 691395472}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691395467}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 819274044}
   - component: {fileID: 819274043}
   - component: {fileID: 819274046}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819274041}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 984310381}
   - component: {fileID: 984310380}
   - component: {fileID: 984310383}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984310378}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 1075849739}
   - component: {fileID: 1075849738}
   - component: {fileID: 1075849741}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075849736}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 1155772078}
   - component: {fileID: 1155772077}
   - component: {fileID: 1155772080}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +743,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155772075}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 2064228867}
   - component: {fileID: 2064228866}
   - component: {fileID: 2064228869}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +852,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064228864}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 2100108902}
   - component: {fileID: 2100108901}
   - component: {fileID: 2100108904}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MinionPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +961,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100108899}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
