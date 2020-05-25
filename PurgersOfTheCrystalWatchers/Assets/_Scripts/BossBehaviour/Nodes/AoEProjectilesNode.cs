@@ -37,7 +37,8 @@ namespace POTCW
                 //AoE Projectile Rain Attack
                 for (int i = 0; i < board.EnemyAgent.AoEProjectilesAmount; i++)
                 {
-                    GameObject aoEProjectile = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.ProjectilePrefab.name, board.EnemyAgent.AoEProjectileRainSpawn.position, Quaternion.identity);
+                    GameObject aoEProjectile = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.ProjectilePrefab.name, board.EnemyAgent.AoEProjectileRainSpawn.position, board.EnemyAgent.AoEProjectileRainSpawn.rotation);
+                    
                 }
                 return State.SUCCESS;
             }

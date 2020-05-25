@@ -113,7 +113,7 @@ MonoBehaviour:
     tags:
     - Player
   Damage: 10
-  LifeTime: 5
+  LifeTime: 3
   DeactivateAfterAwake: 1
 --- !u!114 &7559403909918816672
 MonoBehaviour:

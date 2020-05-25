@@ -24,7 +24,7 @@ namespace POTCW
             container.Add(ID, RequiredMinionType);
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.HasComponent<IMinion>())
             {

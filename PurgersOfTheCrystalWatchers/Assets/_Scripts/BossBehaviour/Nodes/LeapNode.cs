@@ -39,7 +39,7 @@ namespace POTCW
             {
                 if (Vector3.Distance(board.EnemyAgent.transform.position, board.EnemyAgent.Player.transform.position) > board.EnemyAgent.PlayerCloseRange)
                 {
-                    float step = board.EnemyAgent.ProjectileForceSpeed*Time.deltaTime;
+                    float step = board.EnemyAgent.ProjectileSpeed*Time.deltaTime;
                     //step by step move towards the player
                     Vector3 deltaPos = board.EnemyAgent.transform.position - board.EnemyAgent.Player.transform.position;
                     Vector3 tmpPosition = board.EnemyAgent.transform.position;
