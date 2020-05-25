@@ -279,12 +279,10 @@ namespace POTCW
         {
             if (ThresHold >= ReachedThresHold-3)
             {
-                //Debug.Log("Threshold reached, do special");
                 return true;
             }
             else
             {
-                //Debug.Log("Standard behaviour running");
                 return false;
             }
         }
