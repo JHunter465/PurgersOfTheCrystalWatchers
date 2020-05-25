@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using POTCW;
 
 namespace Invector.vCharacterController
 {
@@ -231,6 +232,8 @@ namespace Invector.vCharacterController
         internal Rigidbody _rigidbody;                                                      // access the Rigidbody component
         internal PhysicMaterial frictionPhysics, maxFrictionPhysics, slippyPhysics;         // create PhysicMaterial for the Rigidbody
         internal CapsuleCollider _capsuleCollider;                                          // access CapsuleCollider information
+        [SerializeField] protected UIController uIController;
+
 
         #endregion
 
@@ -349,6 +352,8 @@ namespace Invector.vCharacterController
                 return;
 
             base.TakeDamage(damage);
+
+            uIController.ChangeHealth(damage.damageValue);
         }
 
         protected override void TriggerDamageReaction(vDamage damage)
@@ -378,6 +383,7 @@ namespace Invector.vCharacterController
         {
             currentStamina += value;
             currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+            uIController.ChangeStamina(value);
         }
 
         /// <summary>

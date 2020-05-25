@@ -2072,6 +2072,7 @@ MonoBehaviour:
   stepOffsetMinHeight: 0
   stepOffsetDistance: 0.1
   debugWindow: 0
+  uIController: {fileID: 0}
   applyingStepOffset: 0
   inputSmooth: {x: 0, y: 0, z: 0}
   moveDirection: {x: 0, y: 0, z: 0}
@@ -2595,12 +2596,12 @@ MonoBehaviour:
     isAxisInUse: 0
     keyboard: Horizontal
     keyboardAxis: 0
-    joystick: RT2
+    joystick: A2
     joystickAxis: 0
     mobile: Horizontal
     mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
+    joystickAxisInvert: 1
+    keyboardAxisInvert: 1
     mobileAxisInvert: 0
     buttomTimer: 0
     inButtomTimer: 0
