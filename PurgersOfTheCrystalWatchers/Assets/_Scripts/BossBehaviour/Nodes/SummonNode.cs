@@ -10,10 +10,12 @@ namespace POTCW
         EnemyBlackBoard board;
         private bool check = false;
         AnimatorClipInfo[] currentClipInfo;
+        private int amount;
 
-        public SummonNode(EnemyBlackBoard board)
+        public SummonNode(EnemyBlackBoard board, int amount)
         {
             this.board = board;
+            this.amount = amount;
         }
 
         //Called when the node is entered
@@ -22,7 +24,7 @@ namespace POTCW
             board.AnimatorController.ResetTrigger(Globals.BOSS_FIRING_ANIMATORBOOL);
             board.AnimatorController.SetTrigger(Globals.BOSS_SUMMON_ANIMATORBOOL);
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
-            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length + board.EnemyAgent.TimeBetweenNodes);
+            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
 
             //Debug.Log("Start Summon+ animation lenght: " + currentClipInfo[0].clip.length);
@@ -35,10 +37,14 @@ namespace POTCW
             if (check)
             {
                 //Spawn Minions
+                amount = amount / board.EnemyAgent.MinionSpawns.Count;
                 foreach (Transform spawn in board.EnemyAgent.MinionSpawns)
                 {
-                    GameObject minion = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.MinionPrefab.name, spawn.position, Quaternion.identity);
-                    minion.GetComponent<IMinion>().Init(board.EnemyAgent.Player);
+                    for(int i = 0; i < amount; i++)
+                    {
+                        GameObject minion = ObjectPooler.Instance.SpawnFromPool(board.EnemyAgent.MinionPrefab.name, spawn.position, Quaternion.identity);
+                        minion.GetComponent<IMinion>().Init(board.EnemyAgent.Player);                            
+                    }          
                 }
                 return State.SUCCESS;
             }

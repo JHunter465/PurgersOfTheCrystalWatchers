@@ -31,15 +31,17 @@ namespace POTCW
         public override State Update()
         {
             Vector3 enemyAgentPosition = board.EnemyAgent.transform.position;
-            Vector3 playerPosition = board.EnemyAgent.transform.position;
-            if (Vector3.Distance(enemyAgentPosition, playerPosition) < board.EnemyAgent.PlayerCloseRange)
+            Vector3 playerPosition = board.EnemyAgent.Player.transform.position;
+            if (Vector3.Distance(enemyAgentPosition, playerPosition) > board.EnemyAgent.PlayerCloseRange)
             {
                 if (Vector3.Distance(enemyAgentPosition.ToZeroY(), board.EnemyAgent.PatrolPoints[board.EnemyAgent.PatrolIndex].transform.position.ToZeroY()) < 10f)
                 {
-                    Debug.Log("Move to patrol point: " + board.EnemyAgent.PatrolIndex);
 
-                    if (board.EnemyAgent.PatrolIndex < board.EnemyAgent.PatrolPoints.Count-1)
+                    if (board.EnemyAgent.PatrolIndex < board.EnemyAgent.PatrolPoints.Count - 1)
+                    {
+                        EventManager<int>.BroadCast(EVENT.GetPlayerDistance, board.EnemyAgent.GetPlayerDistanceFromBoss());
                         board.EnemyAgent.PatrolIndex++;
+                    }
                     else
                         board.EnemyAgent.PatrolIndex = 0;
                 }

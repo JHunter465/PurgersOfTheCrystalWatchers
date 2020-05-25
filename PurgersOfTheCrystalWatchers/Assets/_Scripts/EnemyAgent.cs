@@ -4,6 +4,7 @@ using UnityEngine;
 using BasHelpers;
 using System.Linq;
 using UnityEngine.AI;
+using Invector;
 
 namespace POTCW
 {
@@ -18,6 +19,14 @@ namespace POTCW
         OpenTerrain = 0,
         PlatformArea = 1,
         NarrowClifs = 2,
+    }
+
+    [System.Serializable]
+    public class CrystalContainer
+    {
+        public string name;
+        public SpecialMode Area;
+        public List<Crystal> AllCrystalsInArea;
     }
 
     public class EnemyAgent : MonoBehaviour
@@ -49,6 +58,13 @@ namespace POTCW
         public List<Transform> PatrolPoints;
         public int PatrolIndex = 0;
         public Transform LookTransform;
+        public float CurrentHealth = 1000;
+        public float MaxHealth = 1000;
+        public List<CrystalContainer> CrystalsInAreas;
+        public SpecialMode CurrentArea;
+
+        [HideInInspector]
+        public vHealthController CurrentVHealthController;
 
         [Header("Minions Related")]
         public GameObject MinionPrefab;
@@ -65,8 +81,7 @@ namespace POTCW
         public GameObject ShockWaveTriggerObject;
         public float TornadoLifeTime = 10f;
         public GameObject CrystalTornadoPrefab;
-        public int SpecialAttackAmount = 3;
-
+        public int MinionSpawnAmount = 10;
 
         [Header("Mode2 (Platform Area) Data")]
         public List<Transform> Platforms;
@@ -105,6 +120,12 @@ namespace POTCW
                 NavMeshAgent.speed = MovementSpeed;
             }
 
+            if(GetComponent<vHealthController>() != null)
+            {
+                CurrentVHealthController = GetComponent<vHealthController>();
+                CurrentVHealthController.ChangeHealth((int)CurrentHealth);
+            }
+
             //Get all platforms in scene that can be dynamically used
             if(Platforms.Count < 1)
             {
@@ -132,16 +153,33 @@ namespace POTCW
             InvokeRepeating("FindClosestPlayer", 0.1f, PlayerSearchTime);
 
             EventManager<SpecialMode>.AddHandler(EVENT.SwitchBossSpecialModeType, SetActiveSpecialModeType);
+
+            EventManager<SpecialMode>.AddHandler(EVENT.SwitchInCurrentArea, SetInCurrentArea);
         }
 
+        /// <summary>
+        /// Setter for our current area
+        /// </summary>
+        /// <param name="area">Area we want to switch to</param>
+        public void SetInCurrentArea(SpecialMode area)
+        {
+            CurrentArea = area;
+        }
+
+        /// <summary>
+        /// Setter for our current active special mode 
+        /// </summary>
+        /// <param name="type">Incoming special mode type</param>
         public void SetActiveSpecialModeType(SpecialMode type)
         {
             SpecialModeActive = type;
         }
 
+        /// <summary>
+        /// Find closest player and set it to current targeted player
+        /// </summary>
         private void FindClosestPlayer()
         {
-
             GameObject currentClosePlayer;
             
             if(Player1 == null || Player2 == null)
@@ -166,11 +204,12 @@ namespace POTCW
             if(ThresHold > ReachedThresHold)
                 ThresHold = 0;
 
-            RotateAgent(LookTransform);
-            //var playerDistance = playerPos.position - animator.transform.position;
-            //Vector3 newDir = Vector3.RotateTowards(animator.transform.forward, playerDistance, step, 0.0f);
-            //transform.LookAt(Player.transform);
 
+            RotateAgent(LookTransform);
+            DestroyAllCrystalsInCurrentArea(25);
+
+            /*This needs cleaning*/
+            //This is for the pull
             if (board.EnemyAgent.GrabObject.activeSelf)
             {
                 if (Vector3.Distance(board.EnemyAgent.Player.transform.position, board.EnemyAgent.GrabObject.transform.position) < 3f)
@@ -180,7 +219,6 @@ namespace POTCW
                         GameObject plyr = board.EnemyAgent.Player;
                         //plyr.transform.parent = board.EnemyAgent.GrabObject.transform;
                         board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.FreezeAll;
-                        Debug.Log("Pull the player bitch");
                         plyr.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.GrabSpawn.transform.position, board.EnemyAgent.GrabSpeed);
                         PlayerInGrabRange = true;
                         StartCoroutine(ResetPlayerBody(GrabSpeed/10));
@@ -191,6 +229,26 @@ namespace POTCW
             }
         }
 
+        public void DestroyAllCrystalsInCurrentArea(float percentage)
+        {
+            var tmpHP = CurrentHealth - (MaxHealth / 100 * percentage);
+            if (CurrentVHealthController.currentHealth < tmpHP)
+            {
+                //CurrentHealth = tmpHP;
+                CrystalContainer currentCrystalsInArea = CrystalsInAreas.Find(cia => cia.Area == CurrentArea);
+                foreach(Crystal crystal in currentCrystalsInArea.AllCrystalsInArea)
+                {
+                    //Destroy all crystals in current area
+                    //crystal.Die();
+                    crystal.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Rotate the agent at given transform
+        /// </summary>
+        /// <param name="lookat">Transform to rotate towards</param>
         public void RotateAgent(Transform lookat)
         {
             var lookPos = lookat.transform.position - transform.position;
@@ -199,6 +257,11 @@ namespace POTCW
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDamping);
         }
 
+        /// <summary>
+        /// Resets the player constraints
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public IEnumerator ResetPlayerBody(float time)
         {
             yield return new WaitForSeconds(time);
@@ -206,6 +269,10 @@ namespace POTCW
             board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.FreezeRotation;
         }
 
+        /// <summary>
+        /// Keep track of the threshold to do a special move
+        /// </summary>
+        /// <returns></returns>
         public bool ThresHoldCheck()
         {
             if (ThresHold >= ReachedThresHold-3)
@@ -220,6 +287,12 @@ namespace POTCW
             }
         }
 
+        /// <summary>
+        /// Measure the distance between the player and given transform
+        /// </summary>
+        /// <param name="measureTransform">Transform to measure distance from </param>
+        /// <param name="range">Given range to check</param>
+        /// <returns></returns>
         public bool PlayerDistanceCheck(Transform measureTransform, float range)
         {
             if (Vector3.Distance(measureTransform.position, Player.transform.position) < range)
@@ -228,11 +301,31 @@ namespace POTCW
                 return false;
         }
 
+
+        public int GetPlayerDistanceFromBoss()
+        {
+            if (!PlayerDistanceCheck(this.transform, PlayerFarRange))
+                return 0;
+            else if (!PlayerDistanceCheck(this.transform, PlayerCloseRange))
+                return 1;
+            else if (PlayerDistanceCheck(this.transform, PlayerCloseRange))
+                return 2;
+            else
+                return 0;
+        }
+
+        /// <summary>
+        /// Returns the current platform search choice
+        /// </summary>
+        /// <returns></returns>
         public FindPlatformType GetYeetPlatformType()
         {
             return FindPlatformType;
         }
 
+        /// <summary>
+        /// Dissable this game object
+        /// </summary>
         public void Die()
         {
             this.gameObject.SetActive(false);
