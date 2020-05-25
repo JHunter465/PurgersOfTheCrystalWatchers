@@ -373,6 +373,7 @@ namespace Invector.vCharacterController
                 currentStamina = 0;
                 OnStaminaEnd.Invoke();
             }
+            uIController.ChangeStamina(value);
         }
 
         /// <summary>
@@ -383,7 +384,6 @@ namespace Invector.vCharacterController
         {
             currentStamina += value;
             currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
-            uIController.ChangeStamina(value);
         }
 
         /// <summary>
