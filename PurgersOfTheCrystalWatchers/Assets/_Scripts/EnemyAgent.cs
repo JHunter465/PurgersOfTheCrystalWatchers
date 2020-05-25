@@ -64,6 +64,7 @@ namespace POTCW
         public float MaxHealth = 1000;
         public List<CrystalContainer> CrystalsInAreas;
         public SpecialMode CurrentArea;
+        public int HPPercentageLostToDestroyCrystals = 25;
 
         [HideInInspector]
         public vHealthController CurrentVHealthController;
@@ -73,7 +74,7 @@ namespace POTCW
         public List<Transform> MinionSpawns;
 
         [Header("Projectile Related")]
-        public float ProjectileForceSpeed = 1000f;
+        public float ProjectileSpeed = 1000f;
         public GameObject ProjectilePrefab;
         public GameObject ProjectileSpawn;
         public int LineRendererLenght = 20;
@@ -152,7 +153,7 @@ namespace POTCW
             tree.Start(this, this);
 
             //Every PlayerSearchTime seconds update the closest player we want to target
-            InvokeRepeating("FindClosestPlayer", 0.1f, PlayerSearchTime);
+            //InvokeRepeating("FindClosestPlayer", 0.1f, PlayerSearchTime);
 
             EventManager<SpecialMode>.AddHandler(EVENT.SwitchBossSpecialModeType, SetActiveSpecialModeType);
 
@@ -206,9 +207,20 @@ namespace POTCW
             if(ThresHold > ReachedThresHold)
                 ThresHold = 0;
 
+            
+            if (Vector3.Distance(Player1.transform.position, this.transform.position) < Vector3.Distance(Player2.transform.position, this.transform.position))
+            {
+                Player = Player1;
+                LookTransform = Player.transform;
+            }
+            else
+            {
+                Player = Player2;
+                LookTransform = Player.transform;
+            }
 
             RotateAgent(LookTransform);
-            DestroyAllCrystalsInCurrentArea(25);
+            DestroyAllCrystalsInCurrentArea(HPPercentageLostToDestroyCrystals);
 
             /*This needs cleaning*/
             //This is for the pull
@@ -219,8 +231,9 @@ namespace POTCW
                     if (!PlayerInGrabRange)
                     {
                         GameObject plyr = board.EnemyAgent.Player;
+                        Rigidbody plyrBody = plyr.GetComponent<Rigidbody>();
                         //plyr.transform.parent = board.EnemyAgent.GrabObject.transform;
-                        board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.FreezeAll;
+                        plyrBody.constraints = RigidbodyConstraints.FreezeAll;
                         plyr.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.GrabSpawn.transform.position, board.EnemyAgent.GrabSpeed);
                         PlayerInGrabRange = true;
                         StartCoroutine(ResetPlayerBody(GrabSpeed/10));
@@ -267,8 +280,9 @@ namespace POTCW
         public IEnumerator ResetPlayerBody(float time)
         {
             yield return new WaitForSeconds(time);
-            board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.None;
-            board.EnemyAgent.PlayerBody.constraints = RigidbodyConstraints.FreezeRotation;
+            Rigidbody body = Player.GetComponent<Rigidbody>();
+            body.constraints = RigidbodyConstraints.None;
+            body.constraints = RigidbodyConstraints.FreezeRotation;
         }
 
         /// <summary>

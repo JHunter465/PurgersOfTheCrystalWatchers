@@ -3936,6 +3936,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Feet Gnawer (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
     - {fileID: 454590099, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
@@ -4830,6 +4835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Feet Gnawer (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
@@ -6975,6 +6985,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Feet Gnawer (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
     - {fileID: 454590099, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
@@ -7627,6 +7642,51 @@ PrefabInstance:
       propertyPath: GrabSpawn
       value: 
       objectReference: {fileID: 1808102595}
+    - target: {fileID: 7296662376586045820, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: ProjectileForceSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296662376586045820, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: ProjectileSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296662376586045820, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: SpecialModeActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296662376788118934, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: m_Positions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296662376788118935, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.21598558
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296662376788118935, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9763966
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296662376788118935, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 24.947
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296662376867704932, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296662376867704954, guid: f390c1c6c50562741841179586b56679,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7296662376983956125, guid: f390c1c6c50562741841179586b56679,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -8214,6 +8274,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Feet Gnawer (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
@@ -10994,7 +11059,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 272
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -11076,7 +11141,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 13.9, y: -262.3}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &685153404
 GameObject:
@@ -28829,6 +28894,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Feet Gnawer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4844190246452366771, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
     - {fileID: 454590099, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
@@ -31326,7 +31396,7 @@ PrefabInstance:
     - target: {fileID: 3202223165868845117, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50.23
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 3202223165868845117, guid: 608efa7f31552f047804ebad13574699,
         type: 3}
@@ -31631,6 +31701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Feet Gnawer
       objectReference: {fileID: 0}
+    - target: {fileID: 8244399867644175372, guid: 0a0810459bc2bd94ea225a86b7706efd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0810459bc2bd94ea225a86b7706efd, type: 3}
 --- !u!4 &5545481061924122400 stripped
@@ -31803,7 +31878,7 @@ PrefabInstance:
     - target: {fileID: 8183302502037622930, guid: cbfa3d205699d434ab26b0159061c02e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48.5
+      value: -28.9
       objectReference: {fileID: 0}
     - target: {fileID: 8183302502037622930, guid: cbfa3d205699d434ab26b0159061c02e,
         type: 3}
