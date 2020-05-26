@@ -8,7 +8,8 @@ namespace POTCW
     {
         public const string BOSS_JUMP_ANIMATORBOOL = "Jumping";
         public const string BOSS_SEARCH_ANIMATORBOOL = "Searching";
-        public const string BOSS_MINE_ANIMATORBOOL = "Mining";
+        public const string BOSS_MINE_ANIMATORBOOL = "Mine";
+        public const string BOSS_MINEABOVE_ANIMATORBOOL = "MineUp";
         public const string BOSS_SHIELDSLAM_ANIMATORBOOL = "Shieldslam";
         public const string BOSS_LEAPING_ANIMATORBOOL = "Leaping";
         public const string BOSS_SUMMON_ANIMATORBOOL = "Summon";
@@ -20,6 +21,7 @@ namespace POTCW
         public const string BOSS_GRAB_ANIMATORBOOL = "Grab";
         public const string BOSS_AOEBARRAGE_ANIMATORBOOL = "AoEBarrage";
         public const string BOSS_DESTROYPLATFORM_ANIMATORBOOL = "DestroyPlatform";
+        public const string BOSS_QUICKATTACK_ANIMATORBOOL = "QuickAttack";
 
         public static EnemyBlackBoard BossBlackBoard;
     }

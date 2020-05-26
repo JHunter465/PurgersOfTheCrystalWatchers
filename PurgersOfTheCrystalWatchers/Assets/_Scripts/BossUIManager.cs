@@ -8,25 +8,43 @@ namespace POTCW
 {
     public class BossUIManager : MonoBehaviour
     {
+        public GameObject HealthBar;
         public TextMeshProUGUI CurrentActiveBossMode;
         public TextMeshProUGUI CurrentArea;
         public Image PlayerDetectionStatus;
 
-        private void Start()
+        protected SpecialMode activeMode;
+        protected SpecialMode currentArea;
+
+        private void Awake()
         {
             EventManager<SpecialMode>.AddHandler(EVENT.SwitchBossSpecialModeType, UpdateCurrentActiveBossMode);
             EventManager<SpecialMode>.AddHandler(EVENT.SwitchInCurrentArea, UpdateCurrentArea);
             EventManager<int>.AddHandler(EVENT.GetPlayerDistance, UpdatePlayerDetectionStatus);
+            EventManager<bool>.AddHandler(EVENT.ActivateBoss, ActivateHealthBar);
         }
 
         private void UpdateCurrentActiveBossMode(SpecialMode activeMode)
         {
-            CurrentActiveBossMode.text = activeMode.ToString();
+            CurrentActiveBossMode.text = activeMode.ToString() + " Mode";
+            this.activeMode = activeMode;
+            CurrentActiveBossMode.color = currentArea == this.activeMode ? Color.red : Color.yellow;
         }
 
         private void UpdateCurrentArea(SpecialMode area)
-        {
+        {           
             CurrentArea.text = "Area: " + area;
+            this.currentArea = area;
+            UpdateCurrentActiveBossMode(activeMode);
+        }
+
+        private void ActivateHealthBar(bool value)
+        {
+            if (value)
+                HealthBar.SetActive(true);
+            else
+                HealthBar.SetActive(false);
+                
         }
 
         private void UpdatePlayerDetectionStatus(int check)

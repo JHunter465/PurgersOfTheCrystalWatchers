@@ -29,7 +29,6 @@ namespace POTCW
             board.EnemyAgent.SearchPlayerGameObject.SetActive(true);
             Debug.Log("Go Under Ground");
             //10 units op de Y axis naar beneden
-            board.EnemyAgent.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.transform.position - Vector3.up * board.EnemyAgent.MineDepth, board.EnemyAgent.YeetSpeed);
 
             return State.IN_PROGRESS;
         }
@@ -39,6 +38,8 @@ namespace POTCW
         {
             if (check)
             {
+                //board.EnemyAgent.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.transform.position - Vector3.up * board.EnemyAgent.MineDepth, board.EnemyAgent.YeetSpeed);
+
                 board.EnemyAgent.transform.position = board.EnemyAgent.transform.position.KeepOwnY(board.EnemyAgent.SearchPlayerGameObject.transform.position);
                 Debug.Log("Move To Underneath player");
                 return State.SUCCESS;

@@ -53,7 +53,8 @@ namespace POTCW
                 new GrabNode(board),
                 new SequenceNode<EnemyAgent>(
                     new GoUnderGroundNode(board),
-                    new GoAboveGroundNode(board))
+                    new GoAboveGroundNode(board)),
+                new QuickAttackNode(board)
             };
 
             return new SelectorNode<EnemyAgent>(
@@ -135,8 +136,7 @@ namespace POTCW
             else
                 return false;
         }
-
-        
+       
         //This fucking buggs hard, when I set trheshold at 100 everything works fine but when I lower it
         //It keeps calling the nodes multiple times
         public bool DoStandardBehaviour()

@@ -20,15 +20,13 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
-            board.AnimatorController.SetTrigger(Globals.BOSS_MINE_ANIMATORBOOL);
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; },10);
 
             //Go AboveGround
-            //10 units op de Y axis naar boven
-            Debug.Log("Go Above Ground");
-            board.EnemyAgent.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.transform.position + Vector3.up * board.EnemyAgent.MineDepth, board.EnemyAgent.YeetSpeed);
+            //MineDepth units op de Y axis naar boven
+            //board.EnemyAgent.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.transform.position + Vector3.up * board.EnemyAgent.MineDepth, board.EnemyAgent.YeetSpeed);
             //board.EnemyAgent.SearchPlayerGameObject.SetActive(false);
 
             return State.IN_PROGRESS;
@@ -39,6 +37,8 @@ namespace POTCW
         {
             if (check)
             {
+                board.AnimatorController.SetTrigger(Globals.BOSS_MINEABOVE_ANIMATORBOOL);
+
                 return State.SUCCESS;
             }
             else

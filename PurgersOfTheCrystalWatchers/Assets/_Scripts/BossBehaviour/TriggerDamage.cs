@@ -30,12 +30,5 @@ namespace POTCW
                 x.TakeDamage(dmg);
             }
         }
-
-        private void OnDrawGizmos()
-        {
-            if (GetComponent<SphereCollider>() == null) return;
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, GetComponent<SphereCollider>().radius);
-        }
     }
 }

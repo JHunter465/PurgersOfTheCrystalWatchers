@@ -36,7 +36,6 @@ namespace POTCW
         {
             if (check)
             {
-
                 return State.SUCCESS;
             }
             else

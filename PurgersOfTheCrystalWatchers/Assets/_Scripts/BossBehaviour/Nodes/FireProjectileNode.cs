@@ -21,7 +21,7 @@ namespace POTCW
         public override State Start()
         {
             
-            board.AnimatorController.ResetTrigger(Globals.BOSS_LEAPING_ANIMATORBOOL);
+            //board.AnimatorController.ResetTrigger(Globals.BOSS_LEAPING_ANIMATORBOOL);
 
             board.AnimatorController.SetTrigger(Globals.BOSS_FIRING_ANIMATORBOOL);
 
@@ -63,7 +63,7 @@ namespace POTCW
                 if(lineRenderer != null)
                 {
                     lineRenderer.SetPosition(0, board.EnemyAgent.ProjectileSpawn.transform.position);
-                    lineRenderer.SetPosition(1, board.EnemyAgent.Player.transform.position);
+                    lineRenderer.SetPosition(1, board.EnemyAgent.ProjectileSpawn.transform.forward*20);
                     /*
                     var points = new Vector3[board.EnemyAgent.LineRendererLenght];
                     for(int i = 0; i < board.EnemyAgent.LineRendererLenght; i++)

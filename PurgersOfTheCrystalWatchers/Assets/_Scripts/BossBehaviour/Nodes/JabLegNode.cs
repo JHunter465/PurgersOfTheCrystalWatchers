@@ -23,9 +23,11 @@ namespace POTCW
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
 
-            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length + board.EnemyAgent.TimeBetweenNodes);
+            TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);
 
-            // Debug.Log("Start Leap + animation lenght: "+ currentClipInfo[0].clip.length);
+            //Jab Leg
+            board.EnemyAgent.JabLegObject.SetActive(true);
+
             return State.IN_PROGRESS;
         }
 
@@ -34,10 +36,7 @@ namespace POTCW
         {
             if (check)
             {
-                //Jab Leg
-                board.EnemyAgent.ShockWaveTriggerObject.SetActive(true);
-                board.EnemyAgent.ShockWaveTriggerObject.GetComponent<SphereCollider>().radius = board.EnemyAgent.ShockWaveRange;
-
+                board.EnemyAgent.JabLegObject.SetActive(false);
                 return State.SUCCESS;
             }
             else

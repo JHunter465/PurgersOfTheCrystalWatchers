@@ -20,7 +20,7 @@ namespace POTCW
         //Called when the node is entered
         public override State Start()
         {
-            board.AnimatorController.SetTrigger(Globals.BOSS_SHIELDSLAM_ANIMATORBOOL);
+            board.AnimatorController.SetTrigger(Globals.BOSS_PATROLING_ANIMATORBOOL);
 
             currentClipInfo = board.AnimatorController.GetCurrentAnimatorClipInfo(0);
             TimerManager.Instance.AddTimer(() => { check = !check; }, currentClipInfo[0].clip.length);

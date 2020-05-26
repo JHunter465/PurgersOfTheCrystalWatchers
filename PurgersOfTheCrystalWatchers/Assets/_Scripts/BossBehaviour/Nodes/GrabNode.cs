@@ -30,7 +30,7 @@ namespace POTCW
 
             //Grab player
             board.EnemyAgent.GrabObject.SetActive(true);
-            board.EnemyAgent.GrabObject.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.Player.transform.position, board.EnemyAgent.GrabSpeed);
+            //board.EnemyAgent.GrabObject.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.Player.transform.position, board.EnemyAgent.GrabSpeed);
             
             //Transform raycastfrom = board.EnemyAgent.GrabSpawn.transform;
             //Vector3 fwd = raycastfrom.TransformDirection(raycastfrom.forward);
@@ -58,7 +58,9 @@ namespace POTCW
         public override State Update()
         {
             if (check)
-            {              
+            {
+                board.EnemyAgent.GrabObject.DeactivateAfterTime(board.EnemyAgent, 1f);
+
                 //This does'nt work, why?!
                 //board.EnemyAgent.GrabObject.transform.position = board.EnemyAgent.GrabSpawn.transform.position;
                 //board.EnemyAgent.GrabObject.SetActive(false);

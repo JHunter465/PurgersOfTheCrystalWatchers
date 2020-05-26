@@ -38,6 +38,8 @@ namespace POTCW
         public GameObject Player1;
         public GameObject Player2;
         public SpecialMode SpecialModeActive;
+        public bool BossActivatedByPlayer = false;
+        public bool UpdateUIOnce = false;
 
         [Header("Player Related")]
         public float PlayerCloseRange = 10f;
@@ -59,6 +61,7 @@ namespace POTCW
         public float ReachedThresHold = 10f;
         public List<Transform> PatrolPoints;
         public int PatrolIndex = 0;
+        public GameObject JabLegObject;
         public Transform LookTransform;
         public float CurrentHealth = 1000;
         public float MaxHealth = 1000;
@@ -103,6 +106,8 @@ namespace POTCW
         public GameObject GrabObject;
         public GameObject GrabSpawn;
         public float GrabSpeed = 20f;
+        public float GrabTime = 2f;
+        public GameObject QuickAttackObject;
 
         [HideInInspector]
         public NavMeshAgent NavMeshAgent;
@@ -138,7 +143,6 @@ namespace POTCW
             board.EnemyAgent = this;
             ShockWaveTriggerObject.SetActive(false);
             Globals.BossBlackBoard = board;
-
         }
 
         private void Start()
@@ -158,6 +162,10 @@ namespace POTCW
             EventManager<SpecialMode>.AddHandler(EVENT.SwitchBossSpecialModeType, SetActiveSpecialModeType);
 
             EventManager<SpecialMode>.AddHandler(EVENT.SwitchInCurrentArea, SetInCurrentArea);
+
+            EventManager<SpecialMode>.BroadCast(EVENT.SwitchBossSpecialModeType, SpecialModeActive);
+
+            EventManager<SpecialMode>.BroadCast(EVENT.SwitchInCurrentArea, CurrentArea);
         }
 
         /// <summary>
@@ -207,16 +215,30 @@ namespace POTCW
             if(ThresHold > ReachedThresHold)
                 ThresHold = 0;
 
+
             
-            if (Vector3.Distance(Player1.transform.position, this.transform.position) < Vector3.Distance(Player2.transform.position, this.transform.position))
+            if(Vector3.Distance(Player1.transform.position, this.transform.position) < PlayerCloseRange || Vector3.Distance(Player2.transform.position, this.transform.position) < PlayerCloseRange)
             {
-                Player = Player1;
-                LookTransform = Player.transform;
+                BossActivatedByPlayer = true;
+                if(!UpdateUIOnce)
+                {
+                    UpdateUIOnce = true;
+                    EventManager<bool>.BroadCast(EVENT.ActivateBoss, true);
+                }
             }
-            else
+
+            if (BossActivatedByPlayer)
             {
-                Player = Player2;
-                LookTransform = Player.transform;
+                if (Vector3.Distance(Player1.transform.position, this.transform.position) < Vector3.Distance(Player2.transform.position, this.transform.position))
+                {
+                    Player = Player1;
+                    LookTransform = Player.transform;
+                }
+                else
+                {
+                    Player = Player2;
+                    LookTransform = Player.transform;
+                }
             }
 
             RotateAgent(LookTransform);
@@ -234,9 +256,9 @@ namespace POTCW
                         Rigidbody plyrBody = plyr.GetComponent<Rigidbody>();
                         //plyr.transform.parent = board.EnemyAgent.GrabObject.transform;
                         plyrBody.constraints = RigidbodyConstraints.FreezeAll;
-                        plyr.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.GrabSpawn.transform.position, board.EnemyAgent.GrabSpeed);
+                        plyr.transform.LerpTransform(board.EnemyAgent, board.EnemyAgent.transform.position, board.EnemyAgent.GrabSpeed);
                         PlayerInGrabRange = true;
-                        StartCoroutine(ResetPlayerBody(GrabSpeed/10));
+                        StartCoroutine(ResetPlayerBody(GrabTime));
                         board.EnemyAgent.GrabObject.transform.position = board.EnemyAgent.GrabSpawn.transform.position;
                         board.EnemyAgent.GrabObject.SetActive(false);
                     }
@@ -251,8 +273,10 @@ namespace POTCW
             {
                 //CurrentHealth = tmpHP;
                 CrystalContainer currentCrystalsInArea = CrystalsInAreas.Find(cia => cia.Area == CurrentArea);
+                if (currentCrystalsInArea == null) return;
                 foreach(Crystal crystal in currentCrystalsInArea.AllCrystalsInArea)
                 {
+                    if (crystal == null) return;
                     //Destroy all crystals in current area
                     //crystal.Die();
                     crystal.gameObject.SetActive(false);
