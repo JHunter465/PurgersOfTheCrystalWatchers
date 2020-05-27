@@ -30106,6 +30106,16 @@ PrefabInstance:
       propertyPath: gooSpawnTime
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 9090533686128619886, guid: ba2c89fe91f1fab4eb8f1dc90570638e,
+        type: 3}
+      propertyPath: CrystalDrained
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090533686128619886, guid: ba2c89fe91f1fab4eb8f1dc90570638e,
+        type: 3}
+      propertyPath: DisableTime
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba2c89fe91f1fab4eb8f1dc90570638e, type: 3}
 --- !u!1001 &2990692231762983572

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Invector.vCharacterController;
+
 namespace POTCW
 {
     public class DrainingSlime : BaseEnemy
     {
-        [SerializeField] private float drainDistance, gooSpawnTime;
+        [SerializeField] private float drainDistance, gooSpawnTime, DisableTime, CrystalDrained;
 
         private ObjectPooler objectPooler;
 
@@ -13,6 +15,7 @@ namespace POTCW
         {
             objectPooler = ObjectPooler.Instance;
             StartCoroutine(SpawnGoo());
+            StartCoroutine(DrainCrystal());
         }
 
         protected override void Update()
@@ -31,16 +34,21 @@ namespace POTCW
             StartCoroutine(SpawnGoo());
         }
 
-        private void DrainCrystal()
+        private IEnumerator DrainCrystal()
         {
             if(player == null)
             {
-                return;
+                yield return new WaitForSeconds(0.5f);
+                StartCoroutine(DrainCrystal());
+                yield break;
             }
             if(Vector3.Distance(transform.position, player.position) < drainDistance)
             {
-
+                vThirdPersonController playerController = player.GetComponent<vThirdPersonController>();
+                playerController.ReduceStamina(CrystalDrained, false);
             }
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(DrainCrystal());
         }
     }
 }

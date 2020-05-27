@@ -6,7 +6,7 @@ using Invector;
 
 public class Goo : MonoBehaviour
 {
-    public float DisableTime, Damage;
+    public float DisableTime, CrystalDrained;
 
     // Start is called before the first frame update
     private void Start()
@@ -24,9 +24,8 @@ public class Goo : MonoBehaviour
     {
         vThirdPersonController player = other.GetComponent<vThirdPersonController>();
         if (player != null)
-        {
-            Invector.vDamage damage = new vDamage((int)Damage);
-            player.TakeDamage(damage);
+        {         
+            player.ReduceStamina(CrystalDrained, false);
         }
     }
 
