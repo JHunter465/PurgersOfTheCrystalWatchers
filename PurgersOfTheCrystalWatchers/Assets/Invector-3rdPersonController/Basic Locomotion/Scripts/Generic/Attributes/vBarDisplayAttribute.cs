@@ -1,14 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-[System.AttributeUsage(System.AttributeTargets.Field|System.AttributeTargets.Property,AllowMultiple = true,Inherited =true)]
-public class vBarDisplayAttribute :PropertyAttribute
-{
-    public readonly string maxValueProperty;
-    public readonly bool showJuntInPlayMode;   
-    public vBarDisplayAttribute(string maxValueProperty,bool showJuntInPlayMode = false)
-    {
-        this.maxValueProperty = maxValueProperty;
-        this.showJuntInPlayMode = showJuntInPlayMode;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:89875a4ece328dee4bff404f2c4f9778d0387fac76ccf1db959c1e42a97ca9a0
+size 562

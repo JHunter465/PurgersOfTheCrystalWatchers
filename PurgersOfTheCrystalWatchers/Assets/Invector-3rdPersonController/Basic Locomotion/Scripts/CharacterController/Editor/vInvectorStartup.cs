@@ -1,30 +1,3 @@
-﻿using UnityEditor;
-
-namespace Invector.vCharacterController
-{
-    [InitializeOnLoad]
-    public class vInvectorStartup
-    {
-        static vInvectorStartup()
-        {
-            EditorApplication.update -= TriggerWelcomeScreen;
-            EditorApplication.update += TriggerWelcomeScreen;
-        }
-
-        private static void TriggerWelcomeScreen()
-        {
-            var showAtStartup = vEditorStartupPrefs.DisplayWelcomeScreen && EditorApplication.timeSinceStartup < 30f;
-
-            if (showAtStartup)
-            {
-                vInvectorWelcomeWindow.Open();
-            }
-            EditorApplication.update -= TriggerWelcomeScreen;
-        }
-
-        private static void PlayModeChanged()
-        {
-            EditorApplication.update -= TriggerWelcomeScreen;
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:25e20a82e40efbc3132a652250350b79229c217b9d53452179e83f2d57c7fa72
+size 801

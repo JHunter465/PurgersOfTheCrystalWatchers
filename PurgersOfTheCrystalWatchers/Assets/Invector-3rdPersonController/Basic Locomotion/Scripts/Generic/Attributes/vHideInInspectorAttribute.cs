@@ -1,19 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
-namespace Invector
-{
-    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
-    public class vHideInInspectorAttribute : PropertyAttribute
-    {       
-        public bool hideProperty { get; set; }
-        public string refbooleanProperty;
-        public bool invertValue;
-        public vHideInInspectorAttribute(string refbooleanProperty, bool invertValue = false)
-        {
-            this.refbooleanProperty = refbooleanProperty;
-            this.invertValue = invertValue;
-        }
-
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c02a9b0da01c4f2be4eca3952341a182033d7934cf35ac591818313f009335b4
+size 591

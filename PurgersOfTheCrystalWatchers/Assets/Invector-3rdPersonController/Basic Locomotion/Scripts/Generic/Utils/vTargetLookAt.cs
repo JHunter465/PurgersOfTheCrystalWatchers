@@ -1,19 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-namespace Invector.Utils
-{
-    public class vTargetLookAt : MonoBehaviour
-    {
-        public Transform target;
-        public float smoot;
-        // Update is called once per frame
-        void Update()
-        {
-            var dir = target.position - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(dir.normalized, Vector3.up);
-
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, smoot * Time.deltaTime);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a1dcf056e56ba6f7a9fa0a2a73a69b847b31de9dbdf48722cecd9c3d9b119843
+size 567

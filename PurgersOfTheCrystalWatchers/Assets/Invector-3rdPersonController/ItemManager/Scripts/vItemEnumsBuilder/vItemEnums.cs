@@ -1,23 +1,3 @@
-namespace Invector.vItemManager {
-     public enum vItemType {
-       Consumable=0,
-       MeleeWeapon=1,
-       Shooter=2,
-       Ammo=3,
-       Archery=4,
-       Builder=5
-     }
-     public enum vItemAttributes {
-       Health=0,
-       Stamina=1,
-       Damage=2,
-       StaminaCost=3,
-       DefenseRate=4,
-       DefenseRange=5,
-       AmmoCount=6,
-       MaxHealth=7,
-       MaxStamina=8,
-       SecundaryAmmoCount=9,
-       SecundaryDamage=10
-     }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2841a0e4608acc1822555e3422ea166e2c6d34906e763f51a14ed45a4ae20a2f
+size 460

@@ -1,16 +1,3 @@
-﻿using UnityEngine;
-
-namespace Invector.vCharacterController
-{
-    [System.Serializable]
-    public class OnActiveRagdoll : UnityEngine.Events.UnityEvent { }
-    public interface vICharacter : vIHealthController
-    {
-        OnActiveRagdoll onActiveRagdoll { get; }
-        Animator animator { get; }
-        bool isCrouching { get; }
-        bool ragdolled { get; set; }
-        void EnableRagdoll();
-        void ResetRagdoll();
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7deefacb9b23739cdc249b67ed2d002310d1eab87077c52cdd403ff58e9ec86b
+size 441

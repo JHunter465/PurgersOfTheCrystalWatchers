@@ -1,4 +1,3 @@
-# Poly Toolkit for Unity
-# Manifest file. Do not modify or delete.
-# Among other things, this file indicates where Poly Toolkit is installed
-# in your folder hierarchy.
+version https://git-lfs.github.com/spec/v1
+oid sha256:6bd943830e20cbda7ddfa8e184444baef9616bddf413be102913e5238856ebe5
+size 169

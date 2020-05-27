@@ -1,15 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-namespace Invector
-{
-    public class vRotateObject : MonoBehaviour
-    {
-        public Vector3 rotationSpeed;
-
-        // Update is called once per frame
-        void Update()
-        {
-            transform.Rotate(rotationSpeed * Time.deltaTime, Space.Self);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2e52a6d2c1ad7593e8ff22e86eedc27e7d7038c69e271c616d03458673a1ebbf
+size 327

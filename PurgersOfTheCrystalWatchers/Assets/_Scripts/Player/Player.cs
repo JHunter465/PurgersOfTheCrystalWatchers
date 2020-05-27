@@ -1,19 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Player : MonoBehaviour
-{
-    public PlayerCombat RPlayerCombat;
-    public PlayerMovement RPlayerMovement;
-    public PlayerEntity RPlayerEntity;
-
-    [HideInInspector] public bool Attacking;
-
-    private void Awake()
-    {
-        RPlayerCombat = GetComponent<PlayerCombat>();
-        RPlayerMovement = GetComponent<PlayerMovement>();
-        RPlayerEntity = GetComponent<PlayerEntity>();
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ca05d5abb26c048a26e9b77d169b35857eb34d5b83e528d6fb70451407ddbb41
+size 494

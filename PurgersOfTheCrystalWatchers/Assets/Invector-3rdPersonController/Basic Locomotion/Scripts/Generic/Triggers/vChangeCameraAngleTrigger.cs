@@ -1,35 +1,3 @@
-﻿using System.Collections;
-using UnityEngine;
-namespace Invector.vCamera
-{
-    public class vChangeCameraAngleTrigger : MonoBehaviour
-    {
-        public bool applyY, applyX;
-        public Vector2 angle;
-        public vThirdPersonCamera tpCamera;
-
-        IEnumerator Start()
-        {
-            tpCamera = FindObjectOfType<vThirdPersonCamera>();
-            var collider = GetComponent<Collider>();
-            if (collider)
-            {
-                collider.isTrigger = true;
-                collider.enabled = false;
-                yield return new WaitForEndOfFrame();
-                collider.enabled = true;
-            }
-        }
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Player") && tpCamera)
-            {
-                if (applyX)
-                    tpCamera.lerpState.fixedAngle.x = angle.x;
-                if (applyY)
-                    tpCamera.lerpState.fixedAngle.y = angle.y;
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b7b40f669c8f8034a10888717c485f3257785462b767d3fd63d5f024bb36ccaa
+size 1000

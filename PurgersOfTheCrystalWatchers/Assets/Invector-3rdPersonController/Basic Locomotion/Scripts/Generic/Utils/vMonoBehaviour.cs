@@ -1,15 +1,3 @@
-﻿using UnityEngine;
-
-namespace Invector
-{
-    public  class vMonoBehaviour : MonoBehaviour
-    {
-        [SerializeField] protected Camera MyCam;
-        [SerializeField, HideInInspector]
-        private bool openCloseEvents ;
-        [SerializeField, HideInInspector]
-        private bool openCloseWindow;
-        [SerializeField, HideInInspector]       
-        private int selectedToolbar;
-    }  
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:0145dd88efd45e3f43330f9a379526a101860f9a1a77258f2b9e9ad8371bc143
+size 405

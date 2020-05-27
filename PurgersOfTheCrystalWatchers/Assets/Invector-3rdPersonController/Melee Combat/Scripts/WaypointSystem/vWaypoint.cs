@@ -1,27 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-namespace Invector.vCharacterController.AI
-{
-    [System.Serializable]
-    public class vWaypoint : vPoint
-    {
-        public List<vPoint> subPoints;
-        public bool randomPatrolPoint;
-        public bool rotateTo = true;
-
-        public Vector3 GetRandomSubPoint()
-        {
-            System.Random random = new System.Random(100);
-            var index = random.Next(0, subPoints.Count - 1);
-            return GetSubPoint(index);
-        }
-
-        public Vector3 GetSubPoint(int index)
-        {
-            if (subPoints != null && subPoints.Count > 0 && index < subPoints.Count) return subPoints[index].position;
-
-            return transform.position;
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:24f732b3776681deee8668f26de8934cd1ed14c62a15772d3119ee1e7da64de1
+size 766

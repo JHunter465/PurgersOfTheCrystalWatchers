@@ -1,34 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Invector.vCharacterController;
-using Invector;
-using BasHelpers;
-
-namespace POTCW
-{
-    public class TriggerDamage : MonoBehaviour
-    {
-        public vTagMask TriggerTag;
-        public int Damage;
-        public float LifeTime = 2f;
-        public bool DeactivateAfterAwake = true;
-
-        private void OnEnable()
-        {
-            if(DeactivateAfterAwake)
-                this.gameObject.DeactivateAfterTime(this, LifeTime);
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            vDamage dmg = new vDamage(Damage);
-            
-            if (other.gameObject.tag == "Player")
-            {
-                var x = other.GetComponent<vThirdPersonController>();
-                x.TakeDamage(dmg);
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c98c2687f48aa7ef16f17d9b109f6cfc050931608d970a0b5ac72a9b0b284cc1
+size 856

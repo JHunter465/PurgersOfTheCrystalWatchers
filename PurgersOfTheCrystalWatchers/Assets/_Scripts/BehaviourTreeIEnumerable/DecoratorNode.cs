@@ -1,22 +1,3 @@
-﻿using System.Collections.Generic;
-
-/// <summary>
-/// Parent to a single node, a DecoratorNode processes the result from its child and chooses what it decides to send up
-/// </summary>
-/// <typeparam name="X">The agent type</typeparam>
-public abstract class DecoratorNode<X> : ParentBehaviourNode<X> {
-
-    BehaviourNode<X> _child;
-
-    public DecoratorNode(BehaviourNode<X> child) {
-        _child = child;
-    }
-
-    public override bool Recalculate() {
-        return false;
-    }
-
-    public override IEnumerable<BehaviourNode<X>> GetChilds() {
-        yield return _child;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9c5a0910a2ef006fba0d06d30024a9f5b8f0878786ef18855bafefcac44a91da
+size 588

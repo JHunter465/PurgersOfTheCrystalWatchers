@@ -1,30 +1,3 @@
-﻿using System;
-using System.Reflection;
-using UnityEditor;
-using UnityEngine;
-
-namespace Invector
-{
-    [CustomPropertyDrawer(typeof(vEnumFlagAttribute))]
-    public class vEnumFlagDrawer : PropertyDrawer
-    {
-       
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-        {
-            vEnumFlagAttribute flagSettings =  (vEnumFlagAttribute)attribute;          
-           
-            string propName = flagSettings.enumName;
-            if (string.IsNullOrEmpty(propName))
-                propName = property.displayName;
-            if (property.propertyType == SerializedPropertyType.Enum)
-            {
-                EditorGUI.BeginProperty(position, label, property);
-                property.intValue = EditorGUI.MaskField(position, propName, property.intValue, Enum.GetNames(fieldInfo.FieldType));
-                EditorGUI.EndProperty();
-            }
-            else EditorGUI.PropertyField(position, property,property.hasChildren);
-          
-        }
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:780bf09e4dc58f5ee2b1fda0da09783861527497c3cb4eb6eaebb249f4aa1121
+size 1029

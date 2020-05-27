@@ -1,24 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace Invector.vItemManager
-{
-    [System.Serializable]
-    public class OnChangeEquipmentEvent : UnityEngine.Events.UnityEvent<vEquipArea, vItem> { }
-    [System.Serializable]
-    public class OnSelectEquipArea : UnityEngine.Events.UnityEvent<vEquipArea> { }
-    [System.Serializable]
-    public class OnInstantiateItemObjectEvent : UnityEngine.Events.UnityEvent<GameObject> { }
-    [System.Serializable]
-    public class OnHandleItemEvent : UnityEngine.Events.UnityEvent<vItem> { }
-    [System.Serializable]
-    public class OnUpdateItemUsageTime : UnityEngine.Events.UnityEvent<float> { }
-    [System.Serializable]
-    public class OnChangeItemAmount : UnityEngine.Events.UnityEvent<vItem, int> { }
-    [System.Serializable]
-    public class OnCollectItems : UnityEngine.Events.UnityEvent<GameObject> { }
-    [System.Serializable]
-    public class OnApplyAttribute : UnityEngine.Events.UnityEvent<int> { }
-    [System.Serializable]
-    public class OnOpenCloseInventory : UnityEngine.Events.UnityEvent<bool> { }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:411f988b2b12c1e1433db6bd2b58afd571b27e67cf3b4966b550f839ecb4e5b6
+size 1070

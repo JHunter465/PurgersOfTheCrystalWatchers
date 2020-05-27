@@ -1,28 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace POTCW
-{
-    public static class Globals 
-    {
-        public const string BOSS_JUMP_ANIMATORBOOL = "Jumping";
-        public const string BOSS_SEARCH_ANIMATORBOOL = "Searching";
-        public const string BOSS_MINE_ANIMATORBOOL = "Mine";
-        public const string BOSS_MINEABOVE_ANIMATORBOOL = "MineUp";
-        public const string BOSS_SHIELDSLAM_ANIMATORBOOL = "Shieldslam";
-        public const string BOSS_LEAPING_ANIMATORBOOL = "Leaping";
-        public const string BOSS_SUMMON_ANIMATORBOOL = "Summon";
-        public const string BOSS_FIRING_ANIMATORBOOL = "FireProjectile";
-        public const string BOSS_CRYSTALTORNADO_ANIMATORBOOL = "CrystalTornado";
-        public const string BOSS_JABLEG_ANIMATORBOOL = "JabLeg";
-        public const string BOSS_PATROLING_ANIMATORBOOL = "Patrol";
-        public const string BOSS_YEETPLATFORM_ANIMATORBOOL = "YeetPlatform";
-        public const string BOSS_GRAB_ANIMATORBOOL = "Grab";
-        public const string BOSS_AOEBARRAGE_ANIMATORBOOL = "AoEBarrage";
-        public const string BOSS_DESTROYPLATFORM_ANIMATORBOOL = "DestroyPlatform";
-        public const string BOSS_QUICKATTACK_ANIMATORBOOL = "QuickAttack";
-
-        public static EnemyBlackBoard BossBlackBoard;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:91f9adfe7e76989fa30b8f3641cfeb2c3019f19a9b6ca38248035a865ff793b2
+size 1325
