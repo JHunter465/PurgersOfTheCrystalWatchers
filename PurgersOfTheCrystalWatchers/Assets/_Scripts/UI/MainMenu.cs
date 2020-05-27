@@ -1,22 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class MainMenu : MonoBehaviour
-{
-    public void LoadScene(int scene)
-    {
-        SceneManager.LoadSceneAsync(scene);
-    }
-
-    public void Options()
-    {
-
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e9a687e97d64805a10a7360be77287fa0d38a199d3c1f59fff110ea5a0f21052
+size 379

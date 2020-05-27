@@ -1,15 +1,3 @@
-﻿using UnityEngine;
-
-namespace Invector.vMelee
-{
-    public class vRandomAttackBehaviour : StateMachineBehaviour
-    {
-        public int attackCount;
-
-        //OnStateMachineEnter is called when entering a statemachine via its Entry Node
-        override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-        {
-            animator.SetInteger("RandomAttack", Random.Range(0, attackCount));
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:662b549ea9aed2e4489a711a882465e22f7a9853b1547a4cc58b732cce152015
+size 454

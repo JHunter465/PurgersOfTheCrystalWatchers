@@ -1,30 +1,3 @@
-﻿/// <summary>
-/// The base class for any behaviour tree node
-/// </summary>
-/// <typeparam name="X">The agent type</typeparam>
-public abstract class BehaviourNode<X> {
-
-    protected BehaviourTreeContext<X> ctx;
-
-    /// <summary> Called to inject the node with the agent information </summary>
-    public void _Inject(BehaviourTreeContext<X> ctx) {
-        this.ctx = ctx;
-    }
-
-    /// <summary> Called when the node is entered </summary>
-    public abstract State Start();
-
-    /// <summary> Called every frame if the node part of the behaviour trees active "stack" of nodes </summary>
-    public abstract State Update();
-
-    /// <summary> Return true if the node should be restarted. !! Needs to be called on every frame by its parent and restart if necessary !! </summary>
-    public virtual bool Recalculate() {
-        return false;
-    }
-
-    public enum State {
-        IN_PROGRESS,
-        SUCCESS,
-        FAILURE
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:cb41f8043ccc0e2192269439ca0cfffaace046bdd4d7c3fbd582dc854adfa00e
+size 937

@@ -1,27 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.Events;
-
-namespace Invector.vItemManager
-{
-    public class vWindowPop_up : MonoBehaviour
-    {
-        public vInventoryWindow inventoryWindow;
-        public UnityEvent OnOpen;
-        public UnityEvent OnClose;
-
-        protected virtual void OnEnable()
-        {
-            inventoryWindow.AddPop_up(this);
-            if (OnOpen != null)
-                OnOpen.Invoke();
-        }
-
-        protected virtual void OnDisable()
-        {
-            inventoryWindow.RemovePop_up(this);
-            if (OnClose != null)
-                OnClose.Invoke();
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:dfd956ebce67d125bb9f924763f1078a460e62a9f6fac8689940881ae71b54a0
+size 640

@@ -1,33 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerCombat : MonoBehaviour
-{
-    private Player player;
-
-    public KeyCode AttackButton;
-    public Animator Animator;
-
-    private void Start()
-    {
-        player = GetComponent<Player>();
-    }
-
-    private void Update()
-    {
-        if(Input.GetMouseButtonDown(0) && !player.Attacking)
-        {
-            player.Attacking = true;
-            StartCoroutine(AttackCooldown(1.5f));
-            Animator.SetBool("Attack",true);
-        }
-    }
-
-    private IEnumerator AttackCooldown(float cooldownTime)
-    {
-        yield return new WaitForSeconds(cooldownTime);
-        Animator.SetBool("Attack", false);
-        player.Attacking = false;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:600d5b760f1a3ef72998118a77b5d7d3f03b8c9c4b86daea51515b52ef29ab04
+size 788

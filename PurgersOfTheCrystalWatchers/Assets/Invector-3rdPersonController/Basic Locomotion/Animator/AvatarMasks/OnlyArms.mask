@@ -1,10 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!319 &101100000
-AvatarMask:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: OnlyArms
-  m_Mask: 00000000000000000000000000000000000000000100000001000000010000000100000000000000000000000100000001000000
-  m_Elements: []
+version https://git-lfs.github.com/spec/v1
+oid sha256:ad23377f98397324702a8337460aeb427a70a784f0c553f2e59073a5701f22c6
+size 317

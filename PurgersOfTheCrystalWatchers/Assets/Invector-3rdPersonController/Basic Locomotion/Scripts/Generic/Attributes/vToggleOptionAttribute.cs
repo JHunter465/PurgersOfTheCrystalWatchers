@@ -1,16 +1,3 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-[AttributeUsage(AttributeTargets.Field,AllowMultiple = true,Inherited = true)]
-public class vToggleOptionAttribute : PropertyAttribute
-{
-   public string label,falseValue, trueValue;
-   public vToggleOptionAttribute(string label="",string falseValue = "No",string trueValue ="Yes")
-   {
-        this.label = label;
-        this.falseValue = falseValue;
-        this.trueValue = trueValue;
-   }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:855b74a090d64e7934df55223de0d943d4e212210c164e8d393905c874987d3b
+size 493

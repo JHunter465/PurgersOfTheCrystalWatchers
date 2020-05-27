@@ -1,23 +1,3 @@
-﻿using UnityEngine;
-namespace Invector.Utils
-{
-    public class vSetParent : MonoBehaviour
-    {
-
-        public void RemoveParent()
-        {
-            transform.parent = null;
-        }
-
-        public void RemoveParent(Transform target)
-        {
-            target.parent = null;
-        }
-
-        public void SetParent(Transform parent)
-        {
-            transform.parent = parent;
-        }
-        
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fcbbad3eb4f167880bf02fbb2763ada0536147923210d5a010c2297c3c6c7aa5
+size 422

@@ -1,27 +1,3 @@
-﻿using System.Collections.Generic;
-
-/// <summary>
-/// A simple sequence of nodes: provide a list of nodes and they will be executed in a sequence. If on of them returns a FAILURE, the node will return a FAILURE.
-/// Otherwise, at the end of the sequence, returns a SUCCESS
-/// </summary>
-/// <typeparam name="X">The agent type</typeparam>
-public class SequenceNode<X> : ParentBehaviourNode<X> {
-
-    BehaviourNode<X>[] _childs;
-
-    public SequenceNode(params BehaviourNode<X>[] childs) {
-        _childs = childs;
-    }
-
-    public override bool Recalculate() {
-        return false;
-    }
-
-    public override IEnumerable<BehaviourNode<X>> GetChilds() {
-        return _childs;
-    }
-
-    public override State CalculateState(State childState) {
-        return childState;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:69463ac0184ad8436a046e46b111ba3a8aeac97e5157cbff7606bfb99479ee69
+size 784

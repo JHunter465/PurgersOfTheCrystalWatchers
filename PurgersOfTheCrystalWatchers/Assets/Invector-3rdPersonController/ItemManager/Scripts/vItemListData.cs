@@ -1,19 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using Invector;
-
-namespace Invector.vItemManager
-{
-    public class vItemListData : ScriptableObject
-    {
-        public List<vItem> items = new List<vItem>();       
-       
-        public bool inEdition;
-       
-        public bool itemsHidden = true;
-        
-        
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:dde77c8e6f13f2b309b098514899f561621e9d0a2e2adcfc79b43cb95a0e96ac
+size 364

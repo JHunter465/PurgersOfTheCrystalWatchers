@@ -1,25 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-using System;
-
-[CustomPropertyDrawer(typeof(vToggleOptionAttribute),true)]
-public class vToggleOptionAttributeDrawer : PropertyDrawer
-{
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-    {
-       if(property.propertyType == SerializedPropertyType.Boolean)
-        {
-            
-            var toogle = attribute as vToggleOptionAttribute;
-            if (toogle.label != "") label.text = toogle.label;
-            var options = new GUIContent[] { new GUIContent( toogle.falseValue), new GUIContent(toogle.trueValue) };
-            property.boolValue = Convert.ToBoolean(EditorGUI.Popup(position,label, Convert.ToInt32(property.boolValue), options));
-        }
-       else
-        {
-            EditorGUI.PropertyField(position, property, label,true);
-        }       
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:cb990a82e12b4eee1a3192e6e0f7b6709cf9b7cf47761808033b37e1057ab43c
+size 925

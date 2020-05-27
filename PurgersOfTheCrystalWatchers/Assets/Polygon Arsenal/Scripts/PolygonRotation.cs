@@ -1,30 +1,3 @@
-using UnityEngine;
-using System.Collections;
-
-namespace PolygonArsenal
-{
-    public class PolygonRotation : MonoBehaviour
-    {
-
-        [Header("Rotate axises by degrees per second")]
-        public Vector3 rotateVector = Vector3.zero;
-
-        public enum spaceEnum { Local, World };
-        public spaceEnum rotateSpace;
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (rotateSpace == spaceEnum.Local)
-                transform.Rotate(rotateVector * Time.deltaTime);
-            if (rotateSpace == spaceEnum.World)
-                transform.Rotate(rotateVector * Time.deltaTime, Space.World);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4cdf25aae1062b1471b8cb35405cdc2d0c2f04f9037a3c3b41f11ec7a5fbc642
+size 738

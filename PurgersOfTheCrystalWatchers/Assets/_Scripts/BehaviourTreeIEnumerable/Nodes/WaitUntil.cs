@@ -1,26 +1,3 @@
-﻿using System;
-
-/// <summary>
-/// Wait until a certain condition is met
-/// </summary>
-/// <typeparam name="X">The agent type</typeparam>
-public class WaitUntil<X> : BehaviourNode<X> {
-
-    Func<BehaviourTreeContext<X>, bool> _endCondition;
-
-    public WaitUntil(Func<BehaviourTreeContext<X>, bool> endCondition) {
-        _endCondition = endCondition;
-    }
-
-    public override State Start() {
-        return _endCondition(ctx) ? State.SUCCESS : State.IN_PROGRESS;
-    }
-
-    public override State Update() {
-        return _endCondition(ctx) ? State.SUCCESS : State.IN_PROGRESS;
-    }
-
-    public override bool Recalculate() {
-        return false;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5a43f7d210b71ba9983c279c18a66b0a94a79b2280168de7289d4f7a8ffb9914
+size 662

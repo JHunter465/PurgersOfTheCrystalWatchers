@@ -1,31 +1,3 @@
-﻿using UnityEngine;
-
-namespace Invector
-{
-    public class vHealthItem : MonoBehaviour
-    {
-        [Tooltip("How much health will be recovery")]
-        public float value;
-        public string tagFilter = "Player";
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag(tagFilter))
-            {
-                // access the basic character information
-                var healthController = other.GetComponent<vHealthController>();
-                if (healthController != null)
-                {
-
-                    // heal only if the character's health isn't full
-                    if (healthController.currentHealth < healthController.maxHealth)
-                    {
-                        // limit healing to the max health
-                        healthController.ChangeHealth((int)value);
-                        Destroy(gameObject);
-                    }                    
-                }
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:64be02c74b206f8c0b2be34de035935c7de586a77c0cb63f8efa92ce7cabac47
+size 988

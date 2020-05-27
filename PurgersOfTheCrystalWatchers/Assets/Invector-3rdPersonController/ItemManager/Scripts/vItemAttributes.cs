@@ -1,11 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-namespace Invector
-{
-    public class vItemAttributes : ScriptableObject
-    {
-        public List<string> attributes = new List<string>();
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:0454bedca11330602fcb4bbd1a53dabd44b7fb4f6071450f137b1fedf79770d2
+size 231

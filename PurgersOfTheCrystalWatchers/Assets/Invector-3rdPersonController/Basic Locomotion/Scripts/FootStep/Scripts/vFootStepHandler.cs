@@ -1,25 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-namespace Invector
-{
-    public class vFootStepHandler : MonoBehaviour
-    {
-        [Tooltip("Use this to select a specific material or texture if your mesh has multiple materials, the footstep will play only the selected index.")]
-        [SerializeField]
-        private int materialIndex = 0;
-        public int material_ID
-        {
-            get
-            {
-                return materialIndex;
-            }
-        }
-
-        public StepHandleType stepHandleType;
-        public enum StepHandleType
-        {
-            materialName,
-            textureName
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1ba0fbc9763b8099de568c0c6323b34b7787af3da06af2d47e6c50190bc36212
+size 637

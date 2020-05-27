@@ -1,18 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace Invector
-{    
-    [vClassHeader("Destroy GameObject", openClose = false)]
-    public class vDestroyGameObject : vMonoBehaviour
-    {
-        public float delay;
-        public UnityEngine.Events.UnityEvent onDestroy;
-        IEnumerator Start()
-        {
-            yield return new WaitForSeconds(delay);
-            onDestroy.Invoke();
-            Destroy(gameObject);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:25f9e96770e4cfb065a58b86dac8fcca9c56d98bca60b0f17faa10dbf3de26d1
+size 449

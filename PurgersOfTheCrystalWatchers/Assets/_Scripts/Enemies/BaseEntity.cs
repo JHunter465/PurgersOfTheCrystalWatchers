@@ -1,31 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class BaseEntity : MonoBehaviour
-{
-    public Stat MaxHealth;
-    public float currentHealth;
-
-    public string DeathParticleEffectName;
-    public string HitParticleEffectName;
-
-    protected virtual void Awake()
-    {
-        currentHealth = MaxHealth.GetValue();
-    }
-
-    public virtual void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    public virtual void Die()
-    {
-        gameObject.SetActive(false);
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8933018b70f959f52faae4eafbabe0718d9545b347c682318f7fb0f56964728f
+size 641

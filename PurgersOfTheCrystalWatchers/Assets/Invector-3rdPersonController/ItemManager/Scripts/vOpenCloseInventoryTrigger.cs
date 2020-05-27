@@ -1,23 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace Invector.vItemManager
-{
-    [vClassHeader("vOpenClose Inventory Trigger", false)]
-    public class vOpenCloseInventoryTrigger : vMonoBehaviour
-    {
-
-        public UnityEngine.Events.UnityEvent onOpen, onClose;
-        protected virtual void Start()
-        {
-            var inventory = GetComponentInParent<vInventory>();
-            if (inventory) inventory.onOpenCloseInventory.AddListener(OpenCloseInventory);
-        }
-        public void OpenCloseInventory(bool value)
-        {
-            if (value) onOpen.Invoke();
-            else onClose.Invoke();
-        }
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:638a915e3194b5ac7abaab1f0c25ad45a09164582c1b2e0271ed8e3b808e6178
+size 640
