@@ -1,23 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-
-namespace POTCW
-{
-    public class CreateScriptableBossBehaviour
-    {
-        [MenuItem("Assets/Create/Bosses/ScriptableBossBehaviour")]
-        public static void CreateMyAsset()
-        {
-            ScriptableBossBehaviour asset = ScriptableObject.CreateInstance<ScriptableBossBehaviour>();
-
-            AssetDatabase.CreateAsset(asset, "Assets/ScriptableBossBehaviours/NewScriptableBossBehaviour.asset");
-            AssetDatabase.SaveAssets();
-
-            EditorUtility.FocusProjectWindow();
-
-            Selection.activeObject = asset;
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:394399db00e531625bcdd7b6bfbb46aab918180951a5be3921b28ca25f80be19
+size 663

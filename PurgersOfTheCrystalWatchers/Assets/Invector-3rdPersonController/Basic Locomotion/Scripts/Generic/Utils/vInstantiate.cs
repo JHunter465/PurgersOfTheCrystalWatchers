@@ -1,28 +1,3 @@
-﻿using UnityEngine;
-
-namespace Invector.Utils
-{
-    [vClassHeader("v Instantiate", openClose = false)]
-    public class vInstantiate : vMonoBehaviour
-    {
-        public GameObject prefab;
-        public bool instantiateOnStart;
-        public bool setThisAsParent;
-
-        protected virtual void Start()
-        {
-            if (instantiateOnStart)
-                InstantiateObject();
-        }
-
-        public virtual void InstantiateObject()
-        {
-            if (prefab)
-            {
-                var obj = Instantiate(prefab, transform.position, transform.rotation);
-                obj.SetActive(true);
-                if (setThisAsParent) obj.transform.parent = transform;
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:170ed7692c8a2d94d4d8cb6844a2651603083a6112f24a18866b6ba8a8940198
+size 726

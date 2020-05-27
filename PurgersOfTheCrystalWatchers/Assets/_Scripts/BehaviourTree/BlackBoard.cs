@@ -1,21 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace POTCW
-{
-    public class BlackBoard
-    {
-        public float BaseDamage;
-        public float HeavyDamage;
-        public float JumpMultiplier =2;
-        public BossBase Boss;
-        public Rigidbody BossBody;
-        public Animator AnimationController;
-        public GameObject Player;
-        public float PlayerRange = 10;
-        public float BossMovementSpeed = 10f;
-        public Rigidbody ProjectilePrefab;
-        public GameObject MinionPrefab;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6a5acf72ce8d69979d1bc46f8b2ca35b900c8f094353c5d8bee46811ca152915
+size 562

@@ -1,26 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-namespace Invector.Utils
-{
-    public class vDestroyChildrens : MonoBehaviour
-    {
-
-        public virtual void DestroyChildrens()
-        {
-            DestroyChildrens(transform);
-        }
-        public virtual void DestroyChildrensOfOther(Transform target)
-        {
-            DestroyChildrens(target);
-        }
-        protected virtual void DestroyChildrens(Transform target)
-        {
-            int childs = target.childCount;
-            for (int i = childs - 1; i >= 0; i--)
-            {
-                Destroy(target.GetChild(i).gameObject);
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:266a91667e2bc237219587fbe0304f9218489ba4a8f69508b786a3598d6460de
+size 675

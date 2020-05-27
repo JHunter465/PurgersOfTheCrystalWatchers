@@ -1,10 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class vMinMaxAttribute : PropertyAttribute
-{    
-    public float minLimit = 0;    
-    public float maxLimit = 1f;   
-   
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:665772b82ea106dfbd0c857672bdbda7b7beded4c6cc33a40a7bab5c74809db1
+size 215

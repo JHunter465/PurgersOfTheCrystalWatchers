@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ef996067970074d8dd88ba76874a9d, type: 3}
-  m_Name: Portal
-  m_EditorClassIdentifier: 
-  Tag: Portal
-  Prefab: {fileID: 8058366062370727636, guid: 7b715ba0450f314499fe9b1893f1b8a5, type: 3}
-  Amount: 800
+version https://git-lfs.github.com/spec/v1
+oid sha256:7c47dc09e5cc02662ee7c358d06c5fbf88348cf9f7101674c42f41126b09e241
+size 512

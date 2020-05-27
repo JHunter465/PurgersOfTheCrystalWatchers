@@ -1,14 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-namespace Invector.vItemManager
-{
-    public class vItemEnumsList : ScriptableObject
-    {
-        [SerializeField]
-        public List<string> itemTypeEnumValues = new List<string>();
-        [SerializeField]
-        public List<string> itemAttributesEnumValues = new List<string>();
-
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4158c3ae525d0ef185687371ec08f1554eb4776b4be5e651be4b1ecafc146906
+size 376

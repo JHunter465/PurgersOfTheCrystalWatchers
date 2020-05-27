@@ -1,29 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-namespace Invector.vCharacterController
-{
-    public class vJumpMultiplierTrigger : MonoBehaviour
-    {
-        public float multiplier = 5;
-        public float timeToReset = 0.5f;
-        void OnTriggerStay(Collider other)
-        {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                var motor = other.GetComponent<vThirdPersonController>();
-
-                if (motor && (motor.isJumping || !motor.isGrounded) && motor._rigidbody.velocity.y<0)
-                {
-                    motor.SetJumpMultiplier(multiplier, timeToReset);
-                    motor.isJumping = false;
-                    motor.verticalVelocity = 0;
-                    motor.heightReached = transform.position.y;
-                    motor.isGrounded = true;
-                    motor.Jump();
-                }
-            }
-        }
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:dc021b2f8b0991d8e47ca205b477b0fa3269af67ff889edb47653a5b699ba8c3
+size 938

@@ -1,8 +1,3 @@
-﻿/// <summary>
-/// Pause forever
-/// </summary>
-/// <typeparam name="X">The agent type</typeparam>
-public class WaitForever<X> : WaitNode<X> {
-
-    public WaitForever() : base(100000000000) { }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2c20efa55dc849293b3b1f48895fbbfdabacb5b8979695ea33f7c6b0bebc8993
+size 198

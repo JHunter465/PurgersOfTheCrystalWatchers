@@ -1,28 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class RepeaterNode<X> : ParentBehaviourNode<X>
-{
-    BehaviourNode<X>[] childs;
-
-    public RepeaterNode(params BehaviourNode<X>[] _childs)
-    {
-        childs = _childs;
-    }
-
-    public override bool Recalculate()
-    {
-        return false;
-    }
-
-    public override IEnumerable<BehaviourNode<X>> GetChilds()
-    {
-        return childs;
-    }
-
-    public override State CalculateState(State childState)
-    {
-        return childState;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:809e73ea2b72450e5116b453f9d5727344c28ed89b1e91347e6b9cbe2b322103
+size 541

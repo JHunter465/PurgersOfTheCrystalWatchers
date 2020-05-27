@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ef996067970074d8dd88ba76874a9d, type: 3}
-  m_Name: BloodHitEffect
-  m_EditorClassIdentifier: 
-  Tag: BloodHit
-  Prefab: {fileID: 0}
-  Amount: 150
+version https://git-lfs.github.com/spec/v1
+oid sha256:51fd573de64fe989b6e2c26db1280118dc0f818bc49c9df9e7dd462be50a1113
+size 455

@@ -1,25 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ThirdPersonCharacterController : MonoBehaviour
-{
-    public float Speed;
-
-    // Start is called before the first frame update
-    private void Update()
-    {
-        Move();
-    }
-
-    // Update is called once per frame
-    private void Move()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        float clamped = Mathf.Clamp01(Vector3.SqrMagnitude(new Vector3(horizontal, 0, vertical)));
-        Vector3 translation = new Vector3(transform.right.x * horizontal, 0, transform.forward.z * vertical);
-        transform.position += translation.normalized * clamped * Time.deltaTime * Speed;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a4e256ea66910758fb770550d28379920a93998759b9498ce0afdd39c41df4f7
+size 762

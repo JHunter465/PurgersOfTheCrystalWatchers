@@ -1,35 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-#if UNITY_5_3_OR_NEWER
-using UnityEngine.SceneManagement;
-#endif
-namespace Invector.vCharacterController
-{
-    public class vLoadLevel : MonoBehaviour
-    {
-        [Tooltip("Write the name of the level you want to load")]
-        public string levelToLoad;
-        [Tooltip("True if you need to spawn the character into a transform location on the scene to load")]
-        public bool findSpawnPoint = true;
-        [Tooltip("Assign here the spawnPoint name of the scene that you will load")]
-        public string spawnPointName;
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                var spawnPointFinderObj = new GameObject("spawnPointFinder");
-                var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
-                //Debug.Log(spawnPointName+" "+gameObject.name);
-
-                spawnPointFinder.AlighObjetToSpawnPoint(other.gameObject, spawnPointName);
-
-#if UNITY_5_3_OR_NEWER
-                SceneManager.LoadScene(levelToLoad);
-#else
-        		Application.LoadLevel(levelToLoad);
-#endif
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:412bba8fb55db2a3566b5f77f6d0a02361cd24dd51175a6afc2139e4e058aaa4
+size 1198

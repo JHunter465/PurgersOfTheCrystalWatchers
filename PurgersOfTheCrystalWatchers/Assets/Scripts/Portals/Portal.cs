@@ -1,21 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Portal : MonoBehaviour
-{
-    public Transform OtherPortal;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        other.transform.position = OtherPortal.position + OtherPortal.forward * 3;
-        
-        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-        if(rigidbody != null)
-        {
-            rigidbody.AddRelativeForce(new Vector3(OtherPortal.transform.forward.x, OtherPortal.transform.forward.y, OtherPortal.transform.forward.z) * 500);
-        }
-
-        other.transform.forward = transform.forward;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2a2ad670ea6d6529156923e53c41bdb771e2283dbf1dfb56f03c87cd96301b4d
+size 635

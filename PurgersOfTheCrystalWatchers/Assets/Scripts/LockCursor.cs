@@ -1,13 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class LockCursor : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6361376a5ff9318a442cedffabfa07dc79bfdff829f983ff85e76d81f5850ead
+size 291

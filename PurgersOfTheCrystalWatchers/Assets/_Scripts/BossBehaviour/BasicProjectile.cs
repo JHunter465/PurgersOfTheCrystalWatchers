@@ -1,24 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine; 
-using BasHelpers;
-
-namespace POTCW
-{
-    public class BasicProjectile : MonoBehaviour
-    {
-        public float Speed = 100;
-        public float DeactivationTime = 10;
-
-        private Rigidbody rBody;
-         
-        private void Start()
-        {
-            if (GetComponent<Rigidbody>() == null) return;
-
-            rBody = GetComponent<Rigidbody>();
-
-            this.gameObject.DeactivateAfterTime(this, DeactivationTime);
-        }       
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ff8116e5f89a444684b2e2accb23db05a478f6f797a037054878224b8d85e23b
+size 542

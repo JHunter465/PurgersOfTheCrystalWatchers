@@ -1,30 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace Invector
-{
-    public class vPickupItem : MonoBehaviour
-    {
-        AudioSource _audioSource;
-        public AudioClip _audioClip;
-        public GameObject _particle;
-
-        void Start()
-        {
-            _audioSource = GetComponent<AudioSource>();
-        }
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player") && !_audioSource.isPlaying)
-            {
-                Renderer[] renderers = GetComponentsInChildren<Renderer>();
-                foreach (Renderer r in renderers)
-                    r.enabled = false;
-
-                _audioSource.PlayOneShot(_audioClip);
-                Destroy(gameObject, _audioClip.length);
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b779d8efedff09e212ea69867806a635aab99392b3f9ca1ebcaf1622fc6e73c7
+size 775

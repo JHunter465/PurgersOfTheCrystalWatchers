@@ -1,19 +1,3 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-namespace Invector
-{
-    public class vDestroyOnTrigger : MonoBehaviour
-    {
-        public List<string> targsToDestroy;
-        public float destroyDelayTime;
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (targsToDestroy.Contains(other.gameObject.tag))
-            {
-                Destroy(other.gameObject, destroyDelayTime);
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:44e83297f1cbb54b31240ea01b5352b50b574957ef5d99e0c0f101d91186512d
+size 467

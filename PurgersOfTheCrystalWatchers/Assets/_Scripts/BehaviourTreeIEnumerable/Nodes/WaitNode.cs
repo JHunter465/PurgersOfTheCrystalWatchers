@@ -1,30 +1,3 @@
-﻿using UnityEngine;
-
-/// <summary>
-/// Pause for a certain duration (time based on UnityEngine.Time.time)
-/// </summary>
-/// <typeparam name="X">The agent type</typeparam>
-public class WaitNode<X> : BehaviourNode<X> {
-
-    float _duration;
-
-    float _endAtTime;
-
-    public WaitNode(float duration) {
-        _duration = duration;
-    }
-
-    public override State Start() {
-        _endAtTime = Time.time + _duration;
-
-        return State.IN_PROGRESS;
-    }
-
-    public override State Update() {
-        return Time.time > _endAtTime ? State.SUCCESS : State.IN_PROGRESS;
-    }
-
-    public override bool Recalculate() {
-        return false;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:00f1f42905094a063772116e5d3e110ff7052307a968b86a4760bd7c6cfa3c1a
+size 652

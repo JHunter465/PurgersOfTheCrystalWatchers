@@ -1,36 +1,3 @@
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-namespace Invector
-{
-    [System.Serializable]
-    public abstract class vFootPlantingPlayer : MonoBehaviour
-    {
-        // The different surfaces and their sounds.
-        public vAudioSurface defaultSurface;
-        public List<vAudioSurface> customSurfaces;
-
-        public void PlayFootFallSound(FootStepObject footStepObject, bool spawnParticle = true, bool spawnStepMark = true, float volume = 1f)
-        {
-            for (int i = 0; i < customSurfaces.Count; i++)
-                if (customSurfaces[i] != null && ContainsTexture(footStepObject.name, customSurfaces[i]))
-                {
-                    customSurfaces[i].PlayRandomClip(footStepObject, spawnParticle, spawnStepMark, volume);
-                    return;
-                }
-            if (defaultSurface != null)
-                defaultSurface.PlayRandomClip(footStepObject, spawnParticle, spawnStepMark, volume);
-        }
-
-        // check if AudioSurface Contains texture in TextureName List
-        private bool ContainsTexture(string name, vAudioSurface surface)
-        {
-            for (int i = 0; i < surface.TextureOrMaterialNames.Count; i++)
-                if (name.Contains(surface.TextureOrMaterialNames[i]))
-                    return true;
-
-            return false;
-        }
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fefbe125d73bfff9b7c1355a9c7b970d30f30f1959d9a2ce2d5f1c027bdb7bc3
+size 1360
