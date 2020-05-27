@@ -62,6 +62,7 @@ namespace POTCW
                 new Selection<EnemyAgent>(ctx => !DoSpecialMove(GetActiveSelectedSpecialMoves()),
                     new SequenceNode<EnemyAgent>(
                         new LeapNode(board),
+                        new EmptyNode(1f),
                         new FireProjectileNode(board),                        
                         new SummonNode(board, board.EnemyAgent.MinionSpawnAmount/2),
                             new SelectorNode<EnemyAgent>(
