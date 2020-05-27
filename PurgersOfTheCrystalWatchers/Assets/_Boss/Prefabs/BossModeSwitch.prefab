@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossModeSwitchSides:
   - ID: 0
-    Barrier: {fileID: 7082919542458816520}
+    Gate: {fileID: 7082919542608092839}
     MinionCollectContainers:
     - MinionsNeeded: 3
       MinionType: 0
@@ -1566,7 +1566,7 @@ MonoBehaviour:
       Collected: 0
       Completed: 0
   - ID: 1
-    Barrier: {fileID: 7082919542608092839}
+    Gate: {fileID: 7082919542458816520}
     MinionCollectContainers:
     - MinionsNeeded: 3
       MinionType: 0
@@ -1581,7 +1581,7 @@ MonoBehaviour:
       Collected: 0
       Completed: 0
   - ID: 2
-    Barrier: {fileID: 7082919543162717344}
+    Gate: {fileID: 7082919543162717344}
     MinionCollectContainers:
     - MinionsNeeded: 3
       MinionType: 0

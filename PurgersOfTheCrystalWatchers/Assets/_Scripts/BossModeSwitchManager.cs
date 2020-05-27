@@ -9,7 +9,7 @@ namespace POTCW
     public class PuzzleElement
     {
         public int ID;
-        public GameObject Barrier;
+        public GameObject Gate;
         public List<MinionCollectContainer> MinionCollectContainers = new List<MinionCollectContainer>();
     }
 
@@ -32,7 +32,7 @@ namespace POTCW
         {
             foreach (var cntr in BossModeSwitchSides)
             {
-                cntr.Barrier.SetActive(false);
+                cntr.Gate.SetActive(false);
             }
             EventManager<Dictionary<int, MinionType>>.AddHandler(EVENT.CollectMinions, CollectMinion);
         }
@@ -64,7 +64,7 @@ namespace POTCW
             
             if(countedCompletedPuzzles >= 3)
             {
-                container.Barrier.SetActive(true);
+                container.Gate.SetActive(true);
             }
         }
     }
