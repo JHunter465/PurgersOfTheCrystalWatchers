@@ -22,7 +22,6 @@ namespace POTCW
 
         protected override BehaviourNode<EnemyAgent> GetRootNode()
         {
-
             specialMovesOpenTerrainMode = new BehaviourNode<EnemyAgent>[]
             {
                 new CrystalTornadoNode(board),
@@ -141,6 +140,7 @@ namespace POTCW
         //It keeps calling the nodes multiple times
         public bool DoStandardBehaviour()
         {
+
             if (thresHold > 0.1f)
             {
                 thresHold--;
@@ -158,7 +158,7 @@ namespace POTCW
         public BehaviourNode<EnemyAgent>[] GetActiveSelectedSpecialMoves()
         {
             BehaviourNode<EnemyAgent>[] activeSpecialModes;
-
+           // EventManager<Color>.BroadCast(EVENT.SpecialAttackFeedback, Color.red);
             //Afhankelijk van welke pyramide kan de speler heeft aangezet voor het laast
             //Moeten we de boss het huidige active special moves aanzetten. 
             switch(board.EnemyAgent.SpecialModeActive)
@@ -182,6 +182,15 @@ namespace POTCW
 
         public bool DoSpecialMove(BehaviourNode<EnemyAgent>[] specialMoves)
         {
+            if(board.EnemyAgent.ThresHoldCheck())
+            {
+                EventManager<Color>.BroadCast(EVENT.SpecialAttackFeedback, Color.red);
+            }
+            else
+            {
+                EventManager<Color>.BroadCast(EVENT.SpecialAttackFeedback, Color.blue);
+            }
+
             randomNumm = Random.Range(0, specialMoves.Length);
             return board.EnemyAgent.ThresHoldCheck();
         }

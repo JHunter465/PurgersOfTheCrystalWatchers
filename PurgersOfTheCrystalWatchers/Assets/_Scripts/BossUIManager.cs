@@ -12,6 +12,8 @@ namespace POTCW
         public TextMeshProUGUI CurrentActiveBossMode;
         public TextMeshProUGUI CurrentArea;
         public Image PlayerDetectionStatus;
+        public CameraShake[] CameraShakes;
+        public float ShakeDuration = 2f;
 
         protected SpecialMode activeMode;
         protected SpecialMode currentArea;
@@ -28,7 +30,25 @@ namespace POTCW
         {
             CurrentActiveBossMode.text = activeMode.ToString() + " Mode";
             this.activeMode = activeMode;
-            CurrentActiveBossMode.color = currentArea == this.activeMode ? Color.red : Color.yellow;
+            if (currentArea == this.activeMode)
+            {
+                CurrentActiveBossMode.color = Color.red;
+                foreach(var shake in CameraShakes)
+                {
+                    shake.enabled = true;
+                    shake.shakeDuration = ShakeDuration;
+                }
+            }
+            else
+            {
+                foreach (var shake in CameraShakes)
+                {
+                    shake.enabled = false;
+                    shake.shakeDuration = ShakeDuration;
+                }
+                CurrentActiveBossMode.color = Color.yellow;
+            }
+            //CurrentActiveBossMode.color = currentArea == this.activeMode ? Color.red : Color.yellow;
         }
 
         private void UpdateCurrentArea(SpecialMode area)
@@ -43,8 +63,7 @@ namespace POTCW
             if (value)
                 HealthBar.SetActive(true);
             else
-                HealthBar.SetActive(false);
-                
+                HealthBar.SetActive(false);                
         }
 
         private void UpdatePlayerDetectionStatus(int check)

@@ -214,8 +214,6 @@ namespace POTCW
             ThresHold+=Time.deltaTime;
             if(ThresHold > ReachedThresHold)
                 ThresHold = 0;
-
-
             
             if(Vector3.Distance(Player1.transform.position, this.transform.position) < PlayerCloseRange || Vector3.Distance(Player2.transform.position, this.transform.position) < PlayerCloseRange)
             {
