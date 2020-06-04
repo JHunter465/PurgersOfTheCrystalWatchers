@@ -1,21 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using BasHelpers;
-
-namespace POTCW
-{
-    public class TriggerModeSwitch : MonoBehaviour
-    {
-        private void OnTriggerEnter(Collider other)
-        {
-            if(other.gameObject.HasComponent<IInteractable>())
-            {
-                IInteractable activator = other.gameObject.GetComponent<IInteractable>();
-                activator.Interact();
-
-                this.gameObject.SetActive(false);
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3d0a4fc3a039b1c4638be729b909477da06d614d5713662ba7f449fa17c46bf0
+size 526
