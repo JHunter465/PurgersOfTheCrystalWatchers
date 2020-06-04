@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b40f93ec963605a1036ffd06d1930494272006c6383b085a4e1aef89d98bb69a
-size 790
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using BasHelpers;
+
+namespace POTCW
+{
+    public class SpecialMoveActivator : MonoBehaviour, IInteractable
+    {
+        public TextMeshProUGUI FeedbackTextField;
+        public SpecialMode ActivateSpecialModeType;
+        
+        public void Interact()
+        {
+            Debug.Log("Activated: " + ActivateSpecialModeType.ToString());
+            FeedbackTextField.gameObject.SetActive(true);
+            FeedbackTextField.text = "Boss Mode Switched To: " + ActivateSpecialModeType.ToString();
+            FeedbackTextField.gameObject.DeactivateAfterTime(this, 2f);
+            EventManager<SpecialMode>.BroadCast(EVENT.SwitchBossSpecialModeType, ActivateSpecialModeType);
+        }
+    }
+}
