@@ -1,19 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Invector.vCharacterController;
-
-public class CrystalExplosion : MonoBehaviour
-{
-    public int Damage;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        vThirdPersonController player = other.GetComponent<vThirdPersonController>();
-        if (player != null)
-        {
-            Invector.vDamage damage = new Invector.vDamage(Damage);
-            player.TakeDamage(damage);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:0861d496b72c359bad744f0da7dbe42138ef6c104eb54800593203c5ea760b42
+size 495
